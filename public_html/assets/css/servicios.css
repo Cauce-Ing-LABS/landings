@@ -12,7 +12,9 @@
 .metodo-hacemos{list-style: none; display: flex; flex-direction: column; gap: 0.55rem; margin: 1.25rem 0; padding-top: 1.25rem; border-top: 1px dashed rgba(255,255,255,0.12);}
 .metodo-hacemos li{display: flex; gap: 0.6rem; color: rgba(244,245,247,0.82); font-size: 0.9rem; line-height: 1.5;}
 .metodo-hacemos li::before{content: "→"; color: var(--flow); font-weight: 700; flex-shrink: 0;}
-.metodo-step .metodo-entrega{color: var(--paper); font-size: 0.92rem; line-height: 1.5; background: rgba(15,184,217,0.08); border-left: 2px solid var(--flow); border-radius: 0 10px 10px 0; padding: 0.75rem 0.9rem;}
-.metodo-step .metodo-entrega span{display: block; font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--flow); margin-bottom: 0.3rem;}
+.metodo-resultado{margin-top: auto; background: rgba(15,184,217,0.08); border: 1px solid rgba(15,184,217,0.25); border-radius: 14px; padding: 1rem;}
+.metodo-resultado svg{display: block; width: 86px; height: 68px; margin-bottom: 0.75rem;}
+.metodo-step .metodo-resultado p{color: var(--paper); font-size: 0.9rem; line-height: 1.5;}
+.metodo-step .metodo-resultado span{display: block; font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--flow); margin-bottom: 0.3rem;}
 .metodo-link{margin-top: 1rem; color: var(--flow); font-weight: 500; font-size: 0.92rem;}
 .metodo-link:hover{color: #3fd0ec;}
