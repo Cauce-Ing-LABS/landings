@@ -80,6 +80,67 @@
    }
   },
   {
+   "@type": "ItemList",
+   "name": "Catálogo de licencias",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Microsoft 365 Empresa Básico"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Microsoft 365 Empresa Estándar"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Microsoft 365 Empresa Premium"
+    },
+    {
+     "@type": "ListItem",
+     "position": 4,
+     "name": "Windows 11 Pro"
+    },
+    {
+     "@type": "ListItem",
+     "position": 5,
+     "name": "Adobe Acrobat Pro"
+    },
+    {
+     "@type": "ListItem",
+     "position": 6,
+     "name": "Adobe Creative Cloud"
+    },
+    {
+     "@type": "ListItem",
+     "position": 7,
+     "name": "AutoCAD"
+    },
+    {
+     "@type": "ListItem",
+     "position": 8,
+     "name": "AutoCAD LT"
+    },
+    {
+     "@type": "ListItem",
+     "position": 9,
+     "name": "Kaspersky Small Office Security"
+    },
+    {
+     "@type": "ListItem",
+     "position": 10,
+     "name": "Alegra"
+    },
+    {
+     "@type": "ListItem",
+     "position": 11,
+     "name": "Siigo"
+    }
+   ]
+  },
+  {
    "@type": "BreadcrumbList",
    "itemListElement": [
     {
@@ -109,6 +170,14 @@
     },
     {
      "@type": "Question",
+     "name": "¿Por qué no publican precios?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "El precio depende del plan, del número de usuarios y de si el pago es mensual o anual. Te enviamos la cotización exacta por WhatsApp, normalmente el mismo día."
+     }
+    },
+    {
+     "@type": "Question",
      "name": "¿Emiten factura electrónica?",
      "acceptedAnswer": {
       "@type": "Answer",
@@ -128,7 +197,7 @@
      "name": "¿Puedo combinar licencias con el renting de equipos?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Sí. Es lo más común: el equipo llega con el sistema operativo activado y, si lo pides, con Microsoft 365 y antivirus empresarial listos. Mira el renting de equipos."
+      "text": "Sí. Es lo más común: el equipo llega con el sistema operativo activado y, si lo pides, con Microsoft 365 y antivirus listos. Mira la tienda de renting."
      }
     }
    ]
@@ -137,7 +206,7 @@
 }
 </script>
 </head>
-<body data-page="/licencias-software/" class="has-dock">
+<body data-page="/licencias-software/">
 <a class="skip-link" href="#contenido">Saltar al contenido</a>
 <nav aria-label="Principal">
   <div class="nav-inner">
@@ -159,8 +228,6 @@
       <a href="/capacitaciones/">Capacitaciones</a>
       <a href="/renting-equipos/">Renting de equipos</a>
       <a href="/licencias-software/" aria-current="page">Licencias</a>
-      <a href="/ingenieria/">Ingeniería</a>
-      <a href="/#nosotros">Nosotros</a>
     </div>
     <div class="nav-right">
       <a href="https://calendly.com/cauce-ingenieria/cauce-consultoria-60-min-clon-clon-1" class="nav-cta" data-calendly data-ubicacion="nav">Café Cauce</a>
@@ -170,83 +237,174 @@
 </nav>
 
 <main id="contenido">
-<header class="page-hero">
+<header class="page-hero is-compact">
   <div class="hero-grid-bg"></div>
   <div class="wrap">
     <nav class="breadcrumb" aria-label="Migas de pan"><ol><li><a href="/">Inicio</a></li><li><span aria-current="page">Licencias de software</span></li></ol></nav>
-    <div class="hero-split">
-      <div>
-        <div class="hero-eyebrow"><span class="pulse"></span><span class="mono">Software y licencias · Para empresas en Colombia</span></div>
-        <h1>Licencias de software <em>originales</em> para tu empresa.</h1>
-        <p class="hero-sub">Microsoft 365, Windows Pro, Adobe, AutoCAD, antivirus y software contable, <strong>solo por canales autorizados del fabricante</strong>. Con factura electrónica, instalación y aviso antes de cada renovación.</p>
-        <div class="hero-ctas">
-          <a href="#cotizador" class="btn btn-primary">Arma tu cotización <span class="arrow">→</span></a>
-          <a href="https://wa.me/573013682430?text=Hola%20Cauce%2C%20quiero%20cotizar%20licencias%20de%20software." class="btn btn-secondary" target="_blank" rel="noopener" data-ubicacion="licencias-hero">Escríbenos por WhatsApp</a>
-        </div>
-      </div>
-      <aside class="hero-aside">
-        <span class="mono">Por qué importa</span>
-        <ul>
-          <li>Una clave barata puede desactivarse sin aviso, y el riesgo es de tu empresa</li>
-          <li>Una licencia legítima queda a tu nombre y con factura</li>
-          <li>Nosotros llevamos el control de vencimientos por ti</li>
-        </ul>
-      </aside>
-    </div>
+    <div class="hero-eyebrow"><span class="pulse"></span><span class="mono">Tienda · Licencias de software originales</span></div>
+    <h1>Licencias de software <em>originales</em> para tu empresa.</h1>
+    <p class="hero-sub">Microsoft 365, Windows Pro, Adobe, AutoCAD, antivirus y software contable, <strong>solo por canales autorizados del fabricante</strong>. Con factura electrónica, instalación y aviso antes de cada renovación.</p>
   </div>
 </header>
 
-<section class="section is-paper" id="cotizador">
+<section class="section is-paper store" id="catalogo">
   <div class="wrap">
-    <div class="section-head">
-      <div>
-        <p class="mono eyebrow">— Cotizador</p>
-        <h2>¿Qué necesitas<br><em>licenciar?</em></h2>
+    <div class="store-bar">
+      <div class="filters" role="group" aria-label="Filtrar por categoría" data-store="licencias">
+        <button type="button" class="filter" data-filter="todo" aria-pressed="true">Todo <span>11</span></button>
+        <button type="button" class="filter" data-filter="ofimatica" aria-pressed="false">Ofimática y correo <span>4</span></button>
+        <button type="button" class="filter" data-filter="diseno" aria-pressed="false">Diseño y documentos <span>2</span></button>
+        <button type="button" class="filter" data-filter="ingenieria" aria-pressed="false">Arquitectura e ingeniería <span>2</span></button>
+        <button type="button" class="filter" data-filter="seguridad" aria-pressed="false">Seguridad <span>1</span></button>
+        <button type="button" class="filter" data-filter="contable" aria-pressed="false">Contabilidad <span>2</span></button>
       </div>
-      <p class="lead">Marca las categorías y el número de usuarios o equipos. Te enviamos la cotización por WhatsApp con el plan que mejor encaje; el precio depende del plan y la cantidad.</p>
     </div>
-    <div class="choice-grid" role="group" aria-label="Categorías de software">
-      <button class="choice" type="button" data-licencia="Microsoft 365 / Windows Pro" aria-pressed="false">
-        <span class="tick" aria-hidden="true">✓</span>
-        <span class="c-name">Microsoft 365 y Windows</span>
-        <span class="c-spec">Programa CSP de Microsoft</span>
-        <span class="c-desc">Correo empresarial, Office, Teams y OneDrive por usuario. También actualización de Windows Home a Pro para cifrar el disco con BitLocker.</span>
-      </button>
-      <button class="choice" type="button" data-licencia="Adobe (Creative Cloud / Acrobat)" aria-pressed="false">
-        <span class="tick" aria-hidden="true">✓</span>
-        <span class="c-name">Adobe</span>
-        <span class="c-spec">Programa VIP de Adobe</span>
-        <span class="c-desc">Creative Cloud para diseño y Acrobat para firmar y editar PDF, con licencias a nombre de tu empresa.</span>
-      </button>
-      <button class="choice" type="button" data-licencia="AutoCAD / Autodesk" aria-pressed="false">
-        <span class="tick" aria-hidden="true">✓</span>
-        <span class="c-name">AutoCAD y Autodesk</span>
-        <span class="c-spec">Canal de partners Autodesk</span>
-        <span class="c-desc">AutoCAD y el resto de la suite Autodesk para arquitectura, ingeniería y manufactura.</span>
-      </button>
-      <button class="choice" type="button" data-licencia="Software contable (Alegra / Siigo)" aria-pressed="false">
-        <span class="tick" aria-hidden="true">✓</span>
-        <span class="c-name">Software contable</span>
-        <span class="c-spec">Alegra · Siigo</span>
-        <span class="c-desc">Facturación electrónica y contabilidad en la nube. Te ayudamos a elegir y a dejarlo configurado.</span>
-      </button>
-      <button class="choice" type="button" data-licencia="Antivirus con consola (Kaspersky)" aria-pressed="false">
-        <span class="tick" aria-hidden="true">✓</span>
-        <span class="c-name">Antivirus empresarial</span>
-        <span class="c-spec">Kaspersky Small Office Security</span>
-        <span class="c-desc">Protección con consola centralizada: ves el estado de todos los equipos de tu empresa en un solo lugar.</span>
-      </button>
-    </div>
-    <div class="controls">
-      <div>
-        <span class="control-label" id="lbl-qty">Usuarios o equipos</span>
-        <div class="stepper" role="group" aria-labelledby="lbl-qty">
-          <button type="button" id="qtyMinus" aria-label="Quitar un usuario">−</button>
-          <output id="qty" aria-live="polite">5</output>
-          <button type="button" id="qtyPlus" aria-label="Agregar un usuario">+</button>
+    <div class="product-grid" data-grid="licencias">
+      <article class="product" data-cat="ofimatica" data-id="m365-basico">
+        <div class="product-media"><svg viewBox="0 0 96 82" aria-hidden="true"><path d="M28 58 H66 A14 14 0 0 0 64 30 A20 20 0 0 0 26 34 A12 12 0 0 0 28 58 Z" fill="none" stroke="#0d1b2a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M36 48 L44 40 L52 46 L60 38" fill="none" stroke="#0fb8d9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="product-body">
+          <span class="product-cat">Ofimática y correo</span>
+          <h3 class="product-name">Microsoft 365 Empresa Básico</h3>
+          <p class="product-spec">Por usuario</p>
+          <ul><li>Correo empresarial, Teams y OneDrive</li><li>Word, Excel y PowerPoint en la web</li></ul>
+          <div class="product-foot">
+            <div class="product-price"><b class="is-quote">Precio a cotizar</b><small>Te respondemos por WhatsApp</small></div>
+            <a class="btn-want" href="https://wa.me/573013682430?text=Hola%20Cauce%2C%20quiero%20cotizar%3A%20Microsoft%20365%20Empresa%20B%C3%A1sico%20(por%20usuario).%0A%0AN%C3%BAmero%20de%20usuarios%20o%20equipos%3A%20%0ACiudad%3A%20" target="_blank" rel="noopener" data-cotizador data-ubicacion="licencias-m365-basico"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.4-1.8-.1-.2 0-.4.1-.5.1-.1.2-.3.4-.4.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5s-.6-1.5-.9-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3Z"/></svg>Lo quiero</a>
+          </div>
         </div>
-      </div>
+      </article>
+      <article class="product" data-cat="ofimatica" data-id="m365-estandar">
+        <div class="product-media"><span class="product-tag">Más elegido</span><svg viewBox="0 0 96 82" aria-hidden="true"><path d="M28 58 H66 A14 14 0 0 0 64 30 A20 20 0 0 0 26 34 A12 12 0 0 0 28 58 Z" fill="none" stroke="#0d1b2a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M36 48 L44 40 L52 46 L60 38" fill="none" stroke="#0fb8d9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="product-body">
+          <span class="product-cat">Ofimática y correo</span>
+          <h3 class="product-name">Microsoft 365 Empresa Estándar</h3>
+          <p class="product-spec">Por usuario</p>
+          <ul><li>Todo lo del Básico</li><li>Apps de escritorio de Office</li></ul>
+          <div class="product-foot">
+            <div class="product-price"><b class="is-quote">Precio a cotizar</b><small>Te respondemos por WhatsApp</small></div>
+            <a class="btn-want" href="https://wa.me/573013682430?text=Hola%20Cauce%2C%20quiero%20cotizar%3A%20Microsoft%20365%20Empresa%20Est%C3%A1ndar%20(por%20usuario).%0A%0AN%C3%BAmero%20de%20usuarios%20o%20equipos%3A%20%0ACiudad%3A%20" target="_blank" rel="noopener" data-cotizador data-ubicacion="licencias-m365-estandar"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.4-1.8-.1-.2 0-.4.1-.5.1-.1.2-.3.4-.4.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5s-.6-1.5-.9-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3Z"/></svg>Lo quiero</a>
+          </div>
+        </div>
+      </article>
+      <article class="product" data-cat="ofimatica" data-id="m365-premium">
+        <div class="product-media"><svg viewBox="0 0 96 82" aria-hidden="true"><path d="M28 58 H66 A14 14 0 0 0 64 30 A20 20 0 0 0 26 34 A12 12 0 0 0 28 58 Z" fill="none" stroke="#0d1b2a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M36 48 L44 40 L52 46 L60 38" fill="none" stroke="#0fb8d9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="product-body">
+          <span class="product-cat">Ofimática y correo</span>
+          <h3 class="product-name">Microsoft 365 Empresa Premium</h3>
+          <p class="product-spec">Por usuario</p>
+          <ul><li>Todo lo del Estándar</li><li>Seguridad avanzada y gestión de equipos</li></ul>
+          <div class="product-foot">
+            <div class="product-price"><b class="is-quote">Precio a cotizar</b><small>Te respondemos por WhatsApp</small></div>
+            <a class="btn-want" href="https://wa.me/573013682430?text=Hola%20Cauce%2C%20quiero%20cotizar%3A%20Microsoft%20365%20Empresa%20Premium%20(por%20usuario).%0A%0AN%C3%BAmero%20de%20usuarios%20o%20equipos%3A%20%0ACiudad%3A%20" target="_blank" rel="noopener" data-cotizador data-ubicacion="licencias-m365-premium"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.4-1.8-.1-.2 0-.4.1-.5.1-.1.2-.3.4-.4.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5s-.6-1.5-.9-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3Z"/></svg>Lo quiero</a>
+          </div>
+        </div>
+      </article>
+      <article class="product" data-cat="ofimatica" data-id="windows-11-pro">
+        <div class="product-media"><svg viewBox="0 0 96 82" aria-hidden="true"><rect x="16" y="14" width="64" height="52" rx="3" fill="none" stroke="#0d1b2a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 26 H80" fill="none" stroke="#0d1b2a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M36 38 H46 V48 H36 Z M50 38 H60 V48 H50 Z M36 52 H46 V58 H36 Z M50 52 H60 V58 H50 Z" fill="none" stroke="#0fb8d9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="product-body">
+          <span class="product-cat">Ofimática y correo</span>
+          <h3 class="product-name">Windows 11 Pro</h3>
+          <p class="product-spec">Actualización desde Home · por equipo</p>
+          <ul><li>Cifrado de disco con BitLocker</li><li>Escritorio remoto y unión a dominio</li></ul>
+          <div class="product-foot">
+            <div class="product-price"><b class="is-quote">Precio a cotizar</b><small>Te respondemos por WhatsApp</small></div>
+            <a class="btn-want" href="https://wa.me/573013682430?text=Hola%20Cauce%2C%20quiero%20cotizar%3A%20Windows%2011%20Pro%20(actualizaci%C3%B3n%20desde%20home%20%C2%B7%20por%20equipo).%0A%0AN%C3%BAmero%20de%20usuarios%20o%20equipos%3A%20%0ACiudad%3A%20" target="_blank" rel="noopener" data-cotizador data-ubicacion="licencias-windows-11-pro"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.4-1.8-.1-.2 0-.4.1-.5.1-.1.2-.3.4-.4.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5s-.6-1.5-.9-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3Z"/></svg>Lo quiero</a>
+          </div>
+        </div>
+      </article>
+      <article class="product" data-cat="diseno" data-id="adobe-acrobat-pro">
+        <div class="product-media"><svg viewBox="0 0 96 82" aria-hidden="true"><path d="M26 8 H58 L72 22 V74 H26 Z" fill="none" stroke="#0d1b2a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M58 8 V22 H72" fill="none" stroke="#0d1b2a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M36 50 C 40 36 44 36 48 50 S 56 62 62 46" fill="none" stroke="#0fb8d9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="product-body">
+          <span class="product-cat">Diseño y documentos</span>
+          <h3 class="product-name">Adobe Acrobat Pro</h3>
+          <p class="product-spec">Por usuario</p>
+          <ul><li>Edita, firma y convierte PDF</li></ul>
+          <div class="product-foot">
+            <div class="product-price"><b class="is-quote">Precio a cotizar</b><small>Te respondemos por WhatsApp</small></div>
+            <a class="btn-want" href="https://wa.me/573013682430?text=Hola%20Cauce%2C%20quiero%20cotizar%3A%20Adobe%20Acrobat%20Pro%20(por%20usuario).%0A%0AN%C3%BAmero%20de%20usuarios%20o%20equipos%3A%20%0ACiudad%3A%20" target="_blank" rel="noopener" data-cotizador data-ubicacion="licencias-adobe-acrobat-pro"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.4-1.8-.1-.2 0-.4.1-.5.1-.1.2-.3.4-.4.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5s-.6-1.5-.9-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3Z"/></svg>Lo quiero</a>
+          </div>
+        </div>
+      </article>
+      <article class="product" data-cat="diseno" data-id="adobe-creative-cloud">
+        <div class="product-media"><svg viewBox="0 0 96 82" aria-hidden="true"><path d="M48 12 A30 30 0 1 0 48 72 C 54 72 54 64 50 60 C 46 56 50 50 56 50 H64 A16 16 0 0 0 78 36 C 78 22 64 12 48 12 Z" fill="none" stroke="#0d1b2a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="40" r="4" fill="none" stroke="#0fb8d9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="40" cy="26" r="4" fill="none" stroke="#0fb8d9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="56" cy="24" r="4" fill="none" stroke="#0fb8d9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="product-body">
+          <span class="product-cat">Diseño y documentos</span>
+          <h3 class="product-name">Adobe Creative Cloud</h3>
+          <p class="product-spec">Todas las apps · por usuario</p>
+          <ul><li>Photoshop, Illustrator, InDesign, Premiere y más</li></ul>
+          <div class="product-foot">
+            <div class="product-price"><b class="is-quote">Precio a cotizar</b><small>Te respondemos por WhatsApp</small></div>
+            <a class="btn-want" href="https://wa.me/573013682430?text=Hola%20Cauce%2C%20quiero%20cotizar%3A%20Adobe%20Creative%20Cloud%20(todas%20las%20apps%20%C2%B7%20por%20usuario).%0A%0AN%C3%BAmero%20de%20usuarios%20o%20equipos%3A%20%0ACiudad%3A%20" target="_blank" rel="noopener" data-cotizador data-ubicacion="licencias-adobe-creative-cloud"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.4-1.8-.1-.2 0-.4.1-.5.1-.1.2-.3.4-.4.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5s-.6-1.5-.9-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3Z"/></svg>Lo quiero</a>
+          </div>
+        </div>
+      </article>
+      <article class="product" data-cat="ingenieria" data-id="autocad">
+        <div class="product-media"><svg viewBox="0 0 96 82" aria-hidden="true"><path d="M48 12 V20 M48 20 L30 70 M48 20 L66 70" fill="none" stroke="#0d1b2a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="48" cy="20" r="5" fill="none" stroke="#0d1b2a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 54 C 34 62 62 62 74 54" fill="none" stroke="#0fb8d9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="product-body">
+          <span class="product-cat">Arquitectura e ingeniería</span>
+          <h3 class="product-name">AutoCAD</h3>
+          <p class="product-spec">Por usuario</p>
+          <ul><li>Dibujo 2D y modelado 3D</li></ul>
+          <div class="product-foot">
+            <div class="product-price"><b class="is-quote">Precio a cotizar</b><small>Te respondemos por WhatsApp</small></div>
+            <a class="btn-want" href="https://wa.me/573013682430?text=Hola%20Cauce%2C%20quiero%20cotizar%3A%20AutoCAD%20(por%20usuario).%0A%0AN%C3%BAmero%20de%20usuarios%20o%20equipos%3A%20%0ACiudad%3A%20" target="_blank" rel="noopener" data-cotizador data-ubicacion="licencias-autocad"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.4-1.8-.1-.2 0-.4.1-.5.1-.1.2-.3.4-.4.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5s-.6-1.5-.9-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3Z"/></svg>Lo quiero</a>
+          </div>
+        </div>
+      </article>
+      <article class="product" data-cat="ingenieria" data-id="autocad-lt">
+        <div class="product-media"><svg viewBox="0 0 96 82" aria-hidden="true"><path d="M48 12 V20 M48 20 L30 70 M48 20 L66 70" fill="none" stroke="#0d1b2a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="48" cy="20" r="5" fill="none" stroke="#0d1b2a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 54 C 34 62 62 62 74 54" fill="none" stroke="#0fb8d9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="product-body">
+          <span class="product-cat">Arquitectura e ingeniería</span>
+          <h3 class="product-name">AutoCAD LT</h3>
+          <p class="product-spec">Por usuario</p>
+          <ul><li>Dibujo 2D, más económico</li></ul>
+          <div class="product-foot">
+            <div class="product-price"><b class="is-quote">Precio a cotizar</b><small>Te respondemos por WhatsApp</small></div>
+            <a class="btn-want" href="https://wa.me/573013682430?text=Hola%20Cauce%2C%20quiero%20cotizar%3A%20AutoCAD%20LT%20(por%20usuario).%0A%0AN%C3%BAmero%20de%20usuarios%20o%20equipos%3A%20%0ACiudad%3A%20" target="_blank" rel="noopener" data-cotizador data-ubicacion="licencias-autocad-lt"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.4-1.8-.1-.2 0-.4.1-.5.1-.1.2-.3.4-.4.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5s-.6-1.5-.9-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3Z"/></svg>Lo quiero</a>
+          </div>
+        </div>
+      </article>
+      <article class="product" data-cat="seguridad" data-id="kaspersky-sos">
+        <div class="product-media"><svg viewBox="0 0 96 82" aria-hidden="true"><path d="M48 10 L76 20 V40 C 76 56 64 68 48 74 C 32 68 20 56 20 40 V20 Z" fill="none" stroke="#0d1b2a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M36 42 L45 51 L61 34" fill="none" stroke="#0fb8d9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="product-body">
+          <span class="product-cat">Seguridad</span>
+          <h3 class="product-name">Kaspersky Small Office Security</h3>
+          <p class="product-spec">Por equipo</p>
+          <ul><li>Antivirus con consola centralizada</li><li>Pensado para pymes</li></ul>
+          <div class="product-foot">
+            <div class="product-price"><b class="is-quote">Precio a cotizar</b><small>Te respondemos por WhatsApp</small></div>
+            <a class="btn-want" href="https://wa.me/573013682430?text=Hola%20Cauce%2C%20quiero%20cotizar%3A%20Kaspersky%20Small%20Office%20Security%20(por%20equipo).%0A%0AN%C3%BAmero%20de%20usuarios%20o%20equipos%3A%20%0ACiudad%3A%20" target="_blank" rel="noopener" data-cotizador data-ubicacion="licencias-kaspersky-sos"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.4-1.8-.1-.2 0-.4.1-.5.1-.1.2-.3.4-.4.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5s-.6-1.5-.9-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3Z"/></svg>Lo quiero</a>
+          </div>
+        </div>
+      </article>
+      <article class="product" data-cat="contable" data-id="alegra">
+        <div class="product-media"><svg viewBox="0 0 96 82" aria-hidden="true"><rect x="26" y="10" width="44" height="64" rx="5" fill="none" stroke="#0d1b2a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><rect x="33" y="18" width="30" height="12" rx="2" fill="none" stroke="#0fb8d9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M36 42 H40 M47 42 H51 M58 42 H62 M36 52 H40 M47 52 H51 M58 52 H62 M36 62 H40 M47 62 H51 M58 62 H62" fill="none" stroke="#0d1b2a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="product-body">
+          <span class="product-cat">Contabilidad</span>
+          <h3 class="product-name">Alegra</h3>
+          <p class="product-spec">Plan según tu operación</p>
+          <ul><li>Facturación electrónica y contabilidad en la nube</li></ul>
+          <div class="product-foot">
+            <div class="product-price"><b class="is-quote">Precio a cotizar</b><small>Te respondemos por WhatsApp</small></div>
+            <a class="btn-want" href="https://wa.me/573013682430?text=Hola%20Cauce%2C%20quiero%20cotizar%3A%20Alegra%20(plan%20seg%C3%BAn%20tu%20operaci%C3%B3n).%0A%0AN%C3%BAmero%20de%20usuarios%20o%20equipos%3A%20%0ACiudad%3A%20" target="_blank" rel="noopener" data-cotizador data-ubicacion="licencias-alegra"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.4-1.8-.1-.2 0-.4.1-.5.1-.1.2-.3.4-.4.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5s-.6-1.5-.9-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3Z"/></svg>Lo quiero</a>
+          </div>
+        </div>
+      </article>
+      <article class="product" data-cat="contable" data-id="siigo">
+        <div class="product-media"><svg viewBox="0 0 96 82" aria-hidden="true"><rect x="26" y="10" width="44" height="64" rx="5" fill="none" stroke="#0d1b2a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><rect x="33" y="18" width="30" height="12" rx="2" fill="none" stroke="#0fb8d9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M36 42 H40 M47 42 H51 M58 42 H62 M36 52 H40 M47 52 H51 M58 52 H62 M36 62 H40 M47 62 H51 M58 62 H62" fill="none" stroke="#0d1b2a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="product-body">
+          <span class="product-cat">Contabilidad</span>
+          <h3 class="product-name">Siigo</h3>
+          <p class="product-spec">Plan según tu operación</p>
+          <ul><li>Software contable y facturación electrónica</li></ul>
+          <div class="product-foot">
+            <div class="product-price"><b class="is-quote">Precio a cotizar</b><small>Te respondemos por WhatsApp</small></div>
+            <a class="btn-want" href="https://wa.me/573013682430?text=Hola%20Cauce%2C%20quiero%20cotizar%3A%20Siigo%20(plan%20seg%C3%BAn%20tu%20operaci%C3%B3n).%0A%0AN%C3%BAmero%20de%20usuarios%20o%20equipos%3A%20%0ACiudad%3A%20" target="_blank" rel="noopener" data-cotizador data-ubicacion="licencias-siigo"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.4-1.8-.1-.2 0-.4.1-.5.1-.1.2-.3.4-.4.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5s-.6-1.5-.9-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3Z"/></svg>Lo quiero</a>
+          </div>
+        </div>
+      </article>
     </div>
+    <p class="table-note">El precio depende del plan, del número de usuarios y de la forma de pago (mensual o anual). Toca "Lo quiero" y te enviamos la cotización por WhatsApp.</p>
   </div>
 </section>
 
@@ -260,7 +418,7 @@
       <p class="lead">No te vendemos una clave y desaparecemos. Nos encargamos de que el software funcione y de que no se te venza.</p>
     </div>
     <div class="metodo-steps is-light">
-      <div class="metodo-step"><span class="num">01</span><h4>Nos cuentas</h4><p>Qué software usa tu equipo, cuántas personas y si ya tienes algo licenciado.</p></div>
+      <div class="metodo-step"><span class="num">01</span><h4>Eliges</h4><p>Toca "Lo quiero" en el producto y cuéntanos cuántos usuarios o equipos son.</p></div>
       <div class="metodo-step"><span class="num">02</span><h4>Cotizamos</h4><p>El plan correcto para tu caso, por canal autorizado. Sin pagar de más por funciones que no usas.</p></div>
       <div class="metodo-step"><span class="num">03</span><h4>Activamos</h4><p>Instalamos en tus equipos o asignamos en tu consola, y verificamos que todo funcione.</p></div>
       <div class="metodo-step"><span class="num">04</span><h4>Renovamos</h4><p>Te avisamos antes de cada vencimiento para que nada deje de funcionar.</p></div>
@@ -282,6 +440,10 @@
         <p>Las claves de sitios de reventa suelen violar los términos de licencia del fabricante y pueden ser desactivadas en cualquier momento. Cuando eso pasa, el problema es de quien la está usando: tu empresa. Una licencia por canal autorizado queda a tu nombre y con factura.</p>
       </details>
       <details class="faq-item">
+        <summary>¿Por qué no publican precios?</summary>
+        <p>El precio depende del plan, del número de usuarios y de si el pago es mensual o anual. Te enviamos la cotización exacta por WhatsApp, normalmente el mismo día.</p>
+      </details>
+      <details class="faq-item">
         <summary>¿Emiten factura electrónica?</summary>
         <p>Sí. Cauce opera con NIT y factura electrónica, para que tu contabilidad registre la compra sin problema.</p>
       </details>
@@ -291,19 +453,8 @@
       </details>
       <details class="faq-item">
         <summary>¿Puedo combinar licencias con el renting de equipos?</summary>
-        <p>Sí. Es lo más común: el equipo llega con el sistema operativo activado y, si lo pides, con Microsoft 365 y antivirus empresarial listos. Mira el <a href="/renting-equipos/">renting de equipos</a>.</p>
+        <p>Sí. Es lo más común: el equipo llega con el sistema operativo activado y, si lo pides, con Microsoft 365 y antivirus listos. Mira la <a href="/renting-equipos/">tienda de renting</a>.</p>
       </details>
-    </div>
-  </div>
-</section>
-
-<section class="section tight is-warm">
-  <div class="wrap">
-    <p class="mono eyebrow">— También te puede servir</p>
-    <div class="related">
-      <a href="/renting-equipos/">Renting de equipos con soporte</a>
-      <a href="/capacitaciones/">Capacitaciones en ofimática y ciberseguridad</a>
-      <a href="/ingenieria/consultoria-herramientas-digitales/">Consultoría en herramientas digitales</a>
     </div>
   </div>
 </section>
@@ -314,7 +465,7 @@
       <div>
         <p class="mono eyebrow">— Siguiente paso</p>
         <h2>Software en regla, <em>sin dolores de cabeza.</em></h2>
-        <p>Cuéntanos qué usa tu equipo hoy y te ayudamos a dejarlo todo licenciado y bajo control.</p>
+        <p>¿No encuentras lo que buscas? Cuéntanos qué usa tu equipo hoy y te ayudamos a dejarlo todo licenciado y bajo control.</p>
         <div class="final-ctas">
           <a href="https://wa.me/573013682430?text=Hola%20Cauce%2C%20quiero%20cotizar%20licencias%20de%20software." class="btn btn-primary" target="_blank" rel="noopener" data-ubicacion="licencias-cta">Escríbenos por WhatsApp <span class="arrow">→</span></a>
           <a href="mailto:caucha@cauce-ingenieria.com" class="btn btn-secondary">caucha@cauce-ingenieria.com</a>
@@ -337,25 +488,6 @@
     </div>
   </div>
 </section>
-
-<div class="dock" role="region" aria-label="Resumen de tu cotización">
-  <div class="dock-inner">
-    <div class="dock-left">
-      <div class="dock-tier" id="tierLabel">Arma tu cotización</div>
-      <div class="dock-chips" id="chips"><span class="dock-empty">Elige lo que necesitas licenciar</span></div>
-      <div class="dock-note" id="dockNote"></div>
-    </div>
-    <div class="dock-right">
-      <div class="dock-price" aria-live="polite">
-        <div class="amount" id="amount">$0</div>
-        <div class="iva" id="ivaLine">&nbsp;</div>
-      </div>
-      <a class="btn-cta" id="waBtn" href="#cotizador" target="_blank" rel="noopener" aria-disabled="true" data-cotizador data-ubicacion="dock"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.4-1.8-.1-.2 0-.4.1-.5.1-.1.2-.3.4-.4.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5s-.6-1.5-.9-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3Z"/></svg>Enviar por WhatsApp</a>
-      <button class="btn-ghost" id="copyBtn" disabled>Copiar resumen</button>
-    </div>
-  </div>
-</div>
-<div class="toast" id="toast" role="status">Resumen copiado — pégalo donde quieras enviarlo</div>
 </main>
 
 <footer>
@@ -384,19 +516,16 @@
           <li><a href="/capacitaciones/">Capacitaciones empresariales</a></li>
           <li><a href="/renting-equipos/">Renting de equipos</a></li>
           <li><a href="/licencias-software/">Licencias de software</a></li>
-          <li><a href="/ingenieria/">Ingeniería</a></li>
           <li><a href="/#cafe">Café Cauce</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h2 class="mono" style="font-size:0.8rem; color:var(--ink-mute); margin-bottom:1.25rem;">Ingeniería</h2>
+        <h2 class="mono" style="font-size:0.8rem; color:var(--ink-mute); margin-bottom:1.25rem;">La firma</h2>
         <ul>
-          <li><a href="/ingenieria/consultoria-herramientas-digitales/">Consultoría en herramientas digitales</a></li>
-          <li><a href="/ingenieria/desarrollo-software/">Desarrollo de software</a></li>
-          <li><a href="/ingenieria/mantenimiento-software/">Mantenimiento de software</a></li>
-          <li><a href="/ingenieria/automatizacion-procesos/">Automatización de procesos</a></li>
-          <li><a href="/ingenieria/analitica-datos/">Analítica de datos</a></li>
-          <li><a href="/ingenieria/presencia-digital/">Presencia digital</a></li>
+          <li><a href="/#metodo">Cómo trabajamos</a></li>
+          <li><a href="/#pilares">Qué hacemos</a></li>
+          <li><a href="/#nosotros">Quiénes somos</a></li>
+          <li><a href="/#faq">Preguntas frecuentes</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -405,8 +534,6 @@
           <li><a href="mailto:caucha@cauce-ingenieria.com">caucha@cauce-ingenieria.com</a></li>
           <li><a href="https://wa.me/573013682430?text=Hola%20Cauce" target="_blank" rel="noopener" data-ubicacion="footer">WhatsApp +57 301 368 2430</a></li>
           <li><a href="https://www.linkedin.com/company/cauce-ingenieria-s-a-s" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="/#nosotros">Quiénes somos</a></li>
-          <li><a href="/#faq">Preguntas frecuentes</a></li>
         </ul>
       </div>
     </div>
@@ -423,6 +550,6 @@
 </a>
 
 <script src="/assets/js/cauce.js"></script>
-<script src="/assets/js/licencias.js"></script>
+<script src="/assets/js/tienda.js"></script>
 </body>
 </html>
