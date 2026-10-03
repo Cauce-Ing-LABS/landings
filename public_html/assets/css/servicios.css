@@ -1,0 +1,8 @@
+/* Cauce · sección "Por dónde empezar" de la página principal (usa las tarjetas .estado de cauce.css) */
+.rutas{background: var(--paper);}
+.rutas .estado h3{font-size: 2rem;}
+.rutas .estado .pitch{flex-grow: 0;}
+.rutas .estado ul{margin-bottom: 2rem;}
+.rutas-ctas{margin-top: auto; display: flex; flex-wrap: wrap; gap: 0.6rem;}
+.rutas-ctas .btn{padding: 0.85rem 1.3rem; font-size: 0.9rem;}
+.rutas-viz svg{width: 100%; height: 100%;}

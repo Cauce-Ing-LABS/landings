@@ -51,7 +51,7 @@
   }
 
   // ---------- Aparición suave al hacer scroll ----------
-  var fadeEls = document.querySelectorAll(".faq-item, .svc-card, .metodo-step");
+  var fadeEls = document.querySelectorAll(".faq-item, .svc-card, .metodo-step, .estado, .value, .plan");
   if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
