@@ -17,7 +17,8 @@ ErrorDocument 404 /404.html
   RewriteRule ^(.*/)?index\.html$ /$1 [R=301,L,NC]
   RewriteRule ^cauce-configurador-capacitaciones\.html$ /capacitaciones/ [R=301,L,NC]
   RewriteRule ^lander/?$ / [R=301,L,NC]
-  RewriteRule ^licencias-software/?$ /renting-equipos/#licencias [R=301,L,NC,NE]
+  RewriteRule ^licencias-software/?$ /tienda/#licencias [R=301,L,NC,NE]
+  RewriteRule ^renting-equipos/?$ /tienda/ [R=301,L,NC]
 </IfModule>
 
 <IfModule mod_deflate.c>

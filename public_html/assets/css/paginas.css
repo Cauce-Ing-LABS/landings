@@ -201,6 +201,21 @@ a.svc-card:hover .go .arrow{transform:translateX(4px);}
 .producto-precio{font-size:0.86rem; font-weight:500; color:var(--ink-soft);}
 .monograma{width:84px; height:84px; border-radius:20px; background:var(--m); color:#fff; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-style:italic; font-size:2.1rem; box-shadow:0 14px 30px -14px rgba(13,27,42,0.45);}
 
+/* tienda: modo comprar/alquilar + plazo + filtros */
+.tienda.section{padding-top:3rem;}
+.tienda-bar{flex-direction:column; align-items:stretch; gap:1rem; border-bottom:1px solid var(--rule);}
+.tienda-controles{display:flex; flex-wrap:wrap; gap:1rem 2rem; align-items:flex-end;}
+.tienda .seg{display:inline-flex; flex-wrap:wrap; background:white; border:1px solid var(--rule); border-radius:999px; padding:4px;}
+.tienda .seg button{padding:0.55rem 1.1rem; border-radius:999px; font-size:0.9rem; color:var(--ink-soft); transition:background 0.2s, color 0.2s;}
+.tienda .seg button[aria-pressed="true"]{background:var(--flow-light); color:var(--ink); font-weight:600;}
+.tienda .seg-modo button{padding:0.65rem 1.4rem; font-size:0.95rem;}
+.tienda .seg-modo button[aria-pressed="true"]{background:var(--ink); color:var(--paper);}
+.tienda-nota{color:var(--ink-soft); font-size:0.88rem; margin:0 0 1.75rem;}
+.producto-precio b{font-family:var(--serif); font-style:italic; font-weight:400; font-size:1.5rem; color:var(--ink); margin-right:0.2rem;}
+.modo-grid{display:grid; grid-template-columns:1fr; gap:1.5rem;}
+@media (min-width:800px){.modo-grid{grid-template-columns:1fr 1fr;}}
+.modo-grid .plan ul{margin-top:1.5rem;}
+
 /* siempre incluido: los .value de la principal en 4 columnas */
 @media (min-width:1000px){.incluye .about-values{grid-template-columns:repeat(4,1fr);}}
 
