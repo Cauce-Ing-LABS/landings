@@ -88,15 +88,15 @@
       "itemOffered": {
        "@type": "Service",
        "name": "Consultoría",
-       "description": "Diagnosticamos tu operación y te entregamos una hoja de ruta ordenada por retorno de inversión."
+       "description": "Nuestro método de cuatro pasos aplicado a tu negocio: Diagnóstico → Datos → Procesos → Ingeniería. Es la base de la torre: decide qué piezas necesitas y en qué orden."
       }
      },
      {
       "@type": "Offer",
       "itemOffered": {
        "@type": "Service",
-       "name": "Diseño de software (arquitectura)",
-       "description": "Definimos la arquitectura antes de escribir código, para que lo que se construya pueda crecer."
+       "name": "Arquitectura de redes y software",
+       "description": "El diseño de tu infraestructura de red o de tus sistemas de software, antes de comprar un equipo o escribir una línea de código."
       }
      },
      {
@@ -104,7 +104,7 @@
       "itemOffered": {
        "@type": "Service",
        "name": "Desarrollo a la medida",
-       "description": "Construimos tu aplicación web, interna o móvil, más rápido y económico con desarrollo asistido por IA."
+       "description": "Convertimos la idea y el diseño en software funcionando. Con desarrollo asistido por IA, hoy es más rápido, más estandarizado y más económico, sin sacrificar calidad."
       }
      },
      {
@@ -112,7 +112,7 @@
       "itemOffered": {
        "@type": "Service",
        "name": "Pruebas de calidad de software",
-       "description": "Probamos que tu software haga lo que esperas, antes de que lo descubra tu cliente."
+       "description": "Comprobamos que tu software haga lo que esperas, en los casos normales y en los raros, antes de que lo descubra tu cliente."
       }
      },
      {
@@ -120,7 +120,7 @@
       "itemOffered": {
        "@type": "Service",
        "name": "Seguridad y pruebas de hacking",
-       "description": "Hacking ético con OWASP Top 10 como referencia: encontramos las fallas antes que un atacante."
+       "description": "Hacking ético: atacamos tu aplicación de forma controlada para encontrar las fallas antes que un atacante real."
       }
      },
      {
@@ -128,7 +128,7 @@
       "itemOffered": {
        "@type": "Service",
        "name": "Infraestructura y monitoreo",
-       "description": "Nube, servidores y redes funcionando y vigilados: respaldos verificados, parches y alertas."
+       "description": "Instalamos, migramos y vigilamos tus redes, servidores y aplicaciones en la nube para que sigan funcionando y seguros."
       }
      },
      {
@@ -136,7 +136,7 @@
       "itemOffered": {
        "@type": "Service",
        "name": "Soporte TI",
-       "description": "Mesa de ayuda para tu equipo, remota y en sitio, con tiempos de respuesta claros."
+       "description": "Tu área de TI sin tener que contratarla: alguien atiende a tu equipo cuando algo falla y cuida los equipos antes de que fallen."
       }
      }
     ]
@@ -271,48 +271,97 @@
 
     <div class="armador-grid">
       <div class="piezas" role="group" aria-label="Piezas">
-        <button type="button" class="pieza" data-pieza="consultoria" aria-pressed="false">
+        <article class="pieza" data-pieza="consultoria">
           <span class="brick" style="--c:#0d1b2a; --t:#f4f5f7;"><span class="brick-label">Consultoría</span></span>
-          <span class="pieza-name">Consultoría</span>
-          <span class="pieza-desc">Diagnosticamos tu operación y te entregamos una hoja de ruta ordenada por retorno de inversión.</span>
-          <span class="pieza-state"><span class="add">+ Agregar</span><span class="remove">✓ En tu torre</span></span>
-        </button>
-        <button type="button" class="pieza" data-pieza="arquitectura" aria-pressed="false">
+          <h3 class="pieza-name">Consultoría</h3>
+          <p class="pieza-desc">Nuestro método de cuatro pasos aplicado a tu negocio: Diagnóstico → Datos → Procesos → Ingeniería. Es la base de la torre: decide qué piezas necesitas y en qué orden.</p>
+          <ul class="pieza-incluye">
+            <li><strong>Diagnóstico:</strong> conversamos con el dueño y el equipo, revisamos lo que ya tienes y encontramos dónde se pierde tiempo o plata.</li>
+            <li><strong>Datos:</strong> qué información genera tu negocio, dónde se pierde y qué conviene medir.</li>
+            <li><strong>Procesos:</strong> qué rediseñar antes de comprar o construir tecnología.</li>
+            <li><strong>Ingeniería:</strong> hoja de ruta ordenada por retorno de inversión, con las piezas que siguen.</li>
+          </ul>
+          <p class="pieza-ideal"><span>Ideal si</span> No sabes por dónde empezar o ya invertiste en tecnología y no rindió.</p>
+          <button type="button" class="pieza-toggle" aria-pressed="false" aria-label="Agregar Consultoría a mi torre"><span class="add">+ Agregar a mi torre</span><span class="remove">✓ En tu torre · quitar</span></button>
+        </article>
+        <article class="pieza" data-pieza="arquitectura">
           <span class="brick" style="--c:#0a8aa3; --t:#ffffff;"><span class="brick-label">Arquitectura</span></span>
-          <span class="pieza-name">Diseño de software (arquitectura)</span>
-          <span class="pieza-desc">Definimos la arquitectura antes de escribir código, para que lo que se construya pueda crecer.</span>
-          <span class="pieza-state"><span class="add">+ Agregar</span><span class="remove">✓ En tu torre</span></span>
-        </button>
-        <button type="button" class="pieza" data-pieza="desarrollo" aria-pressed="false">
+          <h3 class="pieza-name">Arquitectura de redes y software</h3>
+          <p class="pieza-desc">El diseño de tu infraestructura de red o de tus sistemas de software, antes de comprar un equipo o escribir una línea de código.</p>
+          <ul class="pieza-incluye">
+            <li><strong>Software:</strong> definimos los componentes, los datos y las integraciones para que lo que se construya, con o sin IA, pueda crecer.</li>
+            <li><strong>Redes:</strong> topología, segmentación y cableado frente a wifi para una sede nueva o una red que ya no da abasto.</li>
+            <li><strong>Servidores:</strong> nube, servidor propio o híbrido: lo correcto para tu negocio, no lo más caro ni lo de moda.</li>
+            <li>Planos y documentación para que nosotros o cualquier proveedor construya sobre ellos.</li>
+          </ul>
+          <p class="pieza-ideal"><span>Ideal si</span> Tienes una idea de software, abres sede o tu red y tus sistemas ya no dan más.</p>
+          <button type="button" class="pieza-toggle" aria-pressed="false" aria-label="Agregar Arquitectura de redes y software a mi torre"><span class="add">+ Agregar a mi torre</span><span class="remove">✓ En tu torre · quitar</span></button>
+        </article>
+        <article class="pieza" data-pieza="desarrollo">
           <span class="brick" style="--c:#0fb8d9; --t:#0d1b2a;"><span class="brick-label">Desarrollo a la medida</span></span>
-          <span class="pieza-name">Desarrollo a la medida</span>
-          <span class="pieza-desc">Construimos tu aplicación web, interna o móvil, más rápido y económico con desarrollo asistido por IA.</span>
-          <span class="pieza-state"><span class="add">+ Agregar</span><span class="remove">✓ En tu torre</span></span>
-        </button>
-        <button type="button" class="pieza" data-pieza="calidad" aria-pressed="false">
+          <h3 class="pieza-name">Desarrollo a la medida</h3>
+          <p class="pieza-desc">Convertimos la idea y el diseño en software funcionando. Con desarrollo asistido por IA, hoy es más rápido, más estandarizado y más económico, sin sacrificar calidad.</p>
+          <ul class="pieza-incluye">
+            <li>Aplicaciones web, sistemas internos y apps móviles.</li>
+            <li>Integraciones con lo que ya usas: Siigo, Alegra, WhatsApp Business, hojas de cálculo.</li>
+            <li>Entregas por etapas para que veas avances reales desde el principio.</li>
+            <li>Código y documentación a nombre de tu empresa.</li>
+          </ul>
+          <p class="pieza-ideal"><span>Ideal si</span> Ya tienes la idea clara (y mejor si ya pasó por arquitectura).</p>
+          <button type="button" class="pieza-toggle" aria-pressed="false" aria-label="Agregar Desarrollo a la medida a mi torre"><span class="add">+ Agregar a mi torre</span><span class="remove">✓ En tu torre · quitar</span></button>
+        </article>
+        <article class="pieza" data-pieza="calidad">
           <span class="brick" style="--c:#4a5a6e; --t:#ffffff;"><span class="brick-label">Pruebas de calidad</span></span>
-          <span class="pieza-name">Pruebas de calidad de software</span>
-          <span class="pieza-desc">Probamos que tu software haga lo que esperas, antes de que lo descubra tu cliente.</span>
-          <span class="pieza-state"><span class="add">+ Agregar</span><span class="remove">✓ En tu torre</span></span>
-        </button>
-        <button type="button" class="pieza" data-pieza="seguridad" aria-pressed="false">
+          <h3 class="pieza-name">Pruebas de calidad de software</h3>
+          <p class="pieza-desc">Comprobamos que tu software haga lo que esperas, en los casos normales y en los raros, antes de que lo descubra tu cliente.</p>
+          <ul class="pieza-incluye">
+            <li>Pruebas funcionales de los flujos críticos (ventas, pagos, inventario, reportes).</li>
+            <li>Pruebas antes de cada lanzamiento o actualización importante.</li>
+            <li>Informe de hallazgos priorizado: qué corregir primero.</li>
+            <li>Sirve para software nuestro o hecho por otro proveedor.</li>
+          </ul>
+          <p class="pieza-ideal"><span>Ideal si</span> Vas a lanzar algo nuevo o tu sistema falla y no sabes por qué.</p>
+          <button type="button" class="pieza-toggle" aria-pressed="false" aria-label="Agregar Pruebas de calidad de software a mi torre"><span class="add">+ Agregar a mi torre</span><span class="remove">✓ En tu torre · quitar</span></button>
+        </article>
+        <article class="pieza" data-pieza="seguridad">
           <span class="brick" style="--c:#075e70; --t:#ffffff;"><span class="brick-label">Seguridad y hacking</span></span>
-          <span class="pieza-name">Seguridad y pruebas de hacking</span>
-          <span class="pieza-desc">Hacking ético con OWASP Top 10 como referencia: encontramos las fallas antes que un atacante.</span>
-          <span class="pieza-state"><span class="add">+ Agregar</span><span class="remove">✓ En tu torre</span></span>
-        </button>
-        <button type="button" class="pieza" data-pieza="infraestructura" aria-pressed="false">
+          <h3 class="pieza-name">Seguridad y pruebas de hacking</h3>
+          <p class="pieza-desc">Hacking ético: atacamos tu aplicación de forma controlada para encontrar las fallas antes que un atacante real.</p>
+          <ul class="pieza-incluye">
+            <li>Revisión con el marco OWASP Top 10, el estándar para aplicaciones web.</li>
+            <li>Accesos, contraseñas, permisos y datos expuestos.</li>
+            <li>Informe de vulnerabilidades con prioridad y cómo corregir cada una.</li>
+            <li>Recomendado antes de cada lanzamiento importante o al menos una vez al año.</li>
+          </ul>
+          <p class="pieza-ideal"><span>Ideal si</span> Tu software maneja datos de clientes, pagos o información sensible.</p>
+          <button type="button" class="pieza-toggle" aria-pressed="false" aria-label="Agregar Seguridad y pruebas de hacking a mi torre"><span class="add">+ Agregar a mi torre</span><span class="remove">✓ En tu torre · quitar</span></button>
+        </article>
+        <article class="pieza" data-pieza="infraestructura">
           <span class="brick" style="--c:#8b97a8; --t:#0d1b2a;"><span class="brick-label">Infraestructura</span></span>
-          <span class="pieza-name">Infraestructura y monitoreo</span>
-          <span class="pieza-desc">Nube, servidores y redes funcionando y vigilados: respaldos verificados, parches y alertas.</span>
-          <span class="pieza-state"><span class="add">+ Agregar</span><span class="remove">✓ En tu torre</span></span>
-        </button>
-        <button type="button" class="pieza" data-pieza="soporte" aria-pressed="false">
+          <h3 class="pieza-name">Infraestructura y monitoreo</h3>
+          <p class="pieza-desc">Instalamos, migramos y vigilamos tus redes, servidores y aplicaciones en la nube para que sigan funcionando y seguros.</p>
+          <ul class="pieza-incluye">
+            <li><strong>Redes:</strong> instalación, VPN para conectarte seguro desde fuera y monitoreo.</li>
+            <li><strong>Servidores:</strong> instalación con RAID, respaldos y virtualización; migración sin perder información.</li>
+            <li><strong>Nube:</strong> despliegue y operación en AWS, Google Cloud o Azure con Terraform.</li>
+            <li>Monitoreo, parches y respaldos verificados, con alertas antes de que algo falle.</li>
+          </ul>
+          <p class="pieza-ideal"><span>Ideal si</span> Tu sistema se cae y te enteras por los clientes, o nadie revisa los respaldos.</p>
+          <button type="button" class="pieza-toggle" aria-pressed="false" aria-label="Agregar Infraestructura y monitoreo a mi torre"><span class="add">+ Agregar a mi torre</span><span class="remove">✓ En tu torre · quitar</span></button>
+        </article>
+        <article class="pieza" data-pieza="soporte">
           <span class="brick" style="--c:#d5f1f7; --t:#0d1b2a;"><span class="brick-label">Soporte TI</span></span>
-          <span class="pieza-name">Soporte TI</span>
-          <span class="pieza-desc">Mesa de ayuda para tu equipo, remota y en sitio, con tiempos de respuesta claros.</span>
-          <span class="pieza-state"><span class="add">+ Agregar</span><span class="remove">✓ En tu torre</span></span>
-        </button>
+          <h3 class="pieza-name">Soporte TI</h3>
+          <p class="pieza-desc">Tu área de TI sin tener que contratarla: alguien atiende a tu equipo cuando algo falla y cuida los equipos antes de que fallen.</p>
+          <ul class="pieza-incluye">
+            <li>Mesa de ayuda remota con acceso seguro, y visitas en sitio en Cali.</li>
+            <li>Monitoreo de los equipos: muchas veces nos enteramos de la falla antes que tú.</li>
+            <li>Mantenimiento preventivo y registro de cada caso.</li>
+            <li>Niveles con tiempo de respuesta claro: 24–48 h, 8–24 h o menos de 4 h.</li>
+          </ul>
+          <p class="pieza-ideal"><span>Ideal si</span> No tienes a nadie de TI en tu equipo. Si además necesitas equipos, mira el <a href="/renting-equipos/">renting</a>.</p>
+          <button type="button" class="pieza-toggle" aria-pressed="false" aria-label="Agregar Soporte TI a mi torre"><span class="add">+ Agregar a mi torre</span><span class="remove">✓ En tu torre · quitar</span></button>
+        </article>
       </div>
 
       <aside class="torre-panel" aria-live="polite">

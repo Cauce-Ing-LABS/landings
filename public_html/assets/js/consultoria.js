@@ -1,9 +1,9 @@
 /* Consultoría TI: armador de piezas tipo lego → mensaje de WhatsApp */
 (function () {
   var piezas = Array.prototype.slice.call(document.querySelectorAll(".pieza"));
-  var orden = piezas.map(function (b) { return b.dataset.pieza; });
+  var orden = piezas.map(function (p) { return p.dataset.pieza; });
   var nombre = {};
-  piezas.forEach(function (b) { nombre[b.dataset.pieza] = b.querySelector(".pieza-name").textContent; });
+  piezas.forEach(function (p) { nombre[p.dataset.pieza] = p.querySelector(".pieza-name").textContent; });
 
   var elegidas = [];
   var vacia = document.getElementById("torreVacia");
@@ -18,7 +18,11 @@
   }
 
   function render(nuevas) {
-    piezas.forEach(function (b) { b.setAttribute("aria-pressed", String(elegidas.indexOf(b.dataset.pieza) !== -1)); });
+    piezas.forEach(function (p) {
+      var on = elegidas.indexOf(p.dataset.pieza) !== -1;
+      p.classList.toggle("is-on", on);
+      p.querySelector(".pieza-toggle").setAttribute("aria-pressed", String(on));
+    });
     document.querySelectorAll("[data-en-torre]").forEach(function (el) {
       var on = elegidas.indexOf(el.dataset.enTorre) !== -1;
       el.hidden = !on;
@@ -31,9 +35,9 @@
     wa.href = elegidas.length ? window.cauce.waLink(mensaje()) : "#armador";
   }
 
-  piezas.forEach(function (b) {
-    b.addEventListener("click", function () {
-      var id = b.dataset.pieza;
+  piezas.forEach(function (p) {
+    p.querySelector(".pieza-toggle").addEventListener("click", function () {
+      var id = p.dataset.pieza;
       var i = elegidas.indexOf(id);
       if (i === -1) { elegidas.push(id); render([id]); } else { elegidas.splice(i, 1); render([]); }
     });
