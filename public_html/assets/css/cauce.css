@@ -747,16 +747,6 @@ a.svc-card:hover .go .arrow{transform:translateX(4px);}
 .svc-card.is-dark .go{color:var(--paper);}
 .svc-card.is-dark .go .arrow, .svc-card.is-dark .num-mono{color:var(--flow);}
 
-/* enlaces dentro de los pilares de la landing */
-.pilar{display:flex; flex-direction:column;}
-.pilar ul{margin-bottom:1.75rem;}
-.pilar li a{color:var(--ink); border-bottom:1px solid var(--flow-light); transition:border-color 0.2s, color 0.2s;}
-.pilar li a:hover{color:var(--flow-dark); border-color:var(--flow);}
-.pilar-link{margin-top:auto; display:inline-flex; align-items:center; justify-content:space-between; gap:0.5rem; background:var(--ink); color:var(--paper); padding:0.85rem 1.2rem; border-radius:999px; font-weight:500; font-size:0.92rem; transition:background 0.2s, transform 0.2s;}
-.pilar-link:hover{background:var(--flow-dark); transform:translateY(-2px);}
-.pilar-link.is-secondary{margin-top:0.6rem; background:transparent; color:var(--ink); border:1px solid var(--rule);}
-.pilar-link.is-secondary:hover{background:var(--paper); border-color:var(--ink);}
-
 /* pasos del método sobre fondo claro */
 .metodo-steps.is-light .metodo-step{border-color:var(--rule);}
 .metodo-steps.is-light .num{color:var(--flow-dark);}
