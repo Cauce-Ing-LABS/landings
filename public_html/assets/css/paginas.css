@@ -255,6 +255,16 @@ a.svc-card:hover .go .arrow{transform:translateX(4px);}
 .producto-plan .qty{width:100%; justify-content:space-between; padding:5px;}
 .producto-plan.en-pedido{border-color:var(--flow);}
 
+/* tienda: elegir plan de soporte del alquiler (uno por pedido) */
+.plan-ideal{font-family:var(--sans) !important; font-size:0.92rem !important; letter-spacing:0 !important; color:rgba(244,245,247,0.75) !important; line-height:1.45;}
+.btn-plan-elegir{margin-top:auto; width:100%; display:inline-flex; justify-content:center; align-items:center; gap:0.4rem; padding:0.95rem 1.4rem; border-radius:999px; font-weight:600; font-size:0.95rem; background:transparent; color:var(--paper); border:1.5px solid rgba(255,255,255,0.35); transition:background 0.2s, color 0.2s, border-color 0.2s;}
+.btn-plan-elegir:hover{border-color:var(--flow); color:var(--flow);}
+.btn-plan-elegir .remove{display:none;}
+.btn-plan-elegir[aria-pressed="true"]{background:var(--flow); border-color:var(--flow); color:var(--ink);}
+.btn-plan-elegir[aria-pressed="true"] .add{display:none;}
+.btn-plan-elegir[aria-pressed="true"] .remove{display:inline;}
+.pedido-plan{background:var(--flow-light); border-radius:12px; padding:0.8rem; border-bottom:none; margin-bottom:0.4rem;}
+
 /* tienda: barra y panel del pedido */
 .tienda-page.con-pedido{padding-bottom:96px;}
 .tienda-page.con-pedido .wa-float{display:none;}

@@ -14,14 +14,23 @@
   var state = { modo: "compra", plazo: "24", estado: "todos", cat: "todo", sub: "todo", q: "", orden: "destacados" };
 
   // ---------- pedido ----------
-  // { clave: { id, nombre, modo, detalle, licencia, plan, cantidad } }
-  var pedido = {};
+  // pedido: { clave: { id, nombre, modo, detalle, licencia, cantidad } }; plan: plan de soporte del alquiler (uno por pedido)
+  var pedido = {}, plan = null;
   try {
     var g = JSON.parse(localStorage.getItem(KEY) || "null");
-    if (g && g.items) { pedido = g.items; state.plazo = g.plazo || state.plazo; }
+    if (g && g.items) {
+      pedido = g.items;
+      Object.keys(pedido).forEach(function (k) { if (pedido[k].plan) delete pedido[k]; });
+      state.plazo = g.plazo || state.plazo;
+      plan = g.plan || null;
+    }
   } catch (e) { pedido = {}; }
-  var guardar = function () { try { localStorage.setItem(KEY, JSON.stringify({ items: pedido, plazo: state.plazo })); } catch (e) { /* sin almacenamiento */ } };
+  var guardar = function () { try { localStorage.setItem(KEY, JSON.stringify({ items: pedido, plazo: state.plazo, plan: plan })); } catch (e) { /* sin almacenamiento */ } };
   var items = function () { return Object.keys(pedido).map(function (k) { return pedido[k]; }); };
+  var nombrePlan = function () {
+    var p = planes.filter(function (x) { return x.dataset.id === plan; })[0];
+    return p ? p.dataset.nombre.replace(/^Plan /, "") : "";
+  };
   var totalItems = function () { return items().reduce(function (s, it) { return s + it.cantidad; }, 0); };
 
   function detalleDe(id, estado, modelo) {
@@ -40,15 +49,16 @@
   }
 
   function mensaje() {
-    var linea = function (it) {
-      var extra = it.plan ? " — portátil reacondicionado con seguro y soporte" : (it.detalle ? " — " + it.detalle : "");
-      return "• " + it.cantidad + " × " + it.nombre + extra;
-    };
+    var linea = function (it) { return "• " + it.cantidad + " × " + it.nombre + (it.detalle ? " — " + it.detalle : ""); };
     var compra = items().filter(function (it) { return it.modo === "compra"; }).map(linea);
     var alquiler = items().filter(function (it) { return it.modo === "alquiler"; }).map(linea);
     var partes = ["Hola Cauce, quiero cotizar este pedido:"];
     if (compra.length) partes.push("", "Comprar:", compra.join("\n"));
-    if (alquiler.length) partes.push("", "Alquilar en Cali a " + state.plazo + " meses:", alquiler.join("\n"));
+    if (alquiler.length || plan) {
+      partes.push("", "Alquilar en Cali a " + state.plazo + " meses:");
+      partes.push("Plan de soporte: " + (plan ? nombrePlan() : "por definir"));
+      partes.push(alquiler.length ? alquiler.join("\n") : "Equipos: por definir");
+    }
     partes.push("", "Empresa: ", "Ciudad: ");
     return partes.join("\n");
   }
@@ -139,14 +149,13 @@
       card.classList.toggle("en-pedido", n > 0);
     });
 
-    var mostrarPlanes = state.modo === "alquiler" && !state.q &&
-      (state.cat === "todo" || state.cat === "computo") && (state.sub === "todo" || state.sub === "portatiles") &&
-      (state.estado === "todos" || state.estado === "Reacondicionado");
+    var mostrarPlanes = state.modo === "alquiler" && !state.q;
     $("[data-planes]").hidden = !mostrarPlanes;
     planes.forEach(function (p) {
+      var elegido = p.dataset.id === plan;
       $("[data-plazo-label]", p).textContent = state.plazo;
-      pintarControl(p, claveDe(p.dataset.id, "alquiler"));
-      p.classList.toggle("en-pedido", !!pedido[claveDe(p.dataset.id, "alquiler")]);
+      $("[data-elegir-plan]", p).setAttribute("aria-pressed", String(elegido));
+      p.classList.toggle("en-pedido", elegido);
     });
 
     var titulo = state.q ? "Resultados para “" + state.q + "”" : "Todo el catálogo";
@@ -155,7 +164,8 @@
       titulo = catBtn.firstChild.textContent.trim();
       if (state.sub !== "todo") titulo += " · " + $('.sub-btn[data-sub-cat="' + state.cat + '"][data-sub="' + state.sub + '"]').firstChild.textContent.trim();
     }
-    $("[data-titulo]").textContent = state.modo === "alquiler" ? titulo + " en alquiler" : titulo;
+    if (state.modo === "alquiler") titulo = mostrarPlanes ? "2. Elige los computadores que quieres alquilar" : titulo + " en alquiler";
+    $("[data-titulo]").textContent = titulo;
     $("[data-resultados]").textContent = visibles + (visibles === 1 ? " producto" : " productos") +
       (state.modo === "alquiler" ? " · alquiler solo en Cali" : " · envíos a toda Colombia");
     $("[data-vacio]").hidden = visibles > 0 || mostrarPlanes;
@@ -167,10 +177,14 @@
   var bar = $("[data-pedido-bar]"), overlay = $("[data-pedido-overlay]"), lista = $("[data-pedido-lista]");
   function grupo(titulo, modo) {
     var ks = Object.keys(pedido).filter(function (k) { return pedido[k].modo === modo; });
-    if (!ks.length) return "";
-    return '<div class="pedido-grupo"><p class="pedido-grupo-titulo">' + titulo + "</p>" + ks.map(function (k) {
+    var filaPlan = modo === "alquiler" && plan
+      ? '<div class="pedido-item pedido-plan"><div><p class="pedido-nombre">Plan de soporte: ' + nombrePlan() + '</p><p class="pedido-detalle">Seguro y soporte para tus equipos alquilados · cuota a cotizar</p></div><span></span>' +
+        '<button type="button" class="pedido-quitar" data-quitar-plan aria-label="Quitar el plan">✕</button></div>'
+      : "";
+    if (!ks.length && !filaPlan) return "";
+    return '<div class="pedido-grupo"><p class="pedido-grupo-titulo">' + titulo + "</p>" + filaPlan + ks.map(function (k) {
       var it = pedido[k];
-      var det = it.plan ? "Con seguro y soporte · cuota a cotizar" : (it.detalle || (modo === "alquiler" ? "Cuota a cotizar" : "Precio a cotizar"));
+      var det = it.detalle || (modo === "alquiler" ? "Cuota a cotizar" : "Precio a cotizar");
       return '<div class="pedido-item" data-key="' + k + '"><div><p class="pedido-nombre">' + it.nombre + '</p><p class="pedido-detalle">' + det + "</p></div>" +
         '<div class="qty"><button type="button" data-p-menos aria-label="Quitar uno">−</button><output>' + it.cantidad + '</output><button type="button" data-p-mas aria-label="Agregar otro">+</button></div>' +
         '<button type="button" class="pedido-quitar" data-p-quitar aria-label="Quitar ' + it.nombre + '">✕</button></div>';
@@ -178,19 +192,23 @@
   }
   function renderPedido() {
     var n = totalItems();
-    bar.hidden = n === 0;
-    document.body.classList.toggle("con-pedido", n > 0);
-    $("[data-pedido-total]").textContent = n + (n === 1 ? " producto" : " productos");
-    lista.innerHTML = n
+    var hay = n > 0 || !!plan;
+    bar.hidden = !hay;
+    document.body.classList.toggle("con-pedido", hay);
+    $("[data-pedido-total]").textContent = n
+      ? n + (n === 1 ? " producto" : " productos") + (plan ? " + plan de soporte" : "")
+      : "Plan de soporte";
+    lista.innerHTML = hay
       ? grupo("Comprar · envío a toda Colombia", "compra") + grupo("Alquilar en Cali a " + state.plazo + " meses", "alquiler")
       : '<p class="pedido-vacio">Tu pedido está vacío. Agrega productos desde el catálogo.</p>';
     $$("[data-enviar-pedido]").forEach(function (a) {
-      a.setAttribute("aria-disabled", n ? "false" : "true");
-      a.href = n ? window.cauce.waLink(mensaje()) : "#catalogo";
+      a.setAttribute("aria-disabled", hay ? "false" : "true");
+      a.href = hay ? window.cauce.waLink(mensaje()) : "#catalogo";
     });
     guardar();
   }
   lista.addEventListener("click", function (e) {
+    if (e.target.closest("[data-quitar-plan]")) { plan = null; render(); return; }
     var item = e.target.closest(".pedido-item");
     if (!item) return;
     var k = item.dataset.key;
@@ -203,7 +221,7 @@
   $("[data-abrir-pedido]").addEventListener("click", abrirPanel);
   $("[data-cerrar-pedido]", overlay).addEventListener("click", cerrarPanel);
   overlay.addEventListener("click", function (e) { if (e.target === overlay) cerrarPanel(); });
-  $("[data-vaciar-pedido]").addEventListener("click", function () { pedido = {}; render(); cerrarPanel(); });
+  $("[data-vaciar-pedido]").addEventListener("click", function () { pedido = {}; plan = null; render(); cerrarPanel(); });
 
   // ---------- controles directos en tarjetas y planes ----------
   cards.forEach(function (card) {
@@ -221,11 +239,11 @@
     $$("[data-ficha]", card).forEach(function (b) { b.addEventListener("click", function () { abrirFicha(id, b); }); });
   });
   planes.forEach(function (p) {
-    var k = claveDe(p.dataset.id, "alquiler");
-    var base = function () { return { id: p.dataset.id, nombre: p.dataset.nombre, modo: "alquiler", plan: true, detalle: "" }; };
-    $("[data-add]", p).addEventListener("click", function () { agregar(k, base(), 1); });
-    $("[data-mas]", p).addEventListener("click", function () { agregar(k, base(), 1); });
-    $("[data-menos]", p).addEventListener("click", function () { agregar(k, base(), -1); });
+    $("[data-elegir-plan]", p).addEventListener("click", function () {
+      plan = plan === p.dataset.id ? null : p.dataset.id;
+      if (plan) window.cauce.track("plan_elegido", { plan: plan });
+      render();
+    });
   });
 
   // ---------- ficha de producto ----------

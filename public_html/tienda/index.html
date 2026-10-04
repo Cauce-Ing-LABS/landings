@@ -85,14 +85,14 @@
     "itemListElement": [
      {
       "@type": "OfferCatalog",
-      "name": "Planes de alquiler de portátiles en Cali",
+      "name": "Planes de soporte para alquiler de computadores en Cali",
       "itemListElement": [
        {
         "@type": "Offer",
         "itemOffered": {
          "@type": "Service",
          "name": "Plan Básico",
-         "description": "Portátil reacondicionado · Core i3 · 8 GB"
+         "description": "Soporte remoto, Te respondemos en 24–48 h hábiles, Equipo asegurado contra daño y robo"
         },
         "areaServed": {
          "@type": "City",
@@ -104,7 +104,7 @@
         "itemOffered": {
          "@type": "Service",
          "name": "Plan Estándar",
-         "description": "Reacondicionado certificado · Core i5 · 16 GB"
+         "description": "Soporte remoto + 1 visita al mes, Mantenimiento preventivo, Te respondemos en 8–24 h hábiles, Equipo asegurado contra daño y robo"
         },
         "areaServed": {
          "@type": "City",
@@ -116,7 +116,7 @@
         "itemOffered": {
          "@type": "Service",
          "name": "Plan Premium",
-         "description": "Reacondicionado gama alta · Core i5/i7 · táctil"
+         "description": "Soporte presencial prioritario, Mantenimiento preventivo, Te respondemos en menos de 4 h hábiles, Equipo asegurado contra daño y robo"
         },
         "areaServed": {
          "@type": "City",
@@ -1103,57 +1103,36 @@
 
         <div class="planes-alquiler" data-planes hidden>
           <div class="planes-head">
-            <h2>Planes de alquiler de portátiles <em>en Cali.</em></h2>
-            <p>Equipos reacondicionados con seguro y soporte incluidos. Elige el plan según el trabajo de cada persona; si prefieres un equipo nuevo o de escritorio, agrégalo desde el catálogo y te lo cotizamos.</p>
+            <h2>1. Elige tu plan de soporte <em>para el alquiler.</em></h2>
+            <p>El plan define el soporte y el seguro de tus equipos alquilados en Cali. Después, en el paso 2, agrega abajo los computadores que quieres alquilar.</p>
           </div>
           <div class="plan-grid">
-      <article class="plan producto-plan" data-id="plan-basico" data-nombre="Plan Básico" data-estados="Reacondicionado">
+      <article class="plan producto-plan" data-id="plan-basico" data-nombre="Plan Básico">
         
         <h3>Plan Básico</h3>
-        <p class="plan-spec">Portátil reacondicionado · Core i3 · 8 GB</p>
+        <p class="plan-spec plan-ideal">Si tu equipo resuelve casi todo por su cuenta.</p>
         <div class="plan-price"><b>Cuota a cotizar</b><small>Cuota mensual por equipo · plazo de <span data-plazo-label>24</span> meses</small></div>
-        <ul><li>Para oficina, facturación y navegación</li><li>Soporte remoto</li><li>Te respondemos en 24–48 h hábiles</li></ul>
-        <div class="cart-ctrl" data-cart-ctrl>
-            <button type="button" class="btn-add" data-add aria-label="Agregar Plan Básico al pedido">+ Agregar</button>
-            <div class="qty" data-qty hidden>
-              <button type="button" data-menos aria-label="Quitar uno">−</button>
-              <output data-n>1</output>
-              <button type="button" data-mas aria-label="Agregar otro">+</button>
-            </div>
-          </div>
+        <ul><li>Soporte remoto</li><li>Te respondemos en 24–48 h hábiles</li><li>Equipo asegurado contra daño y robo</li></ul>
+        <button type="button" class="btn-plan-elegir" data-elegir-plan aria-pressed="false"><span class="add">Elegir este plan</span><span class="remove">✓ Plan elegido</span></button>
       </article>
-      <article class="plan producto-plan is-featured" data-id="plan-estandar" data-nombre="Plan Estándar" data-estados="Reacondicionado">
+      <article class="plan producto-plan is-featured" data-id="plan-estandar" data-nombre="Plan Estándar">
         <span class="plan-tag">Más elegido</span>
         <h3>Plan Estándar</h3>
-        <p class="plan-spec">Reacondicionado certificado · Core i5 · 16 GB</p>
+        <p class="plan-spec plan-ideal">Si quieres mantenimiento y visitas periódicas.</p>
         <div class="plan-price"><b>Cuota a cotizar</b><small>Cuota mensual por equipo · plazo de <span data-plazo-label>24</span> meses</small></div>
-        <ul><li>Para trabajo diario exigente y videollamadas</li><li>Soporte remoto + 1 visita al mes</li><li>Mantenimiento preventivo</li><li>Te respondemos en 8–24 h hábiles</li></ul>
-        <div class="cart-ctrl" data-cart-ctrl>
-            <button type="button" class="btn-add" data-add aria-label="Agregar Plan Estándar al pedido">+ Agregar</button>
-            <div class="qty" data-qty hidden>
-              <button type="button" data-menos aria-label="Quitar uno">−</button>
-              <output data-n>1</output>
-              <button type="button" data-mas aria-label="Agregar otro">+</button>
-            </div>
-          </div>
+        <ul><li>Soporte remoto + 1 visita al mes</li><li>Mantenimiento preventivo</li><li>Te respondemos en 8–24 h hábiles</li><li>Equipo asegurado contra daño y robo</li></ul>
+        <button type="button" class="btn-plan-elegir" data-elegir-plan aria-pressed="false"><span class="add">Elegir este plan</span><span class="remove">✓ Plan elegido</span></button>
       </article>
-      <article class="plan producto-plan" data-id="plan-premium" data-nombre="Plan Premium" data-estados="Reacondicionado">
+      <article class="plan producto-plan" data-id="plan-premium" data-nombre="Plan Premium">
         
         <h3>Plan Premium</h3>
-        <p class="plan-spec">Reacondicionado gama alta · Core i5/i7 · táctil</p>
+        <p class="plan-spec plan-ideal">Si tu operación no puede detenerse.</p>
         <div class="plan-price"><b>Cuota a cotizar</b><small>Cuota mensual por equipo · plazo de <span data-plazo-label>24</span> meses</small></div>
-        <ul><li>Para gerencia y equipos que no pueden parar</li><li>Soporte presencial prioritario</li><li>Te respondemos en menos de 4 h hábiles</li></ul>
-        <div class="cart-ctrl" data-cart-ctrl>
-            <button type="button" class="btn-add" data-add aria-label="Agregar Plan Premium al pedido">+ Agregar</button>
-            <div class="qty" data-qty hidden>
-              <button type="button" data-menos aria-label="Quitar uno">−</button>
-              <output data-n>1</output>
-              <button type="button" data-mas aria-label="Agregar otro">+</button>
-            </div>
-          </div>
+        <ul><li>Soporte presencial prioritario</li><li>Mantenimiento preventivo</li><li>Te respondemos en menos de 4 h hábiles</li><li>Equipo asegurado contra daño y robo</li></ul>
+        <button type="button" class="btn-plan-elegir" data-elegir-plan aria-pressed="false"><span class="add">Elegir este plan</span><span class="remove">✓ Plan elegido</span></button>
       </article>
           </div>
-          <p class="planes-note">Agrega los planes a tu pedido y te enviamos la cuota mensual según el plazo y la cantidad de equipos.</p>
+          <p class="planes-note">Te enviamos la cuota mensual según el plan, el plazo y los equipos que elijas.</p>
         </div>
 
         <div class="producto-grid" data-grid="tienda">
