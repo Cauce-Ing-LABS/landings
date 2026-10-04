@@ -44,10 +44,13 @@
     for (var i = 0; i < reglas.length; i++) if (t.indexOf(reglas[i][0]) !== -1) return ICONOS[reglas[i][1]];
     return ICONOS.generico;
   }
+  var dibujo = function (p) { return '<svg viewBox="0 0 96 82" aria-hidden="true"><circle cx="48" cy="42" r="36" fill="#d5f1f7"/>' + iconoDe(p) + "</svg>"; };
+  // Columna "imagen": basta el nombre del archivo (se busca en /tienda/img/); también acepta una ruta o URL completa
+  var rutaImagen = function (v) { return /^(https?:)?\/|^\.\//.test(v) ? v : "/tienda/img/" + v; };
   var media = function (p) {
     return p.imagen
-      ? '<img src="' + esc(p.imagen) + '" alt="' + esc(p.nombre) + '" loading="lazy" decoding="async">'
-      : '<svg viewBox="0 0 96 82" aria-hidden="true"><circle cx="48" cy="42" r="36" fill="#d5f1f7"/>' + iconoDe(p) + "</svg>";
+      ? '<img src="' + esc(rutaImagen(p.imagen)) + '" alt="' + esc(p.nombre) + '" loading="lazy" decoding="async" data-foto>'
+      : dibujo(p);
   };
 
   // ---------- lectura del CSV (acepta ";" o "," y archivos guardados por Excel en UTF-8 o ANSI) ----------
@@ -202,6 +205,14 @@
 
     grid.innerHTML = PRODUCTOS.map(tarjeta).join("");
     cards = $$(".producto", grid);
+    // si una foto no existe o el nombre está mal, se muestra el dibujo de la categoría
+    $$("img[data-foto]", grid).forEach(function (img) {
+      img.addEventListener("error", function () {
+        var p = POR_ID[img.closest(".producto").dataset.id];
+        img.insertAdjacentHTML("afterend", dibujo(p));
+        img.remove();
+      });
+    });
     cards.forEach(function (card) {
       var p = POR_ID[card.dataset.id];
       var ctrl = $("[data-cart-ctrl]", card);
