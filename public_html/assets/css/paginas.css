@@ -345,6 +345,11 @@ a.svc-card:hover .go .arrow{transform:translateX(4px);}
 .tienda-vacio{text-align:center; color:var(--ink-soft); padding:3rem 1rem; background:white; border:1px dashed var(--rule); border-radius:16px;}
 .tienda-vacio a{color:var(--flow-dark); text-decoration:underline;}
 
+/* tienda: fotos de producto (columna "imagen" del CSV) y carga del catálogo */
+.producto .estado-viz img{max-width:85%; max-height:85%; object-fit:contain;}
+.ficha-media img{max-width:90%; max-height:340px; object-fit:contain;}
+.tienda-cargando{text-align:center; color:var(--ink-mute); padding:3rem 1rem;}
+
 /* tienda: paginación */
 .paginacion{display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:0.4rem; margin-top:2.5rem;}
 .pag-btn{min-width:42px; height:42px; padding:0 0.85rem; border-radius:999px; border:1px solid var(--rule); background:white; color:var(--ink-soft); font-size:0.9rem; font-weight:500; transition:border-color 0.15s, background 0.15s, color 0.15s;}
@@ -383,7 +388,9 @@ a.svc-card:hover .go .arrow{transform:translateX(4px);}
 .ficha-media{position:relative; background:var(--paper-warm); display:flex; align-items:center; justify-content:center; min-height:220px; padding:2rem;}
 .ficha-media svg{width:70%; max-width:260px; height:auto;}
 .ficha-media .monograma{width:120px; height:120px; font-size:3rem; border-radius:28px;}
-.ficha-media .producto-estado{top:auto; bottom:1rem; left:1rem;}
+.ficha-media .producto-estado{top:3.2rem; bottom:auto; left:1rem;}
+[data-ficha-opciones]{display:flex; flex-direction:column; gap:0.9rem;}
+[data-ficha-opciones]:empty{display:none;}
 .ficha-media .producto-tag{top:1rem; left:1rem;}
 .ficha-info{padding:2rem 1.75rem; display:flex; flex-direction:column; gap:0.9rem;}
 .ficha-cat{color:var(--flow-dark);}
