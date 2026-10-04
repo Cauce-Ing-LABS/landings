@@ -345,6 +345,15 @@ a.svc-card:hover .go .arrow{transform:translateX(4px);}
 .tienda-vacio{text-align:center; color:var(--ink-soft); padding:3rem 1rem; background:white; border:1px dashed var(--rule); border-radius:16px;}
 .tienda-vacio a{color:var(--flow-dark); text-decoration:underline;}
 
+/* tienda: paginación */
+.paginacion{display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:0.4rem; margin-top:2.5rem;}
+.pag-btn{min-width:42px; height:42px; padding:0 0.85rem; border-radius:999px; border:1px solid var(--rule); background:white; color:var(--ink-soft); font-size:0.9rem; font-weight:500; transition:border-color 0.15s, background 0.15s, color 0.15s;}
+.pag-btn:hover:not(:disabled){border-color:var(--ink); color:var(--ink);}
+.pag-btn[aria-current="page"]{background:var(--ink); border-color:var(--ink); color:var(--paper);}
+.pag-btn:disabled{opacity:0.4; cursor:not-allowed;}
+.pag-sep{color:var(--ink-mute); padding:0 0.2rem;}
+@media (max-width:520px){.pag-prev, .pag-next{flex-basis:calc(50% - 0.2rem); order:2;} .pag-num, .pag-sep{order:1;}}
+
 /* tienda: tarjeta de producto con características */
 .producto .estado-viz{position:relative;}
 .producto-estado{position:absolute; bottom:0.75rem; left:0.75rem; z-index:1; font-family:var(--mono); font-size:0.6rem; letter-spacing:0.08em; text-transform:uppercase; padding:0.3rem 0.6rem; border-radius:999px; font-weight:600;}

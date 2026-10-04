@@ -11,7 +11,27 @@
   var cards = $$(".producto", grid);
   var planes = $$(".producto-plan");
   var catalogo = document.getElementById("catalogo");
-  var state = { modo: "compra", plazo: "24", estado: "todos", cat: "todo", sub: "todo", q: "", orden: "destacados" };
+  var state = { modo: "compra", plazo: "24", estado: "todos", cat: "todo", sub: "todo", q: "", orden: "destacados", pagina: 1 };
+  var POR_PAGINA = 12;
+  var ultimoFiltro = "";
+  var paginacion = $("[data-paginacion]");
+
+  function renderPaginacion(paginas) {
+    paginacion.hidden = paginas < 2;
+    if (paginas < 2) { paginacion.innerHTML = ""; return; }
+    var p = state.pagina, botones = [];
+    botones.push('<button type="button" class="pag-btn pag-prev" data-pagina="' + (p - 1) + '"' + (p === 1 ? " disabled" : "") + ">← Anterior</button>");
+    for (var i = 1; i <= paginas; i++) {
+      // con muchas páginas: primera, última y las vecinas de la actual
+      if (paginas > 7 && i !== 1 && i !== paginas && Math.abs(i - p) > 1) {
+        if (i === 2 || i === paginas - 1) botones.push('<span class="pag-sep" aria-hidden="true">…</span>');
+        continue;
+      }
+      botones.push('<button type="button" class="pag-btn pag-num" data-pagina="' + i + '"' + (i === p ? ' aria-current="page"' : "") + ' aria-label="Página ' + i + '">' + i + "</button>");
+    }
+    botones.push('<button type="button" class="pag-btn pag-next" data-pagina="' + (p + 1) + '"' + (p === paginas ? " disabled" : "") + ">Siguiente →</button>");
+    paginacion.innerHTML = botones.join("");
+  }
 
   // ---------- pedido ----------
   // pedido: { clave: { id, nombre, modo, detalle, licencia, cantidad } }; plan: plan de soporte del alquiler (uno por pedido)
@@ -136,11 +156,18 @@
     if (state.sub !== "todo" && !subs[state.cat + ":" + state.sub]) { state.sub = "todo"; return render(); }
 
     ordenar();
-    var visibles = 0;
+    // paginación: cualquier cambio de filtro, búsqueda u orden vuelve a la página 1
+    var filtro = [state.modo, state.estado, state.cat, state.sub, state.q, state.orden].join("|");
+    if (filtro !== ultimoFiltro) { state.pagina = 1; ultimoFiltro = filtro; }
+    var enOrden = $$(".producto", grid).filter(function (c) { return pasa(c, false); });
+    var visibles = enOrden.length;
+    var paginas = Math.max(1, Math.ceil(visibles / POR_PAGINA));
+    state.pagina = Math.min(Math.max(1, state.pagina), paginas);
+    var desde = (state.pagina - 1) * POR_PAGINA, hasta = desde + POR_PAGINA;
+    var enPagina = enOrden.slice(desde, hasta);
+
     cards.forEach(function (card) {
-      var ok = pasa(card, false);
-      card.hidden = !ok;
-      if (ok) visibles++;
+      card.hidden = enPagina.indexOf(card) === -1;
       pintarControl(card, claveDirecta(card));
       var n = items().filter(function (it) { return it.id === card.dataset.id && it.modo === state.modo; }).reduce(function (s, it) { return s + it.cantidad; }, 0);
       var tag = $("[data-en-pedido]", card);
@@ -166,9 +193,11 @@
     }
     if (state.modo === "alquiler") titulo = mostrarPlanes ? "2. Elige los computadores que quieres alquilar" : titulo + " en alquiler";
     $("[data-titulo]").textContent = titulo;
-    $("[data-resultados]").textContent = visibles + (visibles === 1 ? " producto" : " productos") +
+    $("[data-resultados]").textContent =
+      (visibles > POR_PAGINA ? "Mostrando " + (desde + 1) + "–" + Math.min(hasta, visibles) + " de " + visibles + " productos" : visibles + (visibles === 1 ? " producto" : " productos")) +
       (state.modo === "alquiler" ? " · alquiler solo en Cali" : " · envíos a toda Colombia");
     $("[data-vacio]").hidden = visibles > 0 || mostrarPlanes;
+    renderPaginacion(paginas);
 
     renderPedido();
   }
@@ -324,6 +353,15 @@
     buscarT = setTimeout(function () { state.q = v; render(); if (v) window.cauce.track("tienda_buscar", { termino: v }); }, 200);
   });
   $("select[data-orden]").addEventListener("change", function (e) { state.orden = e.target.value; render(); });
+  paginacion.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-pagina]");
+    if (!b || b.disabled) return;
+    state.pagina = Number(b.dataset.pagina);
+    render();
+    var barra = $(".tienda-toolbar");
+    window.scrollTo({ top: barra.getBoundingClientRect().top + window.pageYOffset - 90 });
+    window.cauce.track("tienda_pagina", { pagina: state.pagina });
+  });
   $$("[data-ir-modo]").forEach(function (a) { a.addEventListener("click", function () { state.modo = a.dataset.irModo; state.cat = "todo"; state.sub = "todo"; render(); }); });
 
   // Enlaces directos: /tienda/#alquilar, /tienda/#licencias, /tienda/#pos, /tienda/#redes …
