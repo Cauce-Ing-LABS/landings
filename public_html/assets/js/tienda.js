@@ -45,11 +45,12 @@
     return ICONOS.generico;
   }
   var dibujo = function (p) { return '<svg viewBox="0 0 96 82" aria-hidden="true"><circle cx="48" cy="42" r="36" fill="#d5f1f7"/>' + iconoDe(p) + "</svg>"; };
-  // Columna "imagen": basta el nombre del archivo (se busca en /tienda/img/); también acepta una ruta o URL completa
+  // Columna "imagen": una o varias fotos separadas por "|". Basta el nombre del archivo (se busca en /tienda/img/);
+  // también acepta una ruta o URL completa.
   var rutaImagen = function (v) { return /^(https?:)?\/|^\.\//.test(v) ? v : "/tienda/img/" + v; };
   var media = function (p) {
-    return p.imagen
-      ? '<img src="' + esc(rutaImagen(p.imagen)) + '" alt="' + esc(p.nombre) + '" loading="lazy" decoding="async" data-foto>'
+    return p.imagenes.length
+      ? '<img src="' + esc(p.imagenes[0]) + '" alt="' + esc(p.nombre) + '" loading="lazy" decoding="async" data-foto>'
       : dibujo(p);
   };
 
@@ -103,7 +104,7 @@
       nombre: r.nombre || "Producto", referencia: r.referencia || "",
       estados: estados, alquiler: esSi(r.alquiler), destacado: esSi(r.destacado),
       resumen: r.resumen || "", etiquetas: lista(r.etiquetas), specs: specs, opciones: opciones,
-      garantia: r.garantia || "", incluye: r.incluye || "", imagen: r.imagen || "",
+      garantia: r.garantia || "", incluye: r.incluye || "", imagenes: lista(r.imagen).map(rutaImagen),
     };
   }
 
@@ -116,6 +117,7 @@
   var cards = [];
   var state = { modo: "compra", plazo: "24", estado: "todos", cat: "todo", sub: "todo", q: "", orden: "destacados", pagina: 1 };
   var ultimoFiltro = "";
+  var fallidas = {}; // fotos que no cargaron: no se repiten en la galería
 
   var pedido = {}, plan = null;
   try {
@@ -208,6 +210,7 @@
     // si una foto no existe o el nombre está mal, se muestra el dibujo de la categoría
     $$("img[data-foto]", grid).forEach(function (img) {
       img.addEventListener("error", function () {
+        fallidas[img.getAttribute("src")] = true;
         var p = POR_ID[img.closest(".producto").dataset.id];
         img.insertAdjacentHTML("afterend", dibujo(p));
         img.remove();
@@ -443,7 +446,17 @@
     ficha = { id: id, estado: p.estados ? p.estados[0] : "", sel: opcionesPorDefecto(p), n: 1, origen: origen };
     if (state.estado !== "todos" && p.estados && p.estados.indexOf(state.estado) !== -1) ficha.estado = state.estado;
     var card = cards.filter(function (c) { return c.dataset.id === id; })[0];
-    $("[data-ficha-media]").innerHTML = $(".estado-viz", card).innerHTML;
+    var fm = $("[data-ficha-media]");
+    fm.innerHTML = $(".estado-viz", card).innerHTML;
+    // galería: miniaturas cuando el producto tiene varias fotos (por ejemplo, una por marca)
+    var fotos = p.imagenes.filter(function (u) { return !fallidas[u]; });
+    var principal = $("img", fm);
+    if (principal && fotos.length > 1) {
+      fm.insertAdjacentHTML("beforeend", '<div class="ficha-miniaturas">' + fotos.map(function (u, i) {
+        return '<button type="button" class="ficha-mini" data-foto-src="' + esc(u) + '" aria-pressed="' + (i === 0) + '" aria-label="Ver foto ' + (i + 1) + '"><img src="' + esc(u) + '" alt=""></button>';
+      }).join("") + "</div>");
+    }
+    if (principal) principal.addEventListener("error", function () { principal.insertAdjacentHTML("afterend", dibujo(p)); principal.remove(); });
     $("[data-ficha-cat]").textContent = p.categoria + " · " + p.subcategoria;
     $("[data-ficha-nombre]").textContent = p.nombre;
     $("[data-ficha-ref]").textContent = p.referencia;
@@ -463,6 +476,13 @@
   }
   fOverlay.addEventListener("click", function (e) {
     if (e.target === fOverlay || e.target.closest("[data-cerrar-ficha]")) return cerrarFicha();
+    var mini = e.target.closest("[data-foto-src]");
+    if (mini) {
+      var principal = $("[data-ficha-media] > img");
+      if (principal) principal.src = mini.dataset.fotoSrc;
+      $$("[data-foto-src]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === mini)); });
+      return;
+    }
     var est = e.target.closest("[data-f-estado]"), opc = e.target.closest("[data-f-opcion]");
     if (est) { ficha.estado = est.dataset.fEstado; pintarFicha(); }
     else if (opc) { ficha.sel[Number(opc.dataset.grupo)] = opc.dataset.fOpcion; pintarFicha(); }

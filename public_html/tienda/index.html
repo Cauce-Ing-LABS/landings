@@ -311,13 +311,21 @@
           <div class="planes-head">
             <h2>1. Elige tu plan de soporte <em>para el alquiler.</em></h2>
             <p>El plan define el soporte y el seguro de tus equipos alquilados en Cali. Después, en el paso 2, agrega abajo los computadores que quieres alquilar.</p>
+            <div class="planes-plazo">
+              <span class="control-label" id="lbl-plazo-planes">Plazo del contrato: 12, 24 o 36 meses</span>
+              <div class="seg" role="group" aria-labelledby="lbl-plazo-planes">
+                <button type="button" data-plazo="12" aria-pressed="false">12 meses</button>
+                <button type="button" data-plazo="24" aria-pressed="true">24 meses</button>
+                <button type="button" data-plazo="36" aria-pressed="false">36 meses</button>
+              </div>
+            </div>
           </div>
           <div class="plan-grid">
       <article class="plan producto-plan" data-id="plan-basico" data-nombre="Plan Básico">
         
         <h3>Plan Básico</h3>
         <p class="plan-spec plan-ideal">Si tu equipo resuelve casi todo por su cuenta.</p>
-        <div class="plan-price"><b>Cuota a cotizar</b><small>Cuota mensual por equipo · plazo de <span data-plazo-label>24</span> meses</small></div>
+        <div class="plan-price"><b>Cuota a cotizar</b><small>Cuota mensual por equipo · plazo elegido: <span data-plazo-label>24</span> meses</small></div>
         <ul><li>Soporte remoto</li><li>Te respondemos en 24–48 h hábiles</li><li>Equipo asegurado contra daño y robo</li></ul>
         <button type="button" class="btn-plan-elegir" data-elegir-plan aria-pressed="false"><span class="add">Elegir este plan</span><span class="remove">✓ Plan elegido</span></button>
       </article>
@@ -325,7 +333,7 @@
         <span class="plan-tag">Más elegido</span>
         <h3>Plan Estándar</h3>
         <p class="plan-spec plan-ideal">Si quieres mantenimiento y visitas periódicas.</p>
-        <div class="plan-price"><b>Cuota a cotizar</b><small>Cuota mensual por equipo · plazo de <span data-plazo-label>24</span> meses</small></div>
+        <div class="plan-price"><b>Cuota a cotizar</b><small>Cuota mensual por equipo · plazo elegido: <span data-plazo-label>24</span> meses</small></div>
         <ul><li>Soporte remoto + 1 visita al mes</li><li>Mantenimiento preventivo</li><li>Te respondemos en 8–24 h hábiles</li><li>Equipo asegurado contra daño y robo</li></ul>
         <button type="button" class="btn-plan-elegir" data-elegir-plan aria-pressed="false"><span class="add">Elegir este plan</span><span class="remove">✓ Plan elegido</span></button>
       </article>
@@ -333,7 +341,7 @@
         
         <h3>Plan Premium</h3>
         <p class="plan-spec plan-ideal">Si tu operación no puede detenerse.</p>
-        <div class="plan-price"><b>Cuota a cotizar</b><small>Cuota mensual por equipo · plazo de <span data-plazo-label>24</span> meses</small></div>
+        <div class="plan-price"><b>Cuota a cotizar</b><small>Cuota mensual por equipo · plazo elegido: <span data-plazo-label>24</span> meses</small></div>
         <ul><li>Soporte presencial prioritario</li><li>Mantenimiento preventivo</li><li>Te respondemos en menos de 4 h hábiles</li><li>Equipo asegurado contra daño y robo</li></ul>
         <button type="button" class="btn-plan-elegir" data-elegir-plan aria-pressed="false"><span class="add">Elegir este plan</span><span class="remove">✓ Plan elegido</span></button>
       </article>

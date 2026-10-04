@@ -38,7 +38,7 @@ También se puede editar con Google Sheets (Archivo → Descargar → CSV) o con
 | `opciones` | Lo que el cliente elige: `Grupo: opción1 / opción2`, grupos separados por `\|`. Vacío si no hay opciones. | `RAM: 8 GB / 16 GB \| Disco: 256 GB SSD / 512 GB SSD` |
 | `garantia` | Garantía que se muestra en la ficha. | `Garantía escrita de 6 meses` |
 | `incluye` | Qué trae el producto. | `Solo CPU (sin monitor, teclado ni mouse)` |
-| `imagen` | Opcional. Nombre del archivo de la foto, guardada en `public_html/tienda/img/`. Vacío = se muestra un dibujo según la categoría. | `thinkpad-t480.jpg` |
+| `imagen` | Opcional. Una o varias fotos separadas por `|` (la primera sale en la tarjeta; todas en la galería de la ficha). Puede ser el nombre de un archivo en `public_html/tienda/img/` o una dirección `https://…`. Vacío = se muestra un dibujo según la categoría. | `cpu-lenovo.jpg | cpu-dell.jpg | cpu-hp.jpg` |
 
 ## Reglas para que no se dañe
 
@@ -52,7 +52,8 @@ También se puede editar con Google Sheets (Archivo → Descargar → CSV) o con
 
 1. Sube la foto a `public_html/tienda/img/` (cPanel → Administrador de archivos → Cargar). La carpeta ya existe.
 2. En la columna `imagen` del producto escribe solo el nombre del archivo, por ejemplo `thinkpad-t480.jpg`.
-3. Si el nombre está mal o la foto no existe, la tienda muestra el dibujo de la categoría en lugar de una imagen rota.
+3. Para varias fotos (por ejemplo una por marca: Lenovo, Dell y HP), sepáralas con `|`. La primera sale en la tarjeta y todas aparecen como miniaturas en la ficha.
+4. Si el nombre está mal o la foto no existe, la tienda muestra el dibujo de la categoría en lugar de una imagen rota.
 
 Recomendaciones para que se vean bien:
 

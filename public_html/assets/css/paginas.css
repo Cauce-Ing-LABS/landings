@@ -349,6 +349,15 @@ a.svc-card:hover .go .arrow{transform:translateX(4px);}
 .producto .estado-viz img{max-width:85%; max-height:85%; object-fit:contain;}
 .ficha-media img{max-width:90%; max-height:340px; object-fit:contain;}
 .tienda-cargando{text-align:center; color:var(--ink-mute); padding:3rem 1rem;}
+.producto .estado-viz:has(img){background:#fff; border:1px solid var(--rule); height:200px;}
+.producto .estado-viz img{max-height:92%;}
+.ficha-media:has(> img){background:#fff;}
+.ficha-media{flex-direction:column; gap:1rem;}
+.ficha-miniaturas{display:flex; gap:0.5rem; justify-content:center; flex-wrap:wrap;}
+.ficha-mini{width:64px; height:64px; padding:4px; border-radius:12px; border:1.5px solid var(--rule); background:#fff; transition:border-color 0.15s;}
+.ficha-mini img{width:100%; height:100%; object-fit:contain;}
+.ficha-mini:hover{border-color:var(--ink-mute);}
+.ficha-mini[aria-pressed="true"]{border-color:var(--flow);}
 
 /* tienda: paginación */
 .paginacion{display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:0.4rem; margin-top:2.5rem;}
@@ -516,3 +525,8 @@ a.svc-card:hover .go .arrow{transform:translateX(4px);}
   .flow-line{stroke-dashoffset:0;}
   .flow-node, .pipe-label{opacity:1;}
 }
+
+/* tienda: plazo dentro del bloque de planes */
+.planes-plazo{margin-top:0.75rem;}
+.planes-plazo .control-label{color:var(--flow);}
+.planes-plazo .seg{max-width:420px;}
