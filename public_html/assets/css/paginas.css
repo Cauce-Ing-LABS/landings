@@ -331,7 +331,7 @@ a.svc-card:hover .go .arrow{transform:translateX(4px);}
 @media (min-width:768px){.tienda-main .planes-alquiler{padding:2.25rem;}}
 .tienda-main .planes-head{grid-template-columns:1fr; gap:0.75rem;}
 .tienda-main .plan{padding:1.75rem 1.5rem;}
-.tienda-main .plan-price b{font-size:2.6rem;}
+.tienda-main .plan-price b{font-size:2rem;}
 .tienda-vacio{text-align:center; color:var(--ink-soft); padding:3rem 1rem; background:white; border:1px dashed var(--rule); border-radius:16px;}
 .tienda-vacio a{color:var(--flow-dark); text-decoration:underline;}
 

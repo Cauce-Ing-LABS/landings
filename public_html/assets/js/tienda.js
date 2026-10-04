@@ -39,14 +39,9 @@
     render();
   }
 
-  var precioPlan = function (id) {
-    var p = planes.filter(function (x) { return x.dataset.id === id; })[0];
-    return p ? JSON.parse(p.dataset.precios)[state.plazo] : null;
-  };
-
   function mensaje() {
     var linea = function (it) {
-      var extra = it.plan ? " (" + fmt(precioPlan(it.id)) + "/mes por equipo + IVA, con soporte)" : (it.detalle ? " — " + it.detalle : "");
+      var extra = it.plan ? " — portátil reacondicionado con seguro y soporte" : (it.detalle ? " — " + it.detalle : "");
       return "• " + it.cantidad + " × " + it.nombre + extra;
     };
     var compra = items().filter(function (it) { return it.modo === "compra"; }).map(linea);
@@ -149,7 +144,6 @@
       (state.estado === "todos" || state.estado === "Reacondicionado");
     $("[data-planes]").hidden = !mostrarPlanes;
     planes.forEach(function (p) {
-      $("[data-precio]", p).textContent = fmt(JSON.parse(p.dataset.precios)[state.plazo]);
       $("[data-plazo-label]", p).textContent = state.plazo;
       pintarControl(p, claveDe(p.dataset.id, "alquiler"));
       p.classList.toggle("en-pedido", !!pedido[claveDe(p.dataset.id, "alquiler")]);
@@ -176,7 +170,7 @@
     if (!ks.length) return "";
     return '<div class="pedido-grupo"><p class="pedido-grupo-titulo">' + titulo + "</p>" + ks.map(function (k) {
       var it = pedido[k];
-      var det = it.plan ? fmt(precioPlan(it.id)) + "/mes por equipo + IVA" : (it.detalle || (modo === "alquiler" ? "Cuota a cotizar" : "Precio a cotizar"));
+      var det = it.plan ? "Con seguro y soporte · cuota a cotizar" : (it.detalle || (modo === "alquiler" ? "Cuota a cotizar" : "Precio a cotizar"));
       return '<div class="pedido-item" data-key="' + k + '"><div><p class="pedido-nombre">' + it.nombre + '</p><p class="pedido-detalle">' + det + "</p></div>" +
         '<div class="qty"><button type="button" data-p-menos aria-label="Quitar uno">−</button><output>' + it.cantidad + '</output><button type="button" data-p-mas aria-label="Agregar otro">+</button></div>' +
         '<button type="button" class="pedido-quitar" data-p-quitar aria-label="Quitar ' + it.nombre + '">✕</button></div>';
