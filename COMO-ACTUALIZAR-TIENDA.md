@@ -51,7 +51,7 @@ También se puede editar con Google Sheets (Archivo → Descargar → CSV) o con
 ## Fotos de productos
 
 1. Sube la foto a `public_html/tienda/img/` (cPanel → Administrador de archivos → Cargar). La carpeta ya existe.
-2. En la columna `imagen` del producto escribe solo el nombre del archivo, por ejemplo `thinkpad-t480.jpg`.
+2. En la columna `imagen` del producto escribe solo el nombre del archivo, por ejemplo `asus-expertbook-b1403cva-s65014x.webp`.
 3. Para varias fotos (por ejemplo una por marca: Lenovo, Dell y HP), sepáralas con `|`. La primera sale en la tarjeta y todas aparecen como miniaturas en la ficha.
 4. Si el nombre está mal o la foto no existe, la tienda muestra el dibujo de la categoría en lugar de una imagen rota.
 
@@ -60,7 +60,7 @@ Recomendaciones para que se vean bien:
 - **Formato:** JPG o WebP, cuadradas (por ejemplo 800 × 800 px) y de menos de 200 KB.
 - **Fondo:** blanco o claro, con el equipo centrado.
 - **Nombres:** en minúsculas, sin espacios ni tildes (`cpu-core-i5-7ma.jpg`, no `CPU Core i5 7ma.jpg`).
-- **De dónde sacarlas:** lo ideal son fotos propias de los equipos que tienes en inventario. También sirven las imágenes oficiales de producto que entregan los fabricantes o distribuidores a sus revendedores. **No copies fotos de otras tiendas** (como las de los mayoristas de referencia): tienen derechos de autor.
+- **De dónde sacarlas:** lo ideal son fotos propias de los equipos que tienes en inventario. También sirven las imágenes oficiales de producto que entregan los fabricantes o distribuidores a sus revendedores. Las fotos que hay hoy en `tienda/img/` se copiaron de las páginas de los proveedores (iA Computers y Computadores de Colombia). Confirma con ellos que las puedes usar como revendedor, o reemplázalas por fotos propias o del fabricante con el mismo nombre de archivo.
 - También se puede poner una dirección completa (`https://…`) si la foto está alojada en otro lugar.
 
 ## Agregar puntos de venta o licencias más adelante
