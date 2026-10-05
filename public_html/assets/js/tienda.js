@@ -363,7 +363,7 @@
     $("[data-titulo]").textContent = titulo;
     $("[data-resultados]").textContent =
       (visibles > POR_PAGINA ? "Mostrando " + (desde + 1) + "–" + Math.min(hasta, visibles) + " de " + visibles + " productos" : visibles + (visibles === 1 ? " producto" : " productos")) +
-      (state.modo === "alquiler" ? " · alquiler solo en Cali" : " · envíos a toda Colombia");
+      (state.modo === "alquiler" ? " · alquiler solo en Cali" : " · entrega en Cali");
     $("[data-vacio]").hidden = visibles > 0;
     renderPaginacion(paginas);
     renderPedido();
@@ -391,7 +391,7 @@
     document.body.classList.toggle("con-pedido", hay);
     $("[data-pedido-total]").textContent = n ? n + (n === 1 ? " producto" : " productos") + (plan ? " + plan de soporte" : "") : "Plan de soporte";
     listaPedido.innerHTML = hay
-      ? grupo("Comprar · envío a toda Colombia", "compra") + grupo("Alquilar en Cali a " + state.plazo + " meses", "alquiler")
+      ? grupo("Comprar · entrega en Cali", "compra") + grupo("Alquilar en Cali a " + state.plazo + " meses", "alquiler")
       : '<p class="pedido-vacio">Tu pedido está vacío. Agrega productos desde el catálogo.</p>';
     $$("[data-enviar-pedido]").forEach(function (a) {
       a.setAttribute("aria-disabled", hay ? "false" : "true");
@@ -437,7 +437,7 @@
     $("[data-f-n]").textContent = ficha.n;
     $("[data-ficha-modo]").innerHTML = state.modo === "alquiler"
       ? "<strong>Alquiler en Cali a " + state.plazo + " meses.</strong> Cuota mensual a cotizar, con seguro y soporte incluidos."
-      : "<strong>Compra.</strong> Te enviamos el precio con la cotización. Envíos a toda Colombia.";
+      : "<strong>Compra.</strong> Te enviamos el precio con la cotización. Entrega en Cali.";
     var k = claveDe(p.id, state.modo, ficha.estado, ficha.sel);
     $("[data-ficha-en-pedido]").textContent = pedido[k] ? "Ya tienes " + pedido[k].cantidad + " con esta configuración en tu pedido." : "";
   }
