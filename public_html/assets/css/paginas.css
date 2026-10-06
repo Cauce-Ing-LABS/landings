@@ -530,3 +530,12 @@ a.svc-card:hover .go .arrow{transform:translateX(4px);}
 .planes-plazo{margin-top:0.75rem;}
 .planes-plazo .control-label{color:var(--flow);}
 .planes-plazo .seg{max-width:420px;}
+
+/* consultoría: enlace de cada pieza a su página */
+.pieza-mas{display:flex; flex-wrap:wrap; gap:0.4rem 1rem; margin-top:-0.25rem;}
+.pieza-mas a{font-size:0.88rem; font-weight:500; color:var(--flow-dark); text-decoration:underline; text-underline-offset:3px;}
+.pieza-mas a .arrow{text-decoration:none; display:inline-block; transition:transform 0.2s;}
+.pieza-mas a:hover .arrow{transform:translateX(3px);}
+/* páginas de servicio */
+.tower-servicio{max-width:340px;}
+.servicio-otras .related{margin-top:0.5rem;}

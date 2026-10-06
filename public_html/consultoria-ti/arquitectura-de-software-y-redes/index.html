@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arquitectura de software, redes y servidores | Cauce</title>
+<meta name="description" content="Diseñamos tu software, tu red y tus servidores antes de construir o comprar: componentes, datos, integraciones, topología y nube. Cali y toda Colombia.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://cauce-ingenieria.com/consultoria-ti/arquitectura-de-software-y-redes/">
+<meta name="theme-color" content="#0d1b2a">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cauce">
+<meta property="og:locale" content="es_CO">
+<meta property="og:title" content="Arquitectura de software, redes y servidores | Cauce">
+<meta property="og:description" content="Diseñamos tu software, tu red y tus servidores antes de construir o comprar: componentes, datos, integraciones, topología y nube. Cali y toda Colombia.">
+<meta property="og:url" content="https://cauce-ingenieria.com/consultoria-ti/arquitectura-de-software-y-redes/">
+<meta property="og:image" content="https://cauce-ingenieria.com/assets/img/og-cauce.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Cauce · Ingeniería para que tu negocio fluya">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Arquitectura de software, redes y servidores | Cauce">
+<meta name="twitter:description" content="Diseñamos tu software, tu red y tus servidores antes de construir o comprar: componentes, datos, integraciones, topología y nube. Cali y toda Colombia.">
+<meta name="twitter:image" content="https://cauce-ingenieria.com/assets/img/og-cauce.png">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/img/favicon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/cauce.css">
+<link rel="stylesheet" href="/assets/css/paginas.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "ProfessionalService",
+   "@id": "https://cauce-ingenieria.com/#organizacion",
+   "name": "Cauce Ingeniería",
+   "legalName": "Cauce Ingeniería S.A.S.",
+   "url": "https://cauce-ingenieria.com/",
+   "logo": "https://cauce-ingenieria.com/assets/img/icon-512.png",
+   "image": "https://cauce-ingenieria.com/assets/img/og-cauce.png",
+   "slogan": "Ingeniería para que tu negocio fluya",
+   "email": "caucha@cauce-ingenieria.com",
+   "telephone": "+57 301 368 2430",
+   "priceRange": "$$",
+   "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Cali",
+    "addressRegion": "Valle del Cauca",
+    "addressCountry": "CO"
+   },
+   "areaServed": [
+    {
+     "@type": "City",
+     "name": "Cali"
+    },
+    {
+     "@type": "State",
+     "name": "Valle del Cauca"
+    },
+    {
+     "@type": "Country",
+     "name": "Colombia"
+    }
+   ],
+   "openingHoursSpecification": [
+    {
+     "@type": "OpeningHoursSpecification",
+     "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+     ],
+     "opens": "08:00",
+     "closes": "18:00"
+    },
+    {
+     "@type": "OpeningHoursSpecification",
+     "dayOfWeek": "Saturday",
+     "opens": "08:00",
+     "closes": "12:00"
+    }
+   ],
+   "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "telephone": "+57 301 368 2430",
+    "email": "caucha@cauce-ingenieria.com",
+    "areaServed": "CO",
+    "availableLanguage": "Spanish"
+   },
+   "sameAs": [
+    "https://www.linkedin.com/company/cauce-ingenier%C3%ADa-s-a-s"
+   ],
+   "knowsAbout": [
+    "Consultoría TI",
+    "Transformación digital para pymes",
+    "Diagnóstico de procesos",
+    "Gestión de datos",
+    "Modelado de procesos BPMN",
+    "Automatización de procesos",
+    "RPA",
+    "n8n",
+    "Inteligencia artificial aplicada",
+    "Agentes de IA",
+    "Fábrica de software",
+    "Desarrollo de software a la medida",
+    "Aplicaciones web",
+    "Aplicaciones móviles",
+    "Páginas web corporativas",
+    "Webmaster",
+    "Integraciones con Siigo, Alegra y WhatsApp Business",
+    "Arquitectura de software",
+    "Pruebas de calidad de software",
+    "Auditoría de seguridad",
+    "OWASP ASVS",
+    "Pentesting",
+    "Ciberseguridad",
+    "Redes corporativas",
+    "Servidores y virtualización",
+    "AWS, Google Cloud y Azure",
+    "Monitoreo de infraestructura",
+    "Soporte TI en sitio",
+    "Mesa de ayuda",
+    "Capacitación empresarial",
+    "Alfabetización digital",
+    "Ofimática",
+    "Venta y alquiler de computadores"
+   ],
+   "audience": {
+    "@type": "BusinessAudience",
+    "audienceType": "Tiendas en línea, tiendas físicas, negocios populares y de barrio, emprendedores y pymes: ferreterías, droguerías, restaurantes, consultorios, distribuidoras, talleres y empresas de 15 a 100 empleados"
+   }
+  },
+  {
+   "@type": "Service",
+   "name": "Arquitectura de redes y software",
+   "description": "Diseñamos tu software, tu red y tus servidores antes de construir o comprar: componentes, datos, integraciones, topología y nube. Cali y toda Colombia.",
+   "serviceType": "Arquitectura de software, redes e infraestructura",
+   "url": "https://cauce-ingenieria.com/consultoria-ti/arquitectura-de-software-y-redes/",
+   "provider": {
+    "@id": "https://cauce-ingenieria.com/#organizacion"
+   },
+   "areaServed": {
+    "@type": "Country",
+    "name": "Colombia"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Inicio",
+     "item": "https://cauce-ingenieria.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Consultoría TI",
+     "item": "https://cauce-ingenieria.com/consultoria-ti/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Arquitectura de redes y software",
+     "item": "https://cauce-ingenieria.com/consultoria-ti/arquitectura-de-software-y-redes/"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "¿Por qué pagar por arquitectura si puedo empezar a programar?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Porque corregir el diseño después cuesta mucho más. Con un buen plano, el desarrollo es más rápido, más barato y puede crecer sin rehacerse."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "¿La arquitectura me obliga a desarrollar con ustedes?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. Los planos quedan a tu nombre y cualquier proveedor puede construir sobre ellos."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "¿También diseñan la red de una tienda o una oficina pequeña?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Sí. Una tienda con caja, datáfono, cámaras y wifi para clientes también necesita una red bien separada y segura."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body data-page="/consultoria-ti/arquitectura-de-software-y-redes/" class="servicio-page">
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<nav aria-label="Principal">
+  <div class="nav-inner">
+    <a href="/" class="brand" aria-label="Cauce, inicio">
+      <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
+        <path d="M14 70 H118" stroke="#0fb8d9" stroke-width="6" stroke-linecap="round"/>
+        <path d="M50 70 C 58 70 58 100 64 100 H70 C 76 100 76 70 84 70" stroke="#0fb8d9" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <path d="M84 70 C 92 70 92 40 98 40 H104 C 110 40 110 70 118 70" stroke="#0fb8d9" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <circle cx="14" cy="70" r="4.5" fill="white" stroke="#0fb8d9" stroke-width="3"/>
+        <circle cx="50" cy="70" r="4.5" fill="white" stroke="#0fb8d9" stroke-width="3"/>
+        <circle cx="84" cy="70" r="4.5" fill="white" stroke="#0fb8d9" stroke-width="3"/>
+        <circle cx="67" cy="100" r="3.5" fill="#0fb8d9"/>
+        <circle cx="101" cy="40" r="3.5" fill="#0fb8d9"/>
+        <circle cx="118" cy="70" r="7" fill="#0fb8d9"/>
+      </svg>
+      <span class="name">cauce<span class="dot">.</span></span>
+    </a>
+    <div class="nav-links" id="nav-links">
+      <a href="/capacitaciones/">Capacitaciones</a>
+      <a href="/consultoria-ti/" aria-current="page">Consultoría TI</a>
+      <a href="/tienda/">Tienda</a>
+    </div>
+    <div class="nav-right">
+      <a href="https://calendly.com/cauce-ingenieria/cauce-consultoria-60-min-clon-clon-1" class="nav-cta" data-calendly data-ubicacion="nav">Café Cauce</a>
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<main id="contenido">
+<header class="hero is-sub">
+  <div class="hero-grid-bg"></div>
+  <div class="wrap">
+    <div class="sub-hero-grid">
+      <div>
+        <div class="hero-eyebrow"><span class="pulse"></span><span class="mono">Consultoría TI · Arquitectura</span></div>
+        <h1>Arquitectura de software y redes:<br><span class="accent">los planos antes de construir.</span></h1>
+        <p class="hero-sub">El diseño de tu infraestructura de red o de tus sistemas de software, antes de comprar un equipo o escribir una línea de código. Así lo que se construya, con o sin IA, puede crecer sin rehacerse.</p>
+        <div class="hero-ctas">
+          <a href="https://wa.me/573013682430?text=Hola%20Cauce%2C%20quiero%20dise%C3%B1ar%20la%20arquitectura%20de%20mi%20software%20o%20de%20mi%20red." class="btn btn-primary" target="_blank" rel="noopener" data-ubicacion="servicio-arquitectura-de-software-y-redes-hero"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.4-1.8-.1-.2 0-.4.1-.5.1-.1.2-.3.4-.4.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5s-.6-1.5-.9-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3Z"/></svg> Escríbenos por WhatsApp</a>
+          <a href="/consultoria-ti/#armador" class="btn btn-secondary">Arma tu solución completa <span class="arrow">→</span></a>
+        </div>
+      </div>
+      <div class="tower tower-hero tower-servicio" aria-hidden="true">
+        <span class="brick" style="--c:#0a8aa3; --t:#ffffff;"><span class="brick-label">Arquitectura</span></span>
+        <span class="brick" style="--c:#0d1b2a; --t:#f4f5f7;"><span class="brick-label">Consultoría</span></span>
+        <span class="baseplate"></span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="section is-paper" id="que-hacemos">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="mono eyebrow">— Qué hacemos</p>
+        <h2>Tres planos,<br><em>una sola visión.</em></h2>
+      </div>
+      <p class="lead">Definimos cómo debe ser tu solución antes de gastar en equipos o en horas de programación.</p>
+    </div>
+    <div class="svc-grid cols-3">
+      <article class="svc-card">
+        <span class="num-mono">01</span>
+        <h3>Arquitectura de software</h3>
+        <p>Definimos los componentes, los datos y las integraciones de tu sistema para que se pueda construir por etapas y crecer.</p>
+        <ul><li>Módulos, base de datos e integraciones</li><li>Qué hacer con IA y qué no</li><li>Decisiones de tecnología justificadas</li></ul>
+      </article>
+      <article class="svc-card">
+        <span class="num-mono">02</span>
+        <h3>Diseño de redes</h3>
+        <p>Topología, segmentación y la decisión entre cableado y wifi para una sede nueva o una red que ya no da abasto.</p>
+        <ul><li>Redes separadas para caja, oficina e invitados</li><li>Ubicación de equipos y puntos de red</li><li>Crecimiento a nuevas sedes</li></ul>
+      </article>
+      <article class="svc-card">
+        <span class="num-mono">03</span>
+        <h3>Servidores y nube</h3>
+        <p>Nube, servidor propio o híbrido: lo correcto para tu negocio, no lo más caro ni lo de moda.</p>
+        <ul><li>AWS, Google Cloud o Azure</li><li>Servidor local con respaldos</li><li>Costos mensuales estimados</li></ul>
+      </article>
+      <article class="svc-card">
+        <span class="num-mono">04</span>
+        <h3>Integraciones</h3>
+        <p>Cómo se conectan tus sistemas: facturación, inventario, tienda en línea, WhatsApp y hojas de cálculo.</p>
+        <ul><li>Siigo, Alegra, WhatsApp Business</li><li>Qué sistemas tienen API y cuáles no</li></ul>
+      </article>
+      <article class="svc-card">
+        <span class="num-mono">05</span>
+        <h3>Seguridad desde el diseño</h3>
+        <p>Accesos, permisos y respaldos pensados desde el plano, no parchados después.</p>
+        <ul><li>Quién puede ver qué</li><li>Plan de respaldo y recuperación</li></ul>
+      </article>
+      <article class="svc-card">
+        <span class="num-mono">06</span>
+        <h3>Documentación</h3>
+        <p>Planos y documentación para que nosotros o cualquier proveedor construya sobre ellos.</p>
+        <ul><li>Diagramas de arquitectura</li><li>Diagramas de red</li><li>Decisiones y su porqué</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section is-warm" id="como">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="mono eyebrow">— Cómo lo hacemos</p>
+        <h2>Cuatro pasos.<br><em>Sin atajos.</em></h2>
+      </div>
+      <p class="lead">El mismo equipo te acompaña de principio a fin, con alcance y precio cerrados.</p>
+    </div>
+    <div class="metodo-steps is-light">
+      <div class="metodo-step">
+        <span class="num">01</span>
+        <h4>Requisitos</h4>
+        <p>Qué tiene que hacer la solución, para cuántos usuarios y con qué sistemas debe hablar.</p>
+      </div>
+      <div class="metodo-step">
+        <span class="num">02</span>
+        <h4>Alternativas</h4>
+        <p>Comparamos opciones con costos y riesgos, en español claro.</p>
+      </div>
+      <div class="metodo-step">
+        <span class="num">03</span>
+        <h4>Diseño</h4>
+        <p>Diagramas de arquitectura, de red y de infraestructura.</p>
+      </div>
+      <div class="metodo-step">
+        <span class="num">04</span>
+        <h4>Entrega</h4>
+        <p>Documentación lista para construir, con nosotros o con otro proveedor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section is-paper" id="para-quien">
+  <div class="wrap">
+    <div class="split">
+      <div class="split-col is-yes">
+        <h3>Qué recibes</h3>
+        <ul><li><span>Diagramas de arquitectura de software</span></li><li><span>Diagramas de red e infraestructura</span></li><li><span>Recomendación de nube, servidor o híbrido con costos</span></li><li><span>Lista de integraciones y cómo se resuelven</span></li><li><span>Documento de decisiones técnicas</span></li></ul>
+      </div>
+      <div class="split-col is-extra">
+        <h3>Para quién es</h3>
+        <ul><li><span><strong>Emprendedores</strong> que están arrancando y quieren hacerlo bien desde el principio, sin pagar de más.</span></li><li><span><strong>Tiendas en línea</strong> que venden por web, redes o WhatsApp y necesitan que pedidos, pagos e inventario cuadren.</span></li><li><span><strong>Pymes de 15 a 100 empleados</strong> que ya facturan en serio y necesitan orden técnico sin contratar un área de TI.</span></li><li><span><strong>Negocios que abren sede</strong> o cuya red y sistemas ya no dan más.</span></li></ul>
+      </div>
+    </div>
+    <p class="callout mt-2"><span class="mono">Ideal si</span>Tienes una idea de software, abres sede o tu red y tus sistemas ya no dan más.</p>
+  </div>
+</section>
+
+<section class="faq section is-warm" id="faq">
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom: 3rem;">
+      <div>
+        <p class="mono eyebrow">— Preguntas frecuentes</p>
+        <h2>Lo que <em>usualmente</em><br>nos preguntan.</h2>
+      </div>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>¿Por qué pagar por arquitectura si puedo empezar a programar?</summary>
+        <p>Porque corregir el diseño después cuesta mucho más. Con un buen plano, el desarrollo es más rápido, más barato y puede crecer sin rehacerse.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿La arquitectura me obliga a desarrollar con ustedes?</summary>
+        <p>No. Los planos quedan a tu nombre y cualquier proveedor puede construir sobre ellos.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿También diseñan la red de una tienda o una oficina pequeña?</summary>
+        <p>Sí. Una tienda con caja, datáfono, cámaras y wifi para clientes también necesita una red bien separada y segura.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section is-paper servicio-otras">
+  <div class="wrap">
+    <p class="mono eyebrow">— Otras piezas de consultoría TI</p>
+    <div class="related">
+      <a href="/consultoria-ti/">Todas las piezas</a>
+      <a href="/consultoria-ti/consultoria-tecnologica/">Consultoría</a>
+      <a href="/consultoria-ti/desarrollo-de-software/">Fábrica de software y desarrollo a la medida</a>
+      <a href="/consultoria-ti/paginas-web-y-tiendas-en-linea/">Páginas web y tiendas en línea</a>
+      <a href="/consultoria-ti/automatizacion-rpa-e-ia/">Automatización, RPA y agentes de IA</a>
+      <a href="/consultoria-ti/pruebas-de-software/">Pruebas de calidad de software</a>
+      <a href="/consultoria-ti/auditoria-de-seguridad-y-pentest/">Auditoría de seguridad y pentesting</a>
+      <a href="/consultoria-ti/infraestructura-y-redes/">Infraestructura y monitoreo</a>
+      <a href="/consultoria-ti/soporte-ti/">Soporte TI</a>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem;">
+          <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg" fill="none" width="36" height="36" aria-hidden="true">
+        <path d="M14 70 H118" stroke="#0fb8d9" stroke-width="6" stroke-linecap="round"/>
+        <path d="M50 70 C 58 70 58 100 64 100 H70 C 76 100 76 70 84 70" stroke="#0fb8d9" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <path d="M84 70 C 92 70 92 40 98 40 H104 C 110 40 110 70 118 70" stroke="#0fb8d9" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <circle cx="14" cy="70" r="4.5" fill="#0d1b2a" stroke="#0fb8d9" stroke-width="3"/>
+        <circle cx="50" cy="70" r="4.5" fill="#0d1b2a" stroke="#0fb8d9" stroke-width="3"/>
+        <circle cx="84" cy="70" r="4.5" fill="#0d1b2a" stroke="#0fb8d9" stroke-width="3"/>
+        <circle cx="67" cy="100" r="3.5" fill="#0fb8d9"/>
+        <circle cx="101" cy="40" r="3.5" fill="#0fb8d9"/>
+        <circle cx="118" cy="70" r="7" fill="#0fb8d9"/>
+      </svg>
+          <span class="name">cauce<span class="dot">.</span></span>
+        </div>
+        <p>Datos · Procesos · Ingeniería para pymes, comerciantes y emprendedores en Colombia. Trabajamos contigo para que tu negocio fluya.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Servicios</h5>
+        <ul>
+          <li><a href="/#cafe">Café Cauce</a></li>
+          <li><a href="/capacitaciones/">Capacitaciones</a></li>
+          <li><a href="/consultoria-ti/">Consultoría TI</a></li>
+          <li><a href="/consultoria-ti/paginas-web-y-tiendas-en-linea/">Páginas web y tiendas en línea</a></li>
+          <li><a href="/consultoria-ti/automatizacion-rpa-e-ia/">Automatización e IA</a></li>
+          <li><a href="/consultoria-ti/soporte-ti/">Soporte TI</a></li>
+          <li><a href="/tienda/">Tienda de tecnología</a></li>
+          <li><a href="/#metodo">Datos</a></li>
+          <li><a href="/#metodo">Procesos</a></li>
+          <li><a href="/#metodo">Ingeniería</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>La firma</h5>
+        <ul>
+          <li><a href="/#metodo">Cómo trabajamos</a></li>
+          <li><a href="/#nosotros">Quiénes somos</a></li>
+          <li><a href="/#faq">Preguntas</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contacto</h5>
+        <ul>
+          <li><a href="mailto:caucha@cauce-ingenieria.com">caucha@cauce-ingenieria.com</a></li>
+          <li><a href="https://wa.me/573013682430" target="_blank" rel="noopener" data-ubicacion="footer">WhatsApp</a></li>
+          <li><a href="https://www.linkedin.com/company/cauce-ingenier%C3%ADa-s-a-s" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Cauce · Cali, Colombia</span>
+      <span class="mono">Potenciado por Cauce</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/573013682430?text=Hola%20Cauce%2C%20quiero%20dise%C3%B1ar%20la%20arquitectura%20de%20mi%20software%20o%20de%20mi%20red." target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp" data-ubicacion="flotante">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.515 5.26l-.999 3.648 3.873-1.107zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+  <span class="wa-label">WhatsApp</span>
+</a>
+
+<script src="/assets/js/medicion.js"></script>
+<script src="/assets/js/cauce.js"></script>
+</body>
+</html>
