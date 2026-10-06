@@ -150,7 +150,7 @@
   }
 
   function mensaje() {
-    var linea = function (it) { return "• " + it.cantidad + " × " + it.nombre + (it.detalle ? " — " + it.detalle : ""); };
+    var linea = function (it) { return "• " + it.cantidad + " × " + it.nombre + (it.detalle ? " (" + it.detalle + ")" : ""); };
     var compra = items().filter(function (it) { return it.modo === "compra"; }).map(linea);
     var alquiler = items().filter(function (it) { return it.modo === "alquiler"; }).map(linea);
     var partes = ["Hola Cauce, quiero cotizar este pedido:"];
@@ -362,7 +362,7 @@
     if (state.modo === "alquiler") titulo = mostrarPlanes ? "2. Elige los computadores que quieres alquilar" : titulo + " en alquiler";
     $("[data-titulo]").textContent = titulo;
     $("[data-resultados]").textContent =
-      (visibles > POR_PAGINA ? "Mostrando " + (desde + 1) + "–" + Math.min(hasta, visibles) + " de " + visibles + " productos" : visibles + (visibles === 1 ? " producto" : " productos")) +
+      (visibles > POR_PAGINA ? "Mostrando " + (desde + 1) + " a " + Math.min(hasta, visibles) + " de " + visibles + " productos" : visibles + (visibles === 1 ? " producto" : " productos")) +
       (state.modo === "alquiler" ? " · alquiler solo en Cali" : " · entrega en Cali");
     $("[data-vacio]").hidden = visibles > 0;
     renderPaginacion(paginas);

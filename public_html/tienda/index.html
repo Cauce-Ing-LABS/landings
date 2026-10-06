@@ -64,6 +64,14 @@
     {
      "@type": "Country",
      "name": "Colombia"
+    },
+    {
+     "@type": "Place",
+     "name": "América Latina"
+    },
+    {
+     "@type": "Place",
+     "name": "Todo el mundo (atención virtual)"
     }
    ],
    "openingHoursSpecification": [
@@ -91,7 +99,6 @@
     "contactType": "customer service",
     "telephone": "+57 301 368 2430",
     "email": "caucha@cauce-ingenieria.com",
-    "areaServed": "CO",
     "availableLanguage": "Spanish"
    },
    "sameAs": [
@@ -163,7 +170,7 @@
         "itemOffered": {
          "@type": "Service",
          "name": "Plan Básico",
-         "description": "Soporte remoto, Te respondemos en 24–48 h hábiles, Equipo asegurado contra daño y robo"
+         "description": "Soporte remoto, Te respondemos en 24 a 48 h hábiles, Equipo asegurado contra daño y robo"
         },
         "areaServed": {
          "@type": "City",
@@ -175,7 +182,7 @@
         "itemOffered": {
          "@type": "Service",
          "name": "Plan Estándar",
-         "description": "Soporte remoto + 1 visita al mes, Mantenimiento preventivo, Te respondemos en 8–24 h hábiles, Equipo asegurado contra daño y robo"
+         "description": "Soporte remoto + 1 visita al mes, Mantenimiento preventivo, Te respondemos en 8 a 24 h hábiles, Equipo asegurado contra daño y robo"
         },
         "areaServed": {
          "@type": "City",
@@ -240,7 +247,7 @@
      "name": "¿En qué ciudades venden y alquilan equipos?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Por ahora la tienda atiende solo en Cali: allí entregamos los equipos que compras o alquilas, y el alquiler incluye soporte técnico presencial. La consultoría TI y las capacitaciones sí las hacemos en toda Colombia."
+      "text": "Por ahora la tienda atiende solo en Cali: allí entregamos los equipos que compras o alquilas, y el alquiler incluye soporte técnico presencial. La consultoría TI la hacemos en Colombia, Latinoamérica y, de forma virtual, en cualquier país."
      }
     },
     {
@@ -373,7 +380,7 @@
           <label class="ordenar"><span class="control-label">Ordenar</span>
             <select data-orden>
               <option value="destacados">Destacados</option>
-              <option value="nombre">Nombre (A–Z)</option>
+              <option value="nombre">Nombre (de la A a la Z)</option>
             </select>
           </label>
         </div>
@@ -397,7 +404,7 @@
         <h3>Plan Básico</h3>
         <p class="plan-spec plan-ideal">Si tu equipo resuelve casi todo por su cuenta.</p>
         <div class="plan-price"><b>Cuota a cotizar</b><small>Cuota mensual por equipo · plazo elegido: <span data-plazo-label>24</span> meses</small></div>
-        <ul><li>Soporte remoto</li><li>Te respondemos en 24–48 h hábiles</li><li>Equipo asegurado contra daño y robo</li></ul>
+        <ul><li>Soporte remoto</li><li>Te respondemos en 24 a 48 h hábiles</li><li>Equipo asegurado contra daño y robo</li></ul>
         <button type="button" class="btn-plan-elegir" data-elegir-plan aria-pressed="false"><span class="add">Elegir este plan</span><span class="remove">✓ Plan elegido</span></button>
       </article>
       <article class="plan producto-plan is-featured" data-id="plan-estandar" data-nombre="Plan Estándar">
@@ -405,7 +412,7 @@
         <h3>Plan Estándar</h3>
         <p class="plan-spec plan-ideal">Si quieres mantenimiento y visitas periódicas.</p>
         <div class="plan-price"><b>Cuota a cotizar</b><small>Cuota mensual por equipo · plazo elegido: <span data-plazo-label>24</span> meses</small></div>
-        <ul><li>Soporte remoto + 1 visita al mes</li><li>Mantenimiento preventivo</li><li>Te respondemos en 8–24 h hábiles</li><li>Equipo asegurado contra daño y robo</li></ul>
+        <ul><li>Soporte remoto + 1 visita al mes</li><li>Mantenimiento preventivo</li><li>Te respondemos en 8 a 24 h hábiles</li><li>Equipo asegurado contra daño y robo</li></ul>
         <button type="button" class="btn-plan-elegir" data-elegir-plan aria-pressed="false"><span class="add">Elegir este plan</span><span class="remove">✓ Plan elegido</span></button>
       </article>
       <article class="plan producto-plan" data-id="plan-premium" data-nombre="Plan Premium">
@@ -435,7 +442,7 @@
   <div class="wrap">
     <div class="section-head" style="margin-bottom: 3rem;">
       <div>
-        <p class="mono eyebrow">— Preguntas frecuentes</p>
+        <p class="mono eyebrow">Preguntas frecuentes</p>
         <h2>Lo que <em>usualmente</em><br>nos preguntan.</h2>
       </div>
     </div>
@@ -450,7 +457,7 @@
       </details>
       <details class="faq-item">
         <summary>¿En qué ciudades venden y alquilan equipos?</summary>
-        <p>Por ahora la tienda atiende solo en Cali: allí entregamos los equipos que compras o alquilas, y el alquiler incluye soporte técnico presencial. La consultoría TI y las capacitaciones sí las hacemos en toda Colombia.</p>
+        <p>Por ahora la tienda atiende solo en Cali: allí entregamos los equipos que compras o alquilas, y el alquiler incluye soporte técnico presencial. La consultoría TI la hacemos en Colombia, Latinoamérica y, de forma virtual, en cualquier país.</p>
       </details>
       <details class="faq-item">
         <summary>¿Qué incluye el alquiler?</summary>
@@ -523,6 +530,7 @@
 </a>
 
 <script src="/assets/js/medicion.js"></script>
+<script src="/assets/js/idioma.js"></script>
 <script src="/assets/js/cauce.js"></script>
 <script src="/assets/js/tienda.js"></script>
 </body>
