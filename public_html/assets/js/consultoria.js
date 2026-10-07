@@ -5,6 +5,13 @@
   var nombre = {};
   piezas.forEach(function (p) { nombre[p.dataset.pieza] = p.querySelector(".pieza-name").textContent; });
 
+  var TEXTOS = {
+    es: { intro: "Hola Cauce, armé mi solución de consultoría TI:", datos: "Empresa: \nCiudad: ", cuenta: function (n, t) { return n + " de " + t + " piezas"; } },
+    en: { intro: "Hi Cauce, I built my IT consulting solution:", datos: "Company: \nCity and country: ", cuenta: function (n, t) { return n + " of " + t + " pieces"; } },
+    pt: { intro: "Olá, Cauce, montei minha solução de consultoria de TI:", datos: "Empresa: \nCidade e país: ", cuenta: function (n, t) { return n + " de " + t + " peças"; } },
+  };
+  var T = TEXTOS[(document.documentElement.lang || "es").slice(0, 2)] || TEXTOS.es;
+
   var elegidas = [];
   var vacia = document.getElementById("torreVacia");
   var count = document.getElementById("torreCount");
@@ -12,9 +19,9 @@
 
   function mensaje() {
     var lista = orden.filter(function (id) { return elegidas.indexOf(id) !== -1; });
-    return "Hola Cauce, armé mi solución de consultoría TI:\n\n• " +
+    return T.intro + "\n\n• " +
       lista.map(function (id) { return nombre[id]; }).join("\n• ") +
-      "\n\nEmpresa: \nCiudad: ";
+      "\n\n" + T.datos;
   }
 
   function render(nuevas) {
@@ -29,7 +36,7 @@
       el.classList.toggle("drop", on && nuevas.indexOf(el.dataset.enTorre) !== -1);
     });
     vacia.hidden = elegidas.length > 0;
-    count.textContent = elegidas.length + " de " + orden.length + " piezas";
+    count.textContent = T.cuenta(elegidas.length, orden.length);
     document.getElementById("torreCtaN").textContent = elegidas.length ? "(" + elegidas.length + ")" : "";
     wa.setAttribute("aria-disabled", elegidas.length ? "false" : "true");
     wa.href = elegidas.length ? window.cauce.waLink(mensaje()) : "#armador";

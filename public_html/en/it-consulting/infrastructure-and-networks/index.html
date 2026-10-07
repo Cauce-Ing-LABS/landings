@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corporate Networks, Servers and Cloud | Cauce</title>
+<meta name="description" content="Installation and monitoring of corporate networks, VPN, servers with backups and virtualization, and cloud on AWS, Google Cloud or Azure with Terraform.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://cauce-ingenieria.com/en/it-consulting/infrastructure-and-networks/">
+<link rel="alternate" hreflang="es" href="https://cauce-ingenieria.com/consultoria-ti/infraestructura-y-redes/">
+<link rel="alternate" hreflang="en" href="https://cauce-ingenieria.com/en/it-consulting/infrastructure-and-networks/">
+<link rel="alternate" hreflang="pt" href="https://cauce-ingenieria.com/pt/consultoria-ti/infraestrutura-e-redes/">
+<link rel="alternate" hreflang="x-default" href="https://cauce-ingenieria.com/consultoria-ti/infraestructura-y-redes/">
+<meta name="theme-color" content="#0d1b2a">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cauce">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Corporate Networks, Servers and Cloud | Cauce">
+<meta property="og:description" content="Installation and monitoring of corporate networks, VPN, servers with backups and virtualization, and cloud on AWS, Google Cloud or Azure with Terraform.">
+<meta property="og:url" content="https://cauce-ingenieria.com/en/it-consulting/infrastructure-and-networks/">
+<meta property="og:image" content="https://cauce-ingenieria.com/assets/img/og-cauce.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Cauce · Engineering so your business flows">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Corporate Networks, Servers and Cloud | Cauce">
+<meta name="twitter:description" content="Installation and monitoring of corporate networks, VPN, servers with backups and virtualization, and cloud on AWS, Google Cloud or Azure with Terraform.">
+<meta name="twitter:image" content="https://cauce-ingenieria.com/assets/img/og-cauce.png">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/img/favicon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/cauce.css">
+<link rel="stylesheet" href="/assets/css/paginas.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "ProfessionalService",
+   "@id": "https://cauce-ingenieria.com/en/#organizacion",
+   "name": "Cauce Ingeniería",
+   "legalName": "Cauce Ingeniería S.A.S.",
+   "url": "https://cauce-ingenieria.com/en/",
+   "logo": "https://cauce-ingenieria.com/assets/img/icon-512.png",
+   "image": "https://cauce-ingenieria.com/assets/img/og-cauce.png",
+   "slogan": "Engineering so your business flows",
+   "email": "caucha@cauce-ingenieria.com",
+   "telephone": "+57 301 368 2430",
+   "priceRange": "$$",
+   "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Cali",
+    "addressRegion": "Valle del Cauca",
+    "addressCountry": "CO"
+   },
+   "areaServed": [
+    {
+     "@type": "City",
+     "name": "Cali"
+    },
+    {
+     "@type": "State",
+     "name": "Valle del Cauca"
+    },
+    {
+     "@type": "Country",
+     "name": "Colombia"
+    },
+    {
+     "@type": "Place",
+     "name": "Latin America"
+    },
+    {
+     "@type": "Place",
+     "name": "Worldwide (remote service)"
+    }
+   ],
+   "openingHoursSpecification": [
+    {
+     "@type": "OpeningHoursSpecification",
+     "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+     ],
+     "opens": "08:00",
+     "closes": "18:00"
+    },
+    {
+     "@type": "OpeningHoursSpecification",
+     "dayOfWeek": "Saturday",
+     "opens": "08:00",
+     "closes": "12:00"
+    }
+   ],
+   "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "telephone": "+57 301 368 2430",
+    "email": "caucha@cauce-ingenieria.com",
+    "availableLanguage": "Spanish"
+   },
+   "sameAs": [
+    "https://www.linkedin.com/company/cauce-ingenier%C3%ADa-s-a-s"
+   ],
+   "knowsAbout": [
+    "IT consulting",
+    "Digital transformation for SMEs",
+    "Process assessment",
+    "Data management",
+    "BPMN process modeling",
+    "Process automation",
+    "RPA",
+    "n8n",
+    "Applied artificial intelligence",
+    "AI agents",
+    "Software factory",
+    "Custom software development",
+    "Web applications",
+    "Mobile apps",
+    "Corporate websites",
+    "Webmaster",
+    "Integrations with Siigo, Alegra and WhatsApp Business",
+    "Software architecture",
+    "Software quality testing",
+    "Security audit",
+    "OWASP ASVS",
+    "Pentesting",
+    "Cybersecurity",
+    "Corporate networks",
+    "Servers and virtualization",
+    "AWS, Google Cloud and Azure",
+    "Infrastructure monitoring",
+    "On-site IT support",
+    "Help desk",
+    "Corporate training",
+    "Digital literacy",
+    "Office tools",
+    "Computer sales and rental"
+   ],
+   "audience": {
+    "@type": "BusinessAudience",
+    "audienceType": "Online stores, physical stores, neighborhood businesses, entrepreneurs and SMEs: hardware stores, pharmacies, restaurants, clinics, distributors, workshops and companies with 15 to 100 employees"
+   }
+  },
+  {
+   "@type": "Service",
+   "name": "Infrastructure and monitoring",
+   "description": "Installation and monitoring of corporate networks, VPN, servers with backups and virtualization, and cloud on AWS, Google Cloud or Azure with Terraform.",
+   "serviceType": "Corporate networks, servers, cloud and monitoring",
+   "url": "https://cauce-ingenieria.com/en/it-consulting/infrastructure-and-networks/",
+   "provider": {
+    "@id": "https://cauce-ingenieria.com/en/#organizacion"
+   },
+   "areaServed": [
+    {
+     "@type": "Country",
+     "name": "Colombia"
+    },
+    {
+     "@type": "Place",
+     "name": "Latin America"
+    },
+    {
+     "@type": "Place",
+     "name": "Worldwide (remote service)"
+    }
+   ]
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://cauce-ingenieria.com/en/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "IT consulting",
+     "item": "https://cauce-ingenieria.com/en/it-consulting/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Infrastructure and monitoring",
+     "item": "https://cauce-ingenieria.com/en/it-consulting/infrastructure-and-networks/"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Do you provide on-site service?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes, in Cali we come to your office, store or warehouse. Cloud and monitoring are handled remotely for companies in Colombia, Latin America and any country."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can you migrate my information to the cloud without losing it?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. We plan the migration, make backups before starting and verify that everything is complete."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What if my network is already installed but keeps failing?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "We review it, document it and fix what's needed. You don't always have to replace everything."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body data-page="/consultoria-ti/infraestructura-y-redes/" class="servicio-page">
+<a class="skip-link" href="#contenido">Skip to content</a>
+<nav aria-label="Main">
+  <div class="nav-inner">
+    <a href="/en/" class="brand" aria-label="Cauce, home">
+      <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
+        <path d="M14 70 H118" stroke="#0fb8d9" stroke-width="6" stroke-linecap="round"/>
+        <path d="M50 70 C 58 70 58 100 64 100 H70 C 76 100 76 70 84 70" stroke="#0fb8d9" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <path d="M84 70 C 92 70 92 40 98 40 H104 C 110 40 110 70 118 70" stroke="#0fb8d9" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <circle cx="14" cy="70" r="4.5" fill="white" stroke="#0fb8d9" stroke-width="3"/>
+        <circle cx="50" cy="70" r="4.5" fill="white" stroke="#0fb8d9" stroke-width="3"/>
+        <circle cx="84" cy="70" r="4.5" fill="white" stroke="#0fb8d9" stroke-width="3"/>
+        <circle cx="67" cy="100" r="3.5" fill="#0fb8d9"/>
+        <circle cx="101" cy="40" r="3.5" fill="#0fb8d9"/>
+        <circle cx="118" cy="70" r="7" fill="#0fb8d9"/>
+      </svg>
+      <span class="name">cauce<span class="dot">.</span></span>
+    </a>
+    <div class="nav-links" id="nav-links">
+      <a href="/en/training/">Training</a>
+      <a href="/en/it-consulting/" aria-current="page">IT consulting</a>
+      <a href="/tienda/">Store</a>
+    </div>
+    <div class="nav-right">
+      <a href="https://calendly.com/cauce-ingenieria/cauce-consultoria-60-min-clon-clon-1" class="nav-cta" data-calendly data-ubicacion="nav">Café Cauce</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<main id="contenido">
+<header class="hero is-sub">
+  <div class="hero-grid-bg"></div>
+  <div class="wrap">
+    <div class="sub-hero-grid">
+      <div>
+        <div class="hero-eyebrow"><span class="pulse"></span><span class="mono">IT consulting · Infrastructure</span></div>
+        <h1>Infrastructure and corporate networks:<br><span class="accent">running and monitored.</span></h1>
+        <p class="hero-sub">We install, migrate and watch over your networks, servers and cloud applications so they keep running and stay secure.</p>
+        <div class="hero-ctas">
+          <a href="https://wa.me/573013682430?text=Hi%20Cauce%2C%20I%20need%20help%20with%20my%20company's%20network%2C%20servers%20or%20cloud." class="btn btn-primary" target="_blank" rel="noopener" data-ubicacion="servicio-infraestructura-y-redes-hero"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.4-1.8-.1-.2 0-.4.1-.5.1-.1.2-.3.4-.4.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5s-.6-1.5-.9-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3Z"/></svg> Write to us on WhatsApp</a>
+          <a href="/en/it-consulting/#armador" class="btn btn-secondary">Build your complete solution <span class="arrow">→</span></a>
+        </div>
+      </div>
+      <div class="tower tower-hero tower-servicio" aria-hidden="true">
+        <span class="brick" style="--c:#8b97a8; --t:#0d1b2a;"><span class="brick-label">Infrastructure</span></span>
+        <span class="brick" style="--c:#0d1b2a; --t:#f4f5f7;"><span class="brick-label">Consulting</span></span>
+        <span class="baseplate"></span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="section is-paper" id="que-hacemos">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="mono eyebrow">What we do</p>
+        <h2>What we<br><em>install and look after.</em></h2>
+      </div>
+      <p class="lead">From the store's network to servers in the cloud.</p>
+    </div>
+    <div class="svc-grid cols-3">
+      <article class="svc-card">
+        <span class="num-mono">01</span>
+        <h3>Corporate networks</h3>
+        <p>Installation and organization of the network in your office, store or warehouse.</p>
+        <ul><li>Separate networks for checkout, office and guests</li><li>Stable Wi-Fi</li><li>Organized cabling and equipment</li></ul>
+      </article>
+      <article class="svc-card">
+        <span class="num-mono">02</span>
+        <h3>VPN</h3>
+        <p>Secure connection to work from outside the office or link locations.</p>
+        <ul><li>Secure remote work</li><li>Connected locations</li></ul>
+      </article>
+      <article class="svc-card">
+        <span class="num-mono">03</span>
+        <h3>Servers</h3>
+        <p>Installation with RAID, backups and virtualization; migration without losing information.</p>
+        <ul><li>File server</li><li>Verified backups</li><li>Migrations</li></ul>
+      </article>
+      <article class="svc-card">
+        <span class="num-mono">04</span>
+        <h3>Cloud</h3>
+        <p>Deployment and operation on AWS, Google Cloud or Azure with Terraform.</p>
+        <ul><li>Infrastructure as code</li><li>Controlled costs</li></ul>
+      </article>
+      <article class="svc-card">
+        <span class="num-mono">05</span>
+        <h3>Monitoring</h3>
+        <p>Alerts before something fails, so you don't hear about it from your customers.</p>
+        <ul><li>Monitored equipment and services</li><li>Early alerts</li></ul>
+      </article>
+      <article class="svc-card">
+        <span class="num-mono">06</span>
+        <h3>Patches and backups</h3>
+        <p>Security updates and backups that are actually tested.</p>
+        <ul><li>Tested restores</li><li>Log of every change</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section is-warm" id="como">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="mono eyebrow">How we do it</p>
+        <h2>Four steps.<br><em>No shortcuts.</em></h2>
+      </div>
+      <p class="lead">The same team works with you from start to finish, with fixed scope and price.</p>
+    </div>
+    <div class="metodo-steps is-light">
+      <div class="metodo-step">
+        <span class="num">01</span>
+        <h4>Inventory</h4>
+        <p>What equipment, networks and services you have and what state they're in.</p>
+      </div>
+      <div class="metodo-step">
+        <span class="num">02</span>
+        <h4>Plan</h4>
+        <p>What to install, migrate or fix first, based on risk.</p>
+      </div>
+      <div class="metodo-step">
+        <span class="num">03</span>
+        <h4>Implementation</h4>
+        <p>Installation and migration at times that don't disrupt your operations.</p>
+      </div>
+      <div class="metodo-step">
+        <span class="num">04</span>
+        <h4>Monitoring</h4>
+        <p>Continuous monitoring, patches and backups.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section is-paper" id="para-quien">
+  <div class="wrap">
+    <div class="split">
+      <div class="split-col is-yes">
+        <h3>What you get</h3>
+        <ul><li><span>Network installed and documented</span></li><li><span>Servers or cloud configured with backups</span></li><li><span>Monitoring with alerts</span></li><li><span>Network and infrastructure diagram</span></li><li><span>Backup and recovery plan</span></li></ul>
+      </div>
+      <div class="split-col is-extra">
+        <h3>Who it's for</h3>
+        <ul><li><span><strong>Physical stores and neighborhood businesses</strong>: hardware stores, pharmacies, restaurants, bakeries, convenience stores.</span></li><li><span><strong>SMEs with 15 to 100 employees</strong> that already invoice seriously and need technical order without hiring an IT department.</span></li><li><span><strong>Clinics, workshops, distributors and agencies</strong> with customer information that today lives on paper, in chats and spreadsheets.</span></li><li><span><strong>Businesses with several locations</strong> or people who work outside the office.</span></li></ul>
+      </div>
+    </div>
+    <p class="callout mt-2"><span class="mono">Ideal if</span>Your system goes down and you hear about it from your customers, or nobody checks the backups.</p>
+  </div>
+</section>
+
+<section class="faq section is-warm" id="faq">
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom: 3rem;">
+      <div>
+        <p class="mono eyebrow">Frequently asked questions</p>
+        <h2>What people <em>usually</em><br>ask us.</h2>
+      </div>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Do you provide on-site service?</summary>
+        <p>Yes, in Cali we come to your office, store or warehouse. Cloud and monitoring are handled remotely for companies in Colombia, Latin America and any country.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can you migrate my information to the cloud without losing it?</summary>
+        <p>Yes. We plan the migration, make backups before starting and verify that everything is complete.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What if my network is already installed but keeps failing?</summary>
+        <p>We review it, document it and fix what's needed. You don't always have to replace everything.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section is-paper servicio-otras">
+  <div class="wrap">
+    <p class="mono eyebrow">Other IT consulting pieces</p>
+    <div class="related">
+      <a href="/en/it-consulting/">All pieces</a>
+      <a href="/en/it-consulting/it-support/">IT support</a>
+      <a href="/en/it-consulting/software-and-network-architecture/">Network and software architecture</a>
+      <a href="/en/it-consulting/technology-consulting/">Consulting</a>
+      <a href="/en/it-consulting/software-development/">Software factory and custom development</a>
+      <a href="/en/it-consulting/websites-and-online-stores/">Websites and online stores</a>
+      <a href="/en/it-consulting/automation-rpa-and-ai/">Automation, RPA and AI agents</a>
+      <a href="/en/it-consulting/software-testing/">Software quality testing</a>
+      <a href="/en/it-consulting/security-audit-and-pentest/">Security audit and pentesting</a>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem;">
+          <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg" fill="none" width="36" height="36" aria-hidden="true">
+        <path d="M14 70 H118" stroke="#0fb8d9" stroke-width="6" stroke-linecap="round"/>
+        <path d="M50 70 C 58 70 58 100 64 100 H70 C 76 100 76 70 84 70" stroke="#0fb8d9" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <path d="M84 70 C 92 70 92 40 98 40 H104 C 110 40 110 70 118 70" stroke="#0fb8d9" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <circle cx="14" cy="70" r="4.5" fill="#0d1b2a" stroke="#0fb8d9" stroke-width="3"/>
+        <circle cx="50" cy="70" r="4.5" fill="#0d1b2a" stroke="#0fb8d9" stroke-width="3"/>
+        <circle cx="84" cy="70" r="4.5" fill="#0d1b2a" stroke="#0fb8d9" stroke-width="3"/>
+        <circle cx="67" cy="100" r="3.5" fill="#0fb8d9"/>
+        <circle cx="101" cy="40" r="3.5" fill="#0fb8d9"/>
+        <circle cx="118" cy="70" r="7" fill="#0fb8d9"/>
+      </svg>
+          <span class="name">cauce<span class="dot">.</span></span>
+        </div>
+        <p>Data · Processes · Engineering for SMEs, merchants and entrepreneurs in Colombia and Latin America. We work with you so your business flows.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="/en/#cafe">Café Cauce</a></li>
+          <li><a href="/en/training/">Training</a></li>
+          <li><a href="/en/it-consulting/">IT consulting</a></li>
+          <li><a href="/en/it-consulting/websites-and-online-stores/">Websites and online stores</a></li>
+          <li><a href="/en/it-consulting/automation-rpa-and-ai/">Automation and AI</a></li>
+          <li><a href="/en/it-consulting/it-support/">IT support</a></li>
+          <li><a href="/tienda/">Technology store</a></li>
+          <li><a href="/en/#metodo">Data</a></li>
+          <li><a href="/en/#metodo">Processes</a></li>
+          <li><a href="/en/#metodo">Engineering</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>The firm</h5>
+        <ul>
+          <li><a href="/en/#metodo">How we work</a></li>
+          <li><a href="/en/#nosotros">About us</a></li>
+          <li><a href="/en/#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="mailto:caucha@cauce-ingenieria.com">caucha@cauce-ingenieria.com</a></li>
+          <li><a href="https://wa.me/573013682430" target="_blank" rel="noopener" data-ubicacion="footer">WhatsApp</a></li>
+          <li><a href="https://www.linkedin.com/company/cauce-ingenier%C3%ADa-s-a-s" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Cauce · Cali, Colombia</span>
+      <span class="mono">Powered by Cauce</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/573013682430?text=Hi%20Cauce%2C%20I%20need%20help%20with%20my%20company's%20network%2C%20servers%20or%20cloud." target="_blank" rel="noopener" aria-label="Write to us on WhatsApp" data-ubicacion="flotante">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.515 5.26l-.999 3.648 3.873-1.107zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+  <span class="wa-label">WhatsApp</span>
+</a>
+
+<script src="/assets/js/medicion.js"></script>
+<script src="/assets/js/idioma.js"></script>
+<script src="/assets/js/cauce.js"></script>
+</body>
+</html>

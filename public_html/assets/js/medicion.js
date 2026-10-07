@@ -53,7 +53,8 @@
     if (utm.utm_source) parts.push(utm.utm_source + (utm.utm_medium ? "/" + utm.utm_medium : ""));
     if (utm.utm_campaign) parts.push(utm.utm_campaign);
     if (!parts.length && utm.gclid) parts.push("google ads");
-    return parts.length ? "(Vengo de: " + parts.join(" · ") + ")" : "";
+    var vengo = { en: "(Coming from: ", pt: "(Vim de: " }[(document.documentElement.lang || "es").slice(0, 2)] || "(Vengo de: ";
+    return parts.length ? vengo + parts.join(" · ") + ")" : "";
   }
 
   function waLink(message) {
@@ -74,7 +75,7 @@
       if (note) {
         var url = new URL(href);
         var text = url.searchParams.get("text") || "Hola Cauce";
-        if (text.indexOf("(Vengo de:") === -1) {
+        if (!/\((Vengo de|Coming from|Vim de):/.test(text)) {
           url.searchParams.set("text", text + "\n\n" + note);
           a.href = url.toString();
         }

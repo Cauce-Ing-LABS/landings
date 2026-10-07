@@ -1,0 +1,50 @@
+{
+ "/": {
+  "en": "/en/",
+  "pt": "/pt/"
+ },
+ "/capacitaciones/": {
+  "en": "/en/training/",
+  "pt": "/pt/capacitacoes/"
+ },
+ "/consultoria-ti/": {
+  "en": "/en/it-consulting/",
+  "pt": "/pt/consultoria-ti/"
+ },
+ "/consultoria-ti/consultoria-tecnologica/": {
+  "en": "/en/it-consulting/technology-consulting/",
+  "pt": "/pt/consultoria-ti/consultoria-tecnologica/"
+ },
+ "/consultoria-ti/arquitectura-de-software-y-redes/": {
+  "en": "/en/it-consulting/software-and-network-architecture/",
+  "pt": "/pt/consultoria-ti/arquitetura-de-software-e-redes/"
+ },
+ "/consultoria-ti/desarrollo-de-software/": {
+  "en": "/en/it-consulting/software-development/",
+  "pt": "/pt/consultoria-ti/desenvolvimento-de-software/"
+ },
+ "/consultoria-ti/paginas-web-y-tiendas-en-linea/": {
+  "en": "/en/it-consulting/websites-and-online-stores/",
+  "pt": "/pt/consultoria-ti/sites-e-lojas-virtuais/"
+ },
+ "/consultoria-ti/automatizacion-rpa-e-ia/": {
+  "en": "/en/it-consulting/automation-rpa-and-ai/",
+  "pt": "/pt/consultoria-ti/automacao-rpa-e-ia/"
+ },
+ "/consultoria-ti/pruebas-de-software/": {
+  "en": "/en/it-consulting/software-testing/",
+  "pt": "/pt/consultoria-ti/testes-de-software/"
+ },
+ "/consultoria-ti/auditoria-de-seguridad-y-pentest/": {
+  "en": "/en/it-consulting/security-audit-and-pentest/",
+  "pt": "/pt/consultoria-ti/auditoria-de-seguranca-e-pentest/"
+ },
+ "/consultoria-ti/infraestructura-y-redes/": {
+  "en": "/en/it-consulting/infrastructure-and-networks/",
+  "pt": "/pt/consultoria-ti/infraestrutura-e-redes/"
+ },
+ "/consultoria-ti/soporte-ti/": {
+  "en": "/en/it-consulting/it-support/",
+  "pt": "/pt/consultoria-ti/suporte-ti/"
+ }
+}
