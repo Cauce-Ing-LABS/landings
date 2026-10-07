@@ -1,2 +1,5 @@
 cauce-public_html.zip
 *.docx
+herramientas/node_modules/
+herramientas/shots/
+herramientas/package-lock.json

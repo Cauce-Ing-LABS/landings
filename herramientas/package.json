@@ -1,0 +1,14 @@
+{
+  "name": "cauce-herramientas",
+  "private": true,
+  "description": "Genera public_html/ (español, inglés y portugués) y prueba el sitio",
+  "scripts": {
+    "generar": "node build.js",
+    "servir": "cd ../public_html && python -m http.server 8765",
+    "probar-enlaces": "node check.js",
+    "probar": "node check.js && node e2e.js"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^23.11.1"
+  }
+}

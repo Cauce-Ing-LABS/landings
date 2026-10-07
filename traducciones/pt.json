@@ -1,4 +1,71 @@
 {
+ "textoAlternativoImagen": "Cauce · Engenharia para que seu negócio flua",
+ "cabeceras": {
+  "/": {
+   "title": "Cauce | Consultoria de TI, automação e IA na Colômbia",
+   "description": "Consultoria de TI, automação de processos, IA, desenvolvimento de software, cibersegurança e capacitações para PMEs na Colômbia, América Latina e no mundo.",
+   "ogTitle": "Cauce · Seu negócio não precisa de mais tecnologia. Precisa de um leito.",
+   "ogDescription": "Uma equipe de engenheiros especialistas em TI que trabalha lado a lado com você. Encontramos os vazamentos, organizamos seus dados, limpamos os processos e aplicamos a tecnologia que realmente faz diferença."
+  },
+  "/capacitaciones/": {
+   "title": "Cursos de cibersegurança, IA e escritório em Cali | Cauce",
+   "description": "Capacitações corporativas: Cibersegurança Essencial, IA para o Dia a Dia, Ferramentas de Escritório e mais. Presencial em Cali, grupos de até 20."
+  },
+  "/consultoria-ti/": {
+   "title": "Consultoria de TI, software e cibersegurança | Cauce",
+   "description": "Fábrica de software, sites, RPA e agentes de IA, auditoria de segurança, pentest, redes corporativas e suporte de TI. Colômbia e América Latina."
+  },
+  "/consultoria-ti/consultoria-tecnologica/": {
+   "title": "Consultoria tecnológica e diagnóstico de TI | Cauce",
+   "description": "Diagnóstico do seu negócio, dados e processos antes de investir em tecnologia. Roteiro por retorno sobre o investimento para PMEs e empreendedores."
+  },
+  "/consultoria-ti/arquitectura-de-software-y-redes/": {
+   "title": "Arquitetura de software, redes e servidores | Cauce",
+   "description": "Projetamos seu software, sua rede e seus servidores antes de construir ou comprar: componentes, dados, integrações, topologia e nuvem."
+  },
+  "/consultoria-ti/desarrollo-de-software/": {
+   "title": "Fábrica de software e desenvolvimento sob medida | Cauce",
+   "description": "Desenvolvimento de software sob medida: aplicações web, apps móveis, sistemas internos e integrações com Siigo, Alegra e WhatsApp."
+  },
+  "/consultoria-ti/paginas-web-y-tiendas-en-linea/": {
+   "title": "Sites e lojas virtuais para negócios | Cauce",
+   "description": "Design e desenvolvimento de sites corporativos e lojas virtuais, com domínio, hospedagem e administração como webmaster. Para negócios e empreendedores."
+  },
+  "/consultoria-ti/automatizacion-rpa-e-ia/": {
+   "title": "Automação de processos, RPA e agentes de IA | Cauce",
+   "description": "Automatizamos tarefas repetitivas com RPA, n8n e scripts, e criamos agentes de IA conectados aos seus sistemas. Colômbia e América Latina."
+  },
+  "/consultoria-ti/pruebas-de-software/": {
+   "title": "Testes de software e QA para empresas | Cauce",
+   "description": "Testes de qualidade de software (QA): fluxos críticos testados antes de cada lançamento, com relatório priorizado. Para software próprio ou de terceiros."
+  },
+  "/consultoria-ti/auditoria-de-seguridad-y-pentest/": {
+   "title": "Auditoria de segurança OWASP e pentest | Cauce",
+   "description": "Auditoria de segurança de software com OWASP ASVS e testes de invasão (pentest) no seu software proprietário. Relatório priorizado por risco."
+  },
+  "/consultoria-ti/infraestructura-y-redes/": {
+   "title": "Redes corporativas, servidores e nuvem | Cauce",
+   "description": "Instalação e monitoramento de redes corporativas, VPN, servidores com backups e virtualização, e nuvem na AWS, Google Cloud ou Azure com Terraform."
+  },
+  "/consultoria-ti/soporte-ti/": {
+   "title": "Suporte de TI presencial para empresas em Cali | Cauce",
+   "description": "Sua área de TI sem contratá-la: help desk remoto, suporte técnico presencial em Cali, manutenção preventiva e tempos de resposta claros."
+  }
+ },
+ "whatsapp": {
+  "Hola Cauce, quiero agendar un Café Cauce": "Olá, Cauce, quero agendar um Café Cauce",
+  "Hola Cauce, quiero información sobre las capacitaciones.": "Olá, Cauce, quero informações sobre as capacitações.",
+  "Hola Cauce, quiero hablar sobre consultoría TI para mi empresa.": "Olá, Cauce, quero falar sobre consultoria de TI para minha empresa.",
+  "Hola Cauce, quiero un diagnóstico tecnológico para mi negocio.": "Olá, Cauce, quero um diagnóstico tecnológico para meu negócio.",
+  "Hola Cauce, quiero diseñar la arquitectura de mi software o de mi red.": "Olá, Cauce, quero projetar a arquitetura do meu software ou da minha rede.",
+  "Hola Cauce, quiero desarrollar un software a la medida.": "Olá, Cauce, quero desenvolver um software sob medida.",
+  "Hola Cauce, quiero una página web o una tienda en línea para mi negocio.": "Olá, Cauce, quero um site ou uma loja virtual para meu negócio.",
+  "Hola Cauce, quiero automatizar procesos de mi negocio con RPA o IA.": "Olá, Cauce, quero automatizar processos do meu negócio com RPA ou IA.",
+  "Hola Cauce, quiero hacer pruebas de calidad a mi software.": "Olá, Cauce, quero fazer testes de qualidade no meu software.",
+  "Hola Cauce, quiero una auditoría de seguridad o un pentest para mi software.": "Olá, Cauce, quero uma auditoria de segurança ou um pentest para meu software.",
+  "Hola Cauce, necesito ayuda con la red, los servidores o la nube de mi empresa.": "Olá, Cauce, preciso de ajuda com a rede, os servidores ou a nuvem da minha empresa.",
+  "Hola Cauce, quiero soporte TI para mi empresa.": "Olá, Cauce, quero suporte de TI para minha empresa."
+ },
  "textos": {
   "cauce<b0>.</b0>": "cauce<b0>.</b0>",
   "Cómo trabajamos": "Como trabalhamos",
@@ -961,72 +1028,6 @@
   "Identificación conjunta de oportunidades de automatización con agentes y MCP": "Identificação conjunta de oportunidades de automação com agentes e MCP",
   "Entregable: documento con oportunidades priorizadas y su viabilidad estimada": "Entregável: documento com oportunidades priorizadas e sua viabilidade estimada",
   "Cierre: el cliente decide si lo explora por su cuenta o contrata a Cauce para construirlo": "Fechamento: o cliente decide se explora por conta própria ou contrata a Cauce para construí-lo"
- },
- "cabeceras": {
-  "/": {
-   "title": "Cauce | Consultoria de TI, automação e IA na Colômbia",
-   "description": "Consultoria de TI, automação de processos, IA, desenvolvimento de software, cibersegurança e capacitações para PMEs na Colômbia, América Latina e no mundo.",
-   "ogTitle": "Cauce · Seu negócio não precisa de mais tecnologia. Precisa de um leito.",
-   "ogDescription": "Uma equipe de engenheiros especialistas em TI que trabalha lado a lado com você. Encontramos os vazamentos, organizamos seus dados, limpamos os processos e aplicamos a tecnologia que realmente faz diferença."
-  },
-  "/capacitaciones/": {
-   "title": "Cursos de cibersegurança, IA e escritório em Cali | Cauce",
-   "description": "Capacitações corporativas: Cibersegurança Essencial, IA para o Dia a Dia, Ferramentas de Escritório e mais. Presencial em Cali, grupos de até 20."
-  },
-  "/consultoria-ti/": {
-   "title": "Consultoria de TI, software e cibersegurança | Cauce",
-   "description": "Fábrica de software, sites, RPA e agentes de IA, auditoria de segurança, pentest, redes corporativas e suporte de TI. Colômbia e América Latina."
-  },
-  "/consultoria-ti/consultoria-tecnologica/": {
-   "title": "Consultoria tecnológica e diagnóstico de TI | Cauce",
-   "description": "Diagnóstico do seu negócio, dados e processos antes de investir em tecnologia. Roteiro por retorno sobre o investimento para PMEs e empreendedores."
-  },
-  "/consultoria-ti/arquitectura-de-software-y-redes/": {
-   "title": "Arquitetura de software, redes e servidores | Cauce",
-   "description": "Projetamos seu software, sua rede e seus servidores antes de construir ou comprar: componentes, dados, integrações, topologia e nuvem."
-  },
-  "/consultoria-ti/desarrollo-de-software/": {
-   "title": "Fábrica de software e desenvolvimento sob medida | Cauce",
-   "description": "Desenvolvimento de software sob medida: aplicações web, apps móveis, sistemas internos e integrações com Siigo, Alegra e WhatsApp."
-  },
-  "/consultoria-ti/paginas-web-y-tiendas-en-linea/": {
-   "title": "Sites e lojas virtuais para negócios | Cauce",
-   "description": "Design e desenvolvimento de sites corporativos e lojas virtuais, com domínio, hospedagem e administração como webmaster. Para negócios e empreendedores."
-  },
-  "/consultoria-ti/automatizacion-rpa-e-ia/": {
-   "title": "Automação de processos, RPA e agentes de IA | Cauce",
-   "description": "Automatizamos tarefas repetitivas com RPA, n8n e scripts, e criamos agentes de IA conectados aos seus sistemas. Colômbia e América Latina."
-  },
-  "/consultoria-ti/pruebas-de-software/": {
-   "title": "Testes de software e QA para empresas | Cauce",
-   "description": "Testes de qualidade de software (QA): fluxos críticos testados antes de cada lançamento, com relatório priorizado. Para software próprio ou de terceiros."
-  },
-  "/consultoria-ti/auditoria-de-seguridad-y-pentest/": {
-   "title": "Auditoria de segurança OWASP e pentest | Cauce",
-   "description": "Auditoria de segurança de software com OWASP ASVS e testes de invasão (pentest) no seu software proprietário. Relatório priorizado por risco."
-  },
-  "/consultoria-ti/infraestructura-y-redes/": {
-   "title": "Redes corporativas, servidores e nuvem | Cauce",
-   "description": "Instalação e monitoramento de redes corporativas, VPN, servidores com backups e virtualização, e nuvem na AWS, Google Cloud ou Azure com Terraform."
-  },
-  "/consultoria-ti/soporte-ti/": {
-   "title": "Suporte de TI presencial para empresas em Cali | Cauce",
-   "description": "Sua área de TI sem contratá-la: help desk remoto, suporte técnico presencial em Cali, manutenção preventiva e tempos de resposta claros."
-  }
- },
- "whatsapp": {
-  "Hola Cauce, quiero agendar un Café Cauce": "Olá, Cauce, quero agendar um Café Cauce",
-  "Hola Cauce, quiero información sobre las capacitaciones.": "Olá, Cauce, quero informações sobre as capacitações.",
-  "Hola Cauce, quiero hablar sobre consultoría TI para mi empresa.": "Olá, Cauce, quero falar sobre consultoria de TI para minha empresa.",
-  "Hola Cauce, quiero un diagnóstico tecnológico para mi negocio.": "Olá, Cauce, quero um diagnóstico tecnológico para meu negócio.",
-  "Hola Cauce, quiero diseñar la arquitectura de mi software o de mi red.": "Olá, Cauce, quero projetar a arquitetura do meu software ou da minha rede.",
-  "Hola Cauce, quiero desarrollar un software a la medida.": "Olá, Cauce, quero desenvolver um software sob medida.",
-  "Hola Cauce, quiero una página web o una tienda en línea para mi negocio.": "Olá, Cauce, quero um site ou uma loja virtual para meu negócio.",
-  "Hola Cauce, quiero automatizar procesos de mi negocio con RPA o IA.": "Olá, Cauce, quero automatizar processos do meu negócio com RPA ou IA.",
-  "Hola Cauce, quiero hacer pruebas de calidad a mi software.": "Olá, Cauce, quero fazer testes de qualidade no meu software.",
-  "Hola Cauce, quiero una auditoría de seguridad o un pentest para mi software.": "Olá, Cauce, quero uma auditoria de segurança ou um pentest para meu software.",
-  "Hola Cauce, necesito ayuda con la red, los servidores o la nube de mi empresa.": "Olá, Cauce, preciso de ajuda com a rede, os servidores ou a nuvem da minha empresa.",
-  "Hola Cauce, quiero soporte TI para mi empresa.": "Olá, Cauce, quero suporte de TI para minha empresa."
  },
  "configurador": [
   [
