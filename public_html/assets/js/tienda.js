@@ -237,17 +237,8 @@
       b.addEventListener("click", function () { state.cat = b.dataset.subCat; state.sub = state.sub === b.dataset.sub ? "todo" : b.dataset.sub; render(); });
     });
 
-    // datos estructurados del catálogo para buscadores
-    var ld = document.createElement("script");
-    ld.type = "application/ld+json";
-    ld.textContent = JSON.stringify({
-      "@context": "https://schema.org", "@type": "ItemList", name: "Catálogo de la tienda de tecnología Cauce",
-      itemListElement: PRODUCTOS.map(function (p, i) {
-        return { "@type": "ListItem", position: i + 1, item: { "@type": "Product", name: p.nombre, description: p.resumen, category: p.categoria + " > " + p.subcategoria,
-          itemCondition: p.estados && p.estados.length === 1 ? (p.estados[0] === "Nuevo" ? "https://schema.org/NewCondition" : "https://schema.org/RefurbishedCondition") : undefined } };
-      }),
-    });
-    document.head.appendChild(ld);
+    // Sin datos estructurados de Product: Google los exige con precio, reseñas o calificación,
+    // y la tienda no publica precios
   }
 
   // ---------- filtros ----------
