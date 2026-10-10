@@ -6,8 +6,11 @@ ErrorDocument 404 /404.html
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # HTTPS y dominio sin www
-  RewriteCond %{HTTPS} off [OR]
+  # HTTPS y dominio sin www. Detrás del firewall de GoDaddy (Sucuri) en modo "HTTPS parcial"
+  # la visita llega cifrada al firewall y por HTTP al hosting: el firewall lo avisa con X-Forwarded-Proto
+  RewriteCond %{HTTPS} off
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^(.*)$ https://cauce-ingenieria.com/$1 [R=301,L]
   RewriteCond %{HTTP_HOST} ^www\. [NC]
   RewriteRule ^(.*)$ https://cauce-ingenieria.com/$1 [R=301,L]
 
