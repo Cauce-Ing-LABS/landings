@@ -2,7 +2,7 @@
 (function () {
   // Reemplazar por los IDs reales. Mientras tengan las X, no se carga ningún script de Google.
   var CONFIG = {
-    GA4_ID: "G-XXXXXXXXXX",
+    GA4_ID: "G-8CKGZRPE3V",
     ADS_ID: "AW-XXXXXXXXXX",
     // Etiquetas de conversión de Google Ads ("AW-XXX/abc123"); vacías = no se envían.
     ADS_CONVERSIONS: {
