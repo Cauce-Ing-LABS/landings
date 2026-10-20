@@ -29,9 +29,9 @@
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/assets/img/favicon-48.png" sizes="48x48" type="image/png">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/space-grotesk.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/instrument-serif-italic.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/jetbrains-mono.woff2">
 <link rel="stylesheet" href="/assets/css/cauce.css">
 <link rel="stylesheet" href="/assets/css/paginas.css">
 <script type="application/ld+json">
@@ -180,7 +180,7 @@
       "itemOffered": {
        "@type": "Service",
        "name": "Consulting",
-       "description": "Our four-step method applied to your business: Diagnosis → Data → Processes → Engineering. It's the base of the tower: it decides which pieces you need and in what order."
+       "description": "Our four-stage method applied to your business: Diagnosis → Data → Processes → Engineering. It is the base of the tower: it decides which pieces you need and in what order."
       }
      },
      {
@@ -427,102 +427,123 @@
       <div class="piezas" role="group" aria-label="Pieces">
         <article class="pieza" data-pieza="consultoria">
           <span class="brick" style="--c:#0d1b2a; --t:#f4f5f7;"><span class="brick-label">Consulting</span></span>
-          <h3 class="pieza-name">Consulting</h3>
-          <p class="pieza-desc">Our four-step method applied to your business: Diagnosis → Data → Processes → Engineering. It's the base of the tower: it decides which pieces you need and in what order.</p>
-          <ul class="pieza-incluye">
-            <li><strong>Diagnosis:</strong> we talk with the owner and the team, review what you already have and find where time or money is being lost.</li>
+          <h3 class="pieza-name" id="pieza-consultoria">Consulting</h3>
+          <p class="pieza-desc">Our four-stage method applied to your business: Diagnosis → Data → Processes → Engineering. It is the base of the tower: it decides which pieces you need and in what order.</p>
+          <details class="pieza-detalle" open>
+            <summary>See what it includes</summary>
+            <ul class="pieza-incluye">
+              <li><strong>Diagnosis:</strong> we talk with the owner and the team, review what you already have and find where time or money is being lost.</li>
             <li><strong>Data:</strong> what information your business generates, where it gets lost and what is worth measuring.</li>
             <li><strong>Processes:</strong> what to redesign before buying or building technology.</li>
             <li><strong>Engineering:</strong> a roadmap ordered by return on investment, with the pieces that come next.</li>
-          </ul>
-          <p class="pieza-ideal"><span>Ideal if</span> You don't know where to start, or you've already invested in technology and it didn't pay off.</p>
-          <p class="pieza-mas"><a href="/en/it-consulting/technology-consulting/">See technology consulting <span class="arrow">→</span></a></p>
-          <button type="button" class="pieza-toggle" aria-pressed="false" aria-label="Add Consulting to my tower"><span class="add">+ Add to my tower</span><span class="remove">✓ In your tower · remove</span></button>
+            </ul>
+            <p class="pieza-ideal"><span>Ideal if</span> You don't know where to start, or you've already invested in technology and it didn't pay off.</p>
+            <p class="pieza-mas"><a href="/en/it-consulting/technology-consulting/">See technology consulting <span class="arrow">→</span></a></p>
+          </details>
+          <button type="button" class="pieza-toggle" aria-pressed="false" aria-describedby="pieza-consultoria"><span class="add">+ Add to my tower</span><span class="remove">✓ In your tower · remove</span></button>
         </article>
         <article class="pieza" data-pieza="arquitectura">
           <span class="brick" style="--c:#0a8aa3; --t:#ffffff;"><span class="brick-label">Architecture</span></span>
-          <h3 class="pieza-name">Network and software architecture</h3>
+          <h3 class="pieza-name" id="pieza-arquitectura">Network and software architecture</h3>
           <p class="pieza-desc">The design of your network infrastructure or your software systems, before buying equipment or writing a line of code.</p>
-          <ul class="pieza-incluye">
-            <li><strong>Software:</strong> we define the components, data and integrations so that whatever gets built, with or without AI, can grow.</li>
+          <details class="pieza-detalle" open>
+            <summary>See what it includes</summary>
+            <ul class="pieza-incluye">
+              <li><strong>Software:</strong> we define the components, data and integrations so that whatever gets built, with or without AI, can grow.</li>
             <li><strong>Networks:</strong> topology, segmentation and cabling versus Wi-Fi for a new location or a network that can no longer cope.</li>
             <li><strong>Servers:</strong> cloud, on-premise or hybrid: what's right for your business, not the most expensive or the trendiest.</li>
             <li>Blueprints and documentation so that we or any provider can build on them.</li>
-          </ul>
-          <p class="pieza-ideal"><span>Ideal if</span> You have a software idea, you're opening a new location, or your network and systems can't keep up.</p>
-          <p class="pieza-mas"><a href="/en/it-consulting/software-and-network-architecture/">See architecture <span class="arrow">→</span></a></p>
-          <button type="button" class="pieza-toggle" aria-pressed="false" aria-label="Add Network and software architecture to my tower"><span class="add">+ Add to my tower</span><span class="remove">✓ In your tower · remove</span></button>
+            </ul>
+            <p class="pieza-ideal"><span>Ideal if</span> You have a software idea, you're opening a new location, or your network and systems can't keep up.</p>
+            <p class="pieza-mas"><a href="/en/it-consulting/software-and-network-architecture/">See architecture <span class="arrow">→</span></a></p>
+          </details>
+          <button type="button" class="pieza-toggle" aria-pressed="false" aria-describedby="pieza-arquitectura"><span class="add">+ Add to my tower</span><span class="remove">✓ In your tower · remove</span></button>
         </article>
         <article class="pieza" data-pieza="desarrollo">
           <span class="brick" style="--c:#0fb8d9; --t:#0d1b2a;"><span class="brick-label">Custom development</span></span>
-          <h3 class="pieza-name">Custom development</h3>
+          <h3 class="pieza-name" id="pieza-desarrollo">Custom development</h3>
           <p class="pieza-desc">We turn the idea and the design into working software. With AI-assisted development, it's now faster, more standardized and more affordable, without sacrificing quality.</p>
-          <ul class="pieza-incluye">
-            <li><strong>Software factory:</strong> web applications, internal systems and mobile apps.</li>
+          <details class="pieza-detalle" open>
+            <summary>See what it includes</summary>
+            <ul class="pieza-incluye">
+              <li><strong>Software factory:</strong> web applications, internal systems and mobile apps.</li>
             <li><strong>Corporate websites:</strong> design, development and management as webmaster (domain, hosting, security certificate and updates).</li>
             <li><strong>Automation and AI:</strong> RPA, n8n workflows or custom scripting, and artificial intelligence agents connected to your systems.</li>
             <li>Integrations with what you already use: Siigo, Alegra, WhatsApp Business, spreadsheets.</li>
             <li>Delivered in stages, with code and documentation in your company's name.</li>
-          </ul>
-          <p class="pieza-ideal"><span>Ideal if</span> You already have a clear idea (even better if it has gone through architecture).</p>
-          <p class="pieza-mas"><a href="/en/it-consulting/software-development/">Software factory <span class="arrow">→</span></a><a href="/en/it-consulting/websites-and-online-stores/">Websites and online stores <span class="arrow">→</span></a><a href="/en/it-consulting/automation-rpa-and-ai/">Automation, RPA and AI <span class="arrow">→</span></a></p>
-          <button type="button" class="pieza-toggle" aria-pressed="false" aria-label="Add Custom development to my tower"><span class="add">+ Add to my tower</span><span class="remove">✓ In your tower · remove</span></button>
+            </ul>
+            <p class="pieza-ideal"><span>Ideal if</span> You already have a clear idea (even better if it has gone through architecture).</p>
+            <p class="pieza-mas"><a href="/en/it-consulting/software-development/">Software factory <span class="arrow">→</span></a><a href="/en/it-consulting/websites-and-online-stores/">Websites and online stores <span class="arrow">→</span></a><a href="/en/it-consulting/automation-rpa-and-ai/">Automation, RPA and AI <span class="arrow">→</span></a></p>
+          </details>
+          <button type="button" class="pieza-toggle" aria-pressed="false" aria-describedby="pieza-desarrollo"><span class="add">+ Add to my tower</span><span class="remove">✓ In your tower · remove</span></button>
         </article>
         <article class="pieza" data-pieza="calidad">
           <span class="brick" style="--c:#4a5a6e; --t:#ffffff;"><span class="brick-label">Quality testing</span></span>
-          <h3 class="pieza-name">Software quality testing</h3>
+          <h3 class="pieza-name" id="pieza-calidad">Software quality testing</h3>
           <p class="pieza-desc">We check that your software does what you expect, in normal cases and odd ones, before your customer finds out.</p>
-          <ul class="pieza-incluye">
-            <li>Functional testing of critical flows (sales, payments, inventory, reports).</li>
+          <details class="pieza-detalle" open>
+            <summary>See what it includes</summary>
+            <ul class="pieza-incluye">
+              <li>Functional testing of critical flows (sales, payments, inventory, reports).</li>
             <li>Testing before every major release or update.</li>
             <li>Prioritized findings report: what to fix first.</li>
             <li>Works for software built by us or by another provider.</li>
-          </ul>
-          <p class="pieza-ideal"><span>Ideal if</span> You're about to launch something new, or your system fails and you don't know why.</p>
-          <p class="pieza-mas"><a href="/en/it-consulting/software-testing/">See software testing <span class="arrow">→</span></a></p>
-          <button type="button" class="pieza-toggle" aria-pressed="false" aria-label="Add Software quality testing to my tower"><span class="add">+ Add to my tower</span><span class="remove">✓ In your tower · remove</span></button>
+            </ul>
+            <p class="pieza-ideal"><span>Ideal if</span> You're about to launch something new, or your system fails and you don't know why.</p>
+            <p class="pieza-mas"><a href="/en/it-consulting/software-testing/">See software testing <span class="arrow">→</span></a></p>
+          </details>
+          <button type="button" class="pieza-toggle" aria-pressed="false" aria-describedby="pieza-calidad"><span class="add">+ Add to my tower</span><span class="remove">✓ In your tower · remove</span></button>
         </article>
         <article class="pieza" data-pieza="seguridad">
           <span class="brick" style="--c:#075e70; --t:#ffffff;"><span class="brick-label">Security and pentest</span></span>
-          <h3 class="pieza-name">Security audit and pentesting</h3>
+          <h3 class="pieza-name" id="pieza-seguridad">Security audit and pentesting</h3>
           <p class="pieza-desc">We audit your software's security and find its weak points before an attacker does, using the OWASP ASVS standard as reference.</p>
-          <ul class="pieza-incluye">
-            <li><strong>Security audit:</strong> we verify your application against OWASP ASVS (Application Security Verification Standard), the standard for assessing application security.</li>
+          <details class="pieza-detalle" open>
+            <summary>See what it includes</summary>
+            <ul class="pieza-incluye">
+              <li><strong>Security audit:</strong> we verify your application against OWASP ASVS (Application Security Verification Standard), the standard for assessing application security.</li>
             <li><strong>Pentest:</strong> controlled penetration testing of your proprietary software, attacking it the way a real attacker would.</li>
             <li>Review of access, passwords, permissions and exposed data.</li>
             <li>Vulnerability report prioritized by risk, with how to fix each one.</li>
-          </ul>
-          <p class="pieza-ideal"><span>Ideal if</span> Your software handles customer data, payments or sensitive information, or you're about to launch a major version.</p>
-          <p class="pieza-mas"><a href="/en/it-consulting/security-audit-and-pentest/">See audit and pentest <span class="arrow">→</span></a></p>
-          <button type="button" class="pieza-toggle" aria-pressed="false" aria-label="Add Security audit and pentesting to my tower"><span class="add">+ Add to my tower</span><span class="remove">✓ In your tower · remove</span></button>
+            </ul>
+            <p class="pieza-ideal"><span>Ideal if</span> Your software handles customer data, payments or sensitive information, or you're about to launch a major version.</p>
+            <p class="pieza-mas"><a href="/en/it-consulting/security-audit-and-pentest/">See audit and pentest <span class="arrow">→</span></a></p>
+          </details>
+          <button type="button" class="pieza-toggle" aria-pressed="false" aria-describedby="pieza-seguridad"><span class="add">+ Add to my tower</span><span class="remove">✓ In your tower · remove</span></button>
         </article>
         <article class="pieza" data-pieza="infraestructura">
           <span class="brick" style="--c:#8b97a8; --t:#0d1b2a;"><span class="brick-label">Infrastructure</span></span>
-          <h3 class="pieza-name">Infrastructure and monitoring</h3>
+          <h3 class="pieza-name" id="pieza-infraestructura">Infrastructure and monitoring</h3>
           <p class="pieza-desc">We install, migrate and watch over your networks, servers and cloud applications so they keep running and stay secure.</p>
-          <ul class="pieza-incluye">
-            <li><strong>Corporate networks:</strong> installation, VPN to connect securely from outside, and monitoring.</li>
+          <details class="pieza-detalle" open>
+            <summary>See what it includes</summary>
+            <ul class="pieza-incluye">
+              <li><strong>Corporate networks:</strong> installation, VPN to connect securely from outside, and monitoring.</li>
             <li><strong>Servers:</strong> installation with RAID, backups and virtualization; migration without losing information.</li>
             <li><strong>Cloud:</strong> deployment and operation on AWS, Google Cloud or Azure with Terraform.</li>
             <li>Monitoring, patches and verified backups, with alerts before something fails.</li>
-          </ul>
-          <p class="pieza-ideal"><span>Ideal if</span> Your system goes down and you hear about it from your customers, or nobody checks the backups.</p>
-          <p class="pieza-mas"><a href="/en/it-consulting/infrastructure-and-networks/">See networks and infrastructure <span class="arrow">→</span></a></p>
-          <button type="button" class="pieza-toggle" aria-pressed="false" aria-label="Add Infrastructure and monitoring to my tower"><span class="add">+ Add to my tower</span><span class="remove">✓ In your tower · remove</span></button>
+            </ul>
+            <p class="pieza-ideal"><span>Ideal if</span> Your system goes down and you hear about it from your customers, or nobody checks the backups.</p>
+            <p class="pieza-mas"><a href="/en/it-consulting/infrastructure-and-networks/">See networks and infrastructure <span class="arrow">→</span></a></p>
+          </details>
+          <button type="button" class="pieza-toggle" aria-pressed="false" aria-describedby="pieza-infraestructura"><span class="add">+ Add to my tower</span><span class="remove">✓ In your tower · remove</span></button>
         </article>
         <article class="pieza" data-pieza="soporte">
           <span class="brick" style="--c:#d5f1f7; --t:#0d1b2a;"><span class="brick-label">IT support</span></span>
-          <h3 class="pieza-name">IT support</h3>
+          <h3 class="pieza-name" id="pieza-soporte">IT support</h3>
           <p class="pieza-desc">Your IT department without hiring one: someone helps your team when something breaks and looks after the equipment before it fails.</p>
-          <ul class="pieza-incluye">
-            <li>Remote help desk with secure access, and on-site support in Cali.</li>
+          <details class="pieza-detalle" open>
+            <summary>See what it includes</summary>
+            <ul class="pieza-incluye">
+              <li>Remote help desk with secure access, and on-site support in Cali.</li>
             <li>Equipment monitoring: we often notice the failure before you do.</li>
             <li>Preventive maintenance and a record of every case.</li>
             <li>Levels with clear response times: 24 to 48 h, 8 to 24 h or under 4 h.</li>
-          </ul>
-          <p class="pieza-ideal"><span>Ideal if</span> You have no one in IT on your team. If you also need equipment, check out the <a href="/tienda/">store</a>.</p>
-          <p class="pieza-mas"><a href="/en/it-consulting/it-support/">See IT support <span class="arrow">→</span></a></p>
-          <button type="button" class="pieza-toggle" aria-pressed="false" aria-label="Add IT support to my tower"><span class="add">+ Add to my tower</span><span class="remove">✓ In your tower · remove</span></button>
+            </ul>
+            <p class="pieza-ideal"><span>Ideal if</span> You have no one in IT on your team. If you also need equipment, check out the <a href="/tienda/">store</a>.</p>
+            <p class="pieza-mas"><a href="/en/it-consulting/it-support/">See IT support <span class="arrow">→</span></a></p>
+          </details>
+          <button type="button" class="pieza-toggle" aria-pressed="false" aria-describedby="pieza-soporte"><span class="add">+ Add to my tower</span><span class="remove">✓ In your tower · remove</span></button>
         </article>
       </div>
 
@@ -603,7 +624,7 @@
         <p>Data · Processes · Engineering for SMEs, merchants and entrepreneurs in Colombia and Latin America. We work with you so your business flows.</p>
       </div>
       <div class="footer-col">
-        <h5>Services</h5>
+        <h3>Services</h3>
         <ul>
           <li><a href="/en/#cafe">Café Cauce</a></li>
           <li><a href="/en/training/">Training</a></li>
@@ -618,7 +639,7 @@
         </ul>
       </div>
       <div class="footer-col">
-        <h5>The firm</h5>
+        <h3>The firm</h3>
         <ul>
           <li><a href="/en/#metodo">How we work</a></li>
           <li><a href="/en/#nosotros">About us</a></li>
@@ -626,7 +647,7 @@
         </ul>
       </div>
       <div class="footer-col">
-        <h5>Contact</h5>
+        <h3>Contact</h3>
         <ul>
           <li><a href="mailto:caucha@cauce-ingenieria.com">caucha@cauce-ingenieria.com</a></li>
           <li><a href="https://wa.me/573013682430" target="_blank" rel="noopener" data-ubicacion="footer">WhatsApp</a></li>

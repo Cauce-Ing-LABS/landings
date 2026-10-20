@@ -62,5 +62,13 @@
 
   document.getElementById("torreReset").addEventListener("click", function () { elegidas = []; render([]); });
 
+  // En móvil el detalle de cada pieza empieza plegado; en pantallas grandes siempre abierto
+  var movil = window.matchMedia("(max-width: 699px)");
+  function plegar() {
+    document.querySelectorAll(".pieza-detalle").forEach(function (d) { d.open = !movil.matches; });
+  }
+  plegar();
+  if (movil.addEventListener) movil.addEventListener("change", plegar);
+
   render([]);
 })();

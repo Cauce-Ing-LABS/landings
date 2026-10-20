@@ -25,9 +25,9 @@
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/assets/img/favicon-48.png" sizes="48x48" type="image/png">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/space-grotesk.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/instrument-serif-italic.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/jetbrains-mono.woff2">
 <link rel="stylesheet" href="/assets/css/cauce.css">
 <link rel="stylesheet" href="/assets/css/paginas.css">
 <script type="application/ld+json">
@@ -428,11 +428,11 @@
         </div>
 
         <p class="tienda-cargando" data-cargando>Cargando catálogo…</p>
-        <p class="tienda-vacio" data-error-catalogo hidden>No pudimos cargar el catálogo en este momento. <a href="https://wa.me/573013682430?text=Hola%20Cauce%2C%20quiero%20cotizar%20equipos%20de%20la%20tienda." target="_blank" rel="noopener" data-ubicacion="tienda-error">Escríbenos por WhatsApp</a> y te ayudamos.</p>
+        <p class="tienda-vacio" data-error-catalogo hidden>No pudimos cargar el catálogo en este momento. <a href="https://wa.me/573013682430?text=Hola%20Cauce%2C%20quiero%20cotizar%20equipos%20de%20la%20tienda." target="_blank" rel="noopener" data-ubicacion="tienda-error">Escríbenos por WhatsApp</a> y te ayudamos, o <button type="button" class="link-btn" data-reintentar>vuelve a intentarlo</button>.</p>
         <div class="producto-grid" data-grid="tienda"></div>
         <noscript><p class="tienda-vacio">Para ver el catálogo activa JavaScript o escríbenos por WhatsApp al +57 301 368 2430.</p></noscript>
         <div class="paginacion" data-paginacion role="navigation" aria-label="Páginas del catálogo" hidden></div>
-        <p class="tienda-vacio" data-vacio hidden>No encontramos productos con esos filtros. Prueba con otra búsqueda o <a href="https://wa.me/573013682430?text=Hola%20Cauce%2C%20estoy%20buscando%20un%20producto%20que%20no%20encontr%C3%A9%20en%20la%20tienda%3A%20" target="_blank" rel="noopener" data-ubicacion="tienda-vacio">escríbenos y lo conseguimos</a>.</p>
+        <p class="tienda-vacio" data-vacio hidden>No encontramos productos con esos filtros. Prueba con otra búsqueda o <a href="https://wa.me/573013682430?text=Hola%20Cauce%2C%20estoy%20buscando%20un%20producto%20que%20no%20encontr%C3%A9%20en%20la%20tienda%3A%20" target="_blank" rel="noopener" data-ubicacion="tienda-vacio">escríbenos y lo conseguimos</a>. También puedes <button type="button" class="link-btn" data-limpiar-filtros>quitar los filtros</button>.</p>
       </div>
     </div>
   </div>
