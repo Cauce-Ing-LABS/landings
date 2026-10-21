@@ -1,0 +1,12 @@
+# Todo el texto se guarda en el repo con fin de línea LF (estilo Linux),
+# aunque en Windows el editor lo muestre con CRLF. Evita PRs "llenos" de cambios falsos.
+* text=auto eol=lf
+
+# Binarios: no tocar
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.gif binary
+*.ico binary
+*.zip binary
