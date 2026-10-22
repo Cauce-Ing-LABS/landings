@@ -34,4 +34,4 @@ Todo PR necesita la aprobación de un colaborador distinto a quien hizo el cambi
 
 ## Licencia
 
-Ver `LICENSE`.
+Todos los derechos reservados · Cauce Ingeniería S.A.S. Ver `LICENSE`.
