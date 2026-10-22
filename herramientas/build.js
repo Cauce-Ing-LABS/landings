@@ -7,7 +7,8 @@ const SERVICIOS = require("./pages-servicios");
 
 const REPO = path.resolve(__dirname, "..");
 const OUT = path.join(REPO, "public_html");
-const SRC = path.join(REPO, "diseños", "Línea base de diseños Web Caucha");
+// Diseños fuente que el generador transforma en el sitio (el resto del material de marca vive fuera del repo).
+const SRC = path.join(__dirname, "fuentes");
 
 // En español no se usa la raya: títulos de sección sin ella, "Sesión 1: …" y comas en el texto corrido
 function sinRayas(html) {
