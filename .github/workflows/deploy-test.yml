@@ -1,0 +1,48 @@
+# Ambiente de pruebas: cada vez que algo entra a la rama test, se publica en
+#   https://test-paginas.cauce-ingenieria.com/<nombre-del-repo>/
+# para que el cliente lo revise antes de pasar a producción.
+#
+# public_html/ no se toca: herramientas/preparar-test.js hace una copia ajustada
+# (rutas con la carpeta del repo, sin Analytics, sin indexar en Google).
+name: Deploy TEST (GitHub Pages)
+
+on:
+  push:
+    branches: [test]
+  workflow_dispatch:        # botón "Run workflow" para publicar a mano
+
+permissions:
+  contents: read
+  pages: write              # publicar en Pages
+  id-token: write           # Pages verifica que el despliegue viene de este repo
+
+concurrency:                # si llegan dos merges seguidos, gana el último
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Preparar copia para test
+        run: node herramientas/preparar-test.js _site "/${{ github.event.repository.name }}/"
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

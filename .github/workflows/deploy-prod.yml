@@ -1,0 +1,50 @@
+# Producción: cuando un PR test -> main (o un hotfix) se mergea, sube public_html/ a GoDaddy.
+#
+# Secrets (Settings -> Environments -> produccion):
+#   FTP_SERVER    IP del hosting (no el dominio: el dominio pasa por el firewall, que no deja pasar FTP)
+#   FTP_USERNAME  cuenta FTP exclusiva para GitHub, encerrada en public_html
+#   FTP_PASSWORD
+name: Deploy PROD (GoDaddy)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:          # botón "Run workflow" para volver a publicar a mano
+
+permissions:
+  contents: read
+
+concurrency:
+  group: produccion
+  cancel-in-progress: false   # nunca cortar un despliegue a producción a la mitad
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: produccion        # aquí viven los secrets; solo main puede usarlos
+      url: https://cauce-ingenieria.com
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Subir a GoDaddy por FTPS (solo lo que cambió)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          # El hosting usa un certificado autofirmado (los visitantes nunca lo ven: entran por el firewall).
+          # "loose" mantiene la conexión cifrada pero no exige un certificado de una autoridad reconocida.
+          security: loose
+          local-dir: ./public_html/
+          server-dir: ./        # la cuenta FTP ya arranca dentro de public_html
+
+      - name: Recordatorio
+        run: |
+          {
+            echo "### ✅ Publicado en cauce-ingenieria.com"
+            echo ""
+            echo "Limpia la caché del firewall para ver el cambio de inmediato:"
+            echo "godaddy.com → Mis productos → Website Security → Administrar → Firewall → Rendimiento → **Clear Cache**"
+          } >> "$GITHUB_STEP_SUMMARY"

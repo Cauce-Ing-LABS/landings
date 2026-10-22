@@ -1,0 +1,59 @@
+# Después de cada salida a producción (normal o hotfix), baja main a develop y a test.
+#   develop: para que las ramas nuevas nazcan con lo que ya está en producción.
+#   test:    para que un hotfix no se pierda ni choque en el siguiente PR test -> main.
+# Lo que llega a main ya fue aprobado, así que no pide otra aprobación.
+# Si hay conflictos no fuerza nada: abre un PR main -> <rama> para resolverlo a mano.
+name: Sincronizar develop y test con main
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write              # para volver a publicar test en Pages después del sync
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        rama: [develop, test]
+    concurrency:
+      group: sync-${{ matrix.rama }}
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.rama }}
+          fetch-depth: 0
+
+      - name: Merge main -> ${{ matrix.rama }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RAMA: ${{ matrix.rama }}
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if [ "$(git rev-list --count origin/$RAMA..origin/main)" = "0" ]; then
+            echo "$RAMA ya tiene todo lo de main."; exit 0
+          fi
+
+          if git merge --no-ff origin/main -m "chore: sync main -> $RAMA"; then
+            git push origin "$RAMA"
+            echo "✔ $RAMA actualizado con main"
+            # Un push hecho por este bot no dispara otros workflows; el deploy de test se lanza a mano.
+            if [ "$RAMA" = "test" ]; then gh workflow run deploy-test.yml --ref test; fi
+          else
+            git merge --abort
+            echo "::warning::Conflictos al bajar main a $RAMA. Se abre un PR para resolverlos."
+            if [ "$(gh pr list --base "$RAMA" --head main --state open --json number -q 'length')" = "0" ]; then
+              gh pr create --base "$RAMA" --head main \
+                --title "Sync con conflictos: main -> $RAMA" \
+                --body "El merge automático main -> $RAMA falló por conflictos. Resolverlos aquí."
+            fi
+            exit 1
+          fi

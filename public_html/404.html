@@ -25,9 +25,9 @@
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/assets/img/favicon-48.png" sizes="48x48" type="image/png">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/space-grotesk.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/instrument-serif-italic.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/jetbrains-mono.woff2">
 <link rel="stylesheet" href="/assets/css/cauce.css">
 <link rel="stylesheet" href="/assets/css/paginas.css">
 <script type="application/ld+json">
@@ -181,7 +181,7 @@
 <main id="contenido">
 <section class="section notfound is-warm">
   <div class="wrap" style="text-align:center;">
-    <img src="/assets/img/caucha-saludo.png" alt="Caucha, la nutria de Cauce" width="520" height="630">
+    <img src="/assets/img/caucha-saludo.webp" alt="Caucha, la nutria de Cauce" width="520" height="630">
     <p class="mono eyebrow">Error 404</p>
     <h1 style="font-weight:400; font-size:clamp(2rem,5vw,3.5rem); margin-bottom:1rem;">Este tramo del río <em class="serif" style="color:var(--flow-dark)">no existe.</em></h1>
     <p style="color:var(--ink-soft); max-width:520px; margin:0 auto 2rem;">La página que buscas cambió de dirección o nunca existió. Estas son las rutas más usadas:</p>
@@ -216,7 +216,7 @@
         <p>Datos · Procesos · Ingeniería para pymes, comerciantes y emprendedores en Colombia y Latinoamérica. Trabajamos contigo para que tu negocio fluya.</p>
       </div>
       <div class="footer-col">
-        <h5>Servicios</h5>
+        <h3>Servicios</h3>
         <ul>
           <li><a href="/#cafe">Café Cauce</a></li>
           <li><a href="/capacitaciones/">Capacitaciones</a></li>
@@ -231,7 +231,7 @@
         </ul>
       </div>
       <div class="footer-col">
-        <h5>La firma</h5>
+        <h3>La firma</h3>
         <ul>
           <li><a href="/#metodo">Cómo trabajamos</a></li>
           <li><a href="/#nosotros">Quiénes somos</a></li>
@@ -239,7 +239,7 @@
         </ul>
       </div>
       <div class="footer-col">
-        <h5>Contacto</h5>
+        <h3>Contacto</h3>
         <ul>
           <li><a href="mailto:caucha@cauce-ingenieria.com">caucha@cauce-ingenieria.com</a></li>
           <li><a href="https://wa.me/573013682430" target="_blank" rel="noopener" data-ubicacion="footer">WhatsApp</a></li>

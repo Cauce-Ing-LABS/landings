@@ -5,7 +5,7 @@ const { WA_ICON, breadcrumb, faqHtml, ctaBand, ldBreadcrumb, ldFaq, ldService, p
 const PIEZAS = [
   {
     id: "consultoria", nombre: "Consultoría", color: "#0d1b2a", texto: "#f4f5f7",
-    desc: "Nuestro método de cuatro pasos aplicado a tu negocio: Diagnóstico → Datos → Procesos → Ingeniería. Es la base de la torre: decide qué piezas necesitas y en qué orden.",
+    desc: "Nuestro método de cuatro etapas aplicado a tu negocio: Diagnóstico → Datos → Procesos → Ingeniería. Es la base de la torre: decide qué piezas necesitas y en qué orden.",
     incluye: [
       "<strong>Diagnóstico:</strong> conversamos con el dueño y el equipo, revisamos lo que ya tienes y encontramos dónde se pierde tiempo o plata.",
       "<strong>Datos:</strong> qué información genera tu negocio, dónde se pierde y qué conviene medir.",
@@ -163,14 +163,17 @@ function consultoria() {
       <div class="piezas" role="group" aria-label="Piezas">
 ${PIEZAS.map((p) => `        <article class="pieza" data-pieza="${p.id}">
           ${brick(p)}
-          <h3 class="pieza-name">${p.nombre}</h3>
+          <h3 class="pieza-name" id="pieza-${p.id}">${p.nombre}</h3>
           <p class="pieza-desc">${p.desc}</p>
-          <ul class="pieza-incluye">
-            ${p.incluye.map((i) => `<li>${i}</li>`).join("\n            ")}
-          </ul>
-          <p class="pieza-ideal"><span>Ideal si</span> ${p.ideal}</p>
-          <p class="pieza-mas">${MAS[p.id].map(([href, label]) => `<a href="${href}">${label} <span class="arrow">→</span></a>`).join("")}</p>
-          <button type="button" class="pieza-toggle" aria-pressed="false" aria-label="Agregar ${p.nombre} a mi torre"><span class="add">+ Agregar a mi torre</span><span class="remove">✓ En tu torre · quitar</span></button>
+          <details class="pieza-detalle" open>
+            <summary>Ver qué incluye</summary>
+            <ul class="pieza-incluye">
+              ${p.incluye.map((i) => `<li>${i}</li>`).join("\n            ")}
+            </ul>
+            <p class="pieza-ideal"><span>Ideal si</span> ${p.ideal}</p>
+            <p class="pieza-mas">${MAS[p.id].map(([href, label]) => `<a href="${href}">${label} <span class="arrow">→</span></a>`).join("")}</p>
+          </details>
+          <button type="button" class="pieza-toggle" aria-pressed="false" aria-describedby="pieza-${p.id}"><span class="add">+ Agregar a mi torre</span><span class="remove">✓ En tu torre · quitar</span></button>
         </article>`).join("\n")}
       </div>
 

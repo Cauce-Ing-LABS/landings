@@ -30,9 +30,9 @@
 <link rel="icon" href="assets/img/favicon-48.png" sizes="48x48" type="image/png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/space-grotesk.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/instrument-serif-italic.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/jetbrains-mono.woff2">
 <link rel="stylesheet" href="assets/css/cauce.css">
 <link rel="stylesheet" href="assets/css/servicios.css">
 
@@ -226,10 +226,11 @@
 </script>
 </head>
 <body data-page="/">
-<nav>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<nav aria-label="Principal">
   <div class="nav-inner">
-    <a href="#" class="brand">
-      <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg" fill="none">
+    <a href="/" class="brand" aria-label="Cauce, inicio">
+      <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true">
         <path d="M14 70 H118" stroke="#0fb8d9" stroke-width="6" stroke-linecap="round"/>
         <path d="M50 70 C 58 70 58 100 64 100 H70 C 76 100 76 70 84 70" stroke="#0fb8d9" stroke-width="6" stroke-linecap="round" fill="none"/>
         <path d="M84 70 C 92 70 92 40 98 40 H104 C 110 40 110 70 118 70" stroke="#0fb8d9" stroke-width="6" stroke-linecap="round" fill="none"/>
@@ -242,16 +243,25 @@
       </svg>
       <span class="name">cauce<span class="dot">.</span></span>
     </a>
-    <div class="nav-links">
+    <div class="nav-links" id="nav-links">
+      <span class="nav-grupo nav-m">Servicios</span>
+      <a href="/capacitaciones/" class="nav-m">Capacitaciones</a>
+      <a href="/consultoria-ti/" class="nav-m">Consultoría TI</a>
+      <a href="/tienda/" class="nav-m">Tienda</a>
+      <span class="nav-grupo nav-m">Cauce</span>
       <a href="#metodo">Cómo trabajamos</a>
       <a href="#servicios">Qué hacemos</a>
       <a href="#nosotros">Quiénes somos</a>
       <a href="#faq">Preguntas</a>
     </div>
-    <a href="#cafe" class="nav-cta">Café Cauce</a>
+    <div class="nav-right">
+      <a href="https://calendly.com/cauce-ingenieria/cauce-consultoria-60-min-clon-clon-1" class="nav-cta" data-calendly data-ubicacion="nav">Café Cauce</a>
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </nav>
 
+<main id="contenido" class="home-flow">
 <header class="hero">
   <div class="hero-grid-bg"></div>
   <div class="wrap">
@@ -290,6 +300,13 @@
         <circle class="flow-node flow-node-solid" cx="510" cy="150" r="7" style="animation-delay: 1.6s;"/>
         <circle class="flow-node flow-node-solid" cx="785" cy="30" r="7" style="animation-delay: 2.0s;"/>
         <circle class="flow-node flow-node-solid" cx="1050" cy="90" r="13" style="animation-delay: 2.4s;"/>
+        <g class="pipe-gota" opacity="0" aria-hidden="true">
+          <animateMotion dur="17.9s" begin="3s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0.3055;0.3055;0.4458;0.4458;0.586;0.586;0.7374;0.7374;1;1;1" keyTimes="0;0.2048;0.2551;0.3491;0.3994;0.4934;0.5437;0.6452;0.6955;0.8715;0.9721;1" path="M50 90 H380 C430 90 430 150 480 150 H540 C590 150 590 90 640 90 C700 90 700 30 760 30 H810 C870 30 870 90 930 90 H1050"/>
+          <animate attributeName="opacity" dur="17.9s" begin="3s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.02;0.9721;0.9921;1"/>
+          <circle r="18" fill="#0fb8d9" opacity="0.3"><animate attributeName="r" values="14;32;14" dur="1.8s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.4;0;0.4" dur="1.8s" repeatCount="indefinite"/></circle>
+          <circle r="13" fill="#0a8aa3" stroke="#fff" stroke-width="3"/>
+          <circle r="4" cx="-4" cy="-4" fill="#fff" opacity="0.8"/>
+        </g>
       </svg>
       <div class="hero-pipeline-labels">
         <span class="pipe-label mono" style="animation-delay: 0.6s;">01 · Diagnóstico</span>
@@ -298,6 +315,8 @@
         <span class="pipe-label mono" style="animation-delay: 2.4s;">04 · Ingeniería</span>
       </div>
     </div>
+
+    <div class="atajos"><span class="mono">Ir directo a</span><a href="/capacitaciones/" data-ubicacion="atajo-hero">Capacitaciones</a><a href="/consultoria-ti/" data-ubicacion="atajo-hero">Consultoría TI</a><a href="/tienda/" data-ubicacion="atajo-hero">Tienda</a></div>
   </div>
 </header>
 
@@ -316,7 +335,7 @@
         <div class="anti-item">
           <div class="anti-icon no">✕</div>
           <div>
-            <h4 class="no-text">Somos un curso o una comunidad</h4>
+            <h3 class="no-text">Somos un curso o una comunidad</h3>
             <p>No te vendemos videos para que aprendas tú. Trabajamos juntos en tu negocio real, no en simulaciones.</p>
           </div>
         </div>
@@ -324,7 +343,7 @@
         <div class="anti-item">
           <div class="anti-icon no">✕</div>
           <div>
-            <h4 class="no-text">Somos un emprendimiento de tecnología que te vende suscripciones</h4>
+            <h3 class="no-text">Somos un emprendimiento de tecnología que te vende suscripciones</h3>
             <p>No te suscribimos a una plataforma. Somos un equipo de ingenieros que diagnostica e implementa contigo. Servicio profesional, no producto.</p>
           </div>
         </div>
@@ -332,7 +351,7 @@
         <div class="anti-item">
           <div class="anti-icon no">✕</div>
           <div>
-            <h4 class="no-text">Somos una agencia de marketing o de redes</h4>
+            <h3 class="no-text">Somos una agencia de marketing o de redes</h3>
             <p>No hacemos publicidad, Instagram ni anuncios. Nos enfocamos en lo que pasa <em>dentro</em> del negocio. Tu página web o tu tienda en línea sí la construimos, pero como ingeniería: conectada a tus datos y tus procesos.</p>
           </div>
         </div>
@@ -340,7 +359,7 @@
         <div class="anti-item is-si">
           <div class="anti-icon si">✓</div>
           <div>
-            <h4>Somos consultoría e ingeniería aplicada</h4>
+            <h3>Somos consultoría e ingeniería aplicada</h3>
             <p>Diagnóstico serio + hoja de ruta ordenada por retorno de inversión + implementación codo a codo. Decisiones técnicas con criterio, no con palabras de moda.</p>
           </div>
         </div>
@@ -447,7 +466,7 @@
 
       <div class="metodo-step">
         <span class="num">01</span>
-        <h4>Diagnóstico</h4>
+        <h3>Diagnóstico</h3>
         <p>Conversamos con el dueño y el equipo. Revisamos lo que ya tienes. Mapeamos los procesos críticos. Identificamos en qué estado está el cauce y dónde están las fugas o las piedras.</p>
         <ul class="metodo-hacemos">
           <li>Conversación con el dueño y el equipo</li>
@@ -462,7 +481,7 @@
 
       <div class="metodo-step">
         <span class="num">02</span>
-        <h4>Datos</h4>
+        <h3>Datos</h3>
         <p>Encontramos qué información genera tu negocio, dónde se está perdiendo y cómo convertirla en algo útil para decidir. Sin datos no hay procesos eficientes ni ingeniería que valga la pena.</p>
         <ul class="metodo-hacemos">
           <li>Mapa de actores: quién genera, usa y decide con cada dato</li>
@@ -478,7 +497,7 @@
 
       <div class="metodo-step">
         <span class="num">03</span>
-        <h4>Procesos</h4>
+        <h3>Procesos</h3>
         <p>Rediseñamos los procesos clave para que el río fluya sin desperdicio. Automatizamos solo lo que se debe automatizar. Limpiamos antes de construir.</p>
         <ul class="metodo-hacemos">
           <li>Levantamiento de los procesos clave tal como funcionan hoy</li>
@@ -494,7 +513,7 @@
 
       <div class="metodo-step">
         <span class="num">04</span>
-        <h4>Ingeniería</h4>
+        <h3>Ingeniería</h3>
         <p>Solo aquí entra el software a la medida, las integraciones, la inteligencia artificial aplicada o la infraestructura. Únicamente cuando el diagnóstico lo justificó. Construido contigo, no por encima del muro.</p>
         <ul class="metodo-hacemos">
           <li>Arquitectura de sistemas, red e infraestructura antes de construir</li>
@@ -517,7 +536,7 @@
 <section class="caucha-hi">
   <div class="caucha-hi-inner">
     <div class="caucha-hi-img">
-      <img src="assets/img/caucha-saludo.png" alt="Caucha saludando">
+      <img src="assets/img/caucha-saludo.webp" alt="Caucha saludando" width="520" height="630" loading="lazy" decoding="async">
     </div>
     <div>
       <div class="speech-bubble">
@@ -535,7 +554,7 @@
     <div class="about-grid">
       <div class="about-img-wrap">
         <span class="badge mono">Hecho en Cali</span>
-        <img src="assets/img/caucha-nosotros.png" alt="Caucha">
+        <img src="assets/img/caucha-nosotros.webp" alt="Caucha" width="540" height="655" loading="lazy" decoding="async">
       </div>
       <div>
         <p class="mono" style="color: var(--ink-mute); margin-bottom: 1rem;">Quiénes somos</p>
@@ -550,19 +569,19 @@
 
         <div class="about-values">
           <div class="value">
-            <h5>Honestidad técnica</h5>
+            <h3>Honestidad técnica</h3>
             <p>Si no lo necesitas, no te lo vendemos. Punto.</p>
           </div>
           <div class="value">
-            <h5>Codo a codo</h5>
+            <h3>Codo a codo</h3>
             <p>Trabajamos con tu equipo, no por encima de él.</p>
           </div>
           <div class="value">
-            <h5>En español claro</h5>
+            <h3>En español claro</h3>
             <p>Te explicamos en español claro, sin palabras complicadas.</p>
           </div>
           <div class="value">
-            <h5>Precios claros</h5>
+            <h3>Precios claros</h3>
             <p>Alcance cerrado, precio cerrado. Sin sorpresas.</p>
           </div>
         </div>
@@ -752,7 +771,7 @@
           </p>
         </div>
         <div class="oferta-img">
-          <img src="assets/img/caucha-celebra.png" alt="Caucha celebrando un momento de claridad">
+          <img src="assets/img/caucha-celebra.webp" alt="Caucha celebrando un momento de claridad" width="380" height="460" loading="lazy" decoding="async">
         </div>
       </div>
 
@@ -793,7 +812,7 @@
           <div class="price">$15.500 COP</div>
           <p class="price-note">El valor de un café especial · 1 hora completa · Presencial en Cali o por videollamada</p>
         </div>
-        <a href="https://calendly.com/cauce-ingenieria/cauce-consultoria-60-min-clon-clon-1" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/cauce-ingenieria/cauce-consultoria-60-min-clon-clon-1'});return false;}" target="_blank" rel="noopener" class="btn-flow">
+        <a href="https://calendly.com/cauce-ingenieria/cauce-consultoria-60-min-clon-clon-1" data-calendly data-ubicacion="cafe" target="_blank" rel="noopener" class="btn-flow">
           Agendar Café Cauce
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10 H 16 M 11 5 L 16 10 L 11 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
@@ -871,6 +890,7 @@
   </div>
 </section>
 
+</main>
 <footer>
   <div class="wrap">
     <div class="footer-grid">
@@ -892,7 +912,7 @@
         <p>Datos · Procesos · Ingeniería para pymes, comerciantes y emprendedores en Colombia y Latinoamérica. Trabajamos contigo para que tu negocio fluya.</p>
       </div>
       <div class="footer-col">
-        <h5>Servicios</h5>
+        <h3>Servicios</h3>
         <ul>
           <li><a href="#cafe">Café Cauce</a></li>
           <li><a href="#metodo">Datos</a></li>
@@ -901,7 +921,7 @@
         </ul>
       </div>
       <div class="footer-col">
-        <h5>La firma</h5>
+        <h3>La firma</h3>
         <ul>
           <li><a href="#metodo">Cómo trabajamos</a></li>
           <li><a href="#nosotros">Quiénes somos</a></li>
@@ -909,7 +929,7 @@
         </ul>
       </div>
       <div class="footer-col">
-        <h5>Contacto</h5>
+        <h3>Contacto</h3>
         <ul>
           <li><a href="mailto:caucha@cauce-ingenieria.com">caucha@cauce-ingenieria.com</a></li>
           <li><a href="https://wa.me/573013682430" target="_blank" rel="noopener">WhatsApp</a></li>
@@ -924,19 +944,17 @@
   </div>
 </footer>
 
+<a class="cal-badge" href="https://calendly.com/cauce-ingenieria/cauce-consultoria-60-min-clon-clon-1" data-calendly data-ubicacion="globo" target="_blank" rel="noopener" aria-label="Agenda tu Café Cauce"><span class="cal-badge-t">Agenda tu Café Cauce ☕</span><span class="cal-badge-s">powered by Calendly</span></a>
 <a class="wa-float" href="https://wa.me/573013682430?text=Hola%20Cauce%2C%20quiero%20agendar%20un%20Caf%C3%A9%20Cauce" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.515 5.26l-.999 3.648 3.873-1.107zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
   <span class="wa-label">WhatsApp</span>
 </a>
 
 <!-- Principio del widget de globo de Calendly -->
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-
 <!-- Final del widget de globo de Calendly -->
 
 <script src="assets/js/medicion.js"></script>
 <script src="assets/js/idioma.js"></script>
-<script src="assets/js/main.js"></script>
+<script src="assets/js/cauce.js"></script>
 </body>
 </html>

@@ -29,9 +29,9 @@
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/assets/img/favicon-48.png" sizes="48x48" type="image/png">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/space-grotesk.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/instrument-serif-italic.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/jetbrains-mono.woff2">
 <link rel="stylesheet" href="/assets/css/cauce.css">
 <link rel="stylesheet" href="/assets/css/paginas.css">
 <style>
@@ -182,6 +182,10 @@
   .ldur, .dock-price .amount{font-family:var(--mono);}
   .cfg-hero .hero-eyebrow{justify-content:center;}
   .cfg-hero .breadcrumb ol{justify-content:center;}
+  /* El dock solo aparece cuando hay niveles elegidos (la clase has-sel la pone updateDock) */
+  .cfg-page .dock{transition:transform 0.3s, visibility 0.3s;}
+  .cfg-page:not(.has-sel) .dock{transform:translateY(100%); visibility:hidden;}
+  body.cfg-page:not(.has-sel){padding-bottom:0;}
 </style>
 <script type="application/ld+json">
 {
@@ -997,6 +1001,7 @@ function updateDock(){
     ivaLineEl.innerHTML = "&nbsp;";
     ctaBtn.disabled = true;
     waBtn.setAttribute("aria-disabled", "true");
+    document.body.classList.remove("has-sel");
     waBtn.href = "#";
     return;
   }
@@ -1017,6 +1022,7 @@ function updateDock(){
   ivaLineEl.textContent = "de capacitación";
   ctaBtn.disabled = false;
   waBtn.setAttribute("aria-disabled", "false");
+  document.body.classList.add("has-sel");
   waBtn.href = "https://wa.me/573013682430?text=" + encodeURIComponent(buildMensaje());
 }
 

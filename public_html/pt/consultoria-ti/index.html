@@ -29,9 +29,9 @@
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/assets/img/favicon-48.png" sizes="48x48" type="image/png">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/space-grotesk.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/instrument-serif-italic.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/jetbrains-mono.woff2">
 <link rel="stylesheet" href="/assets/css/cauce.css">
 <link rel="stylesheet" href="/assets/css/paginas.css">
 <script type="application/ld+json">
@@ -180,7 +180,7 @@
       "itemOffered": {
        "@type": "Service",
        "name": "Consultoria",
-       "description": "Nosso método de quatro passos aplicado ao seu negócio: Diagnóstico → Dados → Processos → Engenharia. É a base da torre: decide quais peças você precisa e em que ordem."
+       "description": "Nosso método de quatro etapas aplicado ao seu negócio: Diagnóstico → Dados → Processos → Engenharia. É a base da torre: decide de quais peças você precisa e em que ordem."
       }
      },
      {
@@ -427,102 +427,123 @@
       <div class="piezas" role="group" aria-label="Peças">
         <article class="pieza" data-pieza="consultoria">
           <span class="brick" style="--c:#0d1b2a; --t:#f4f5f7;"><span class="brick-label">Consultoria</span></span>
-          <h3 class="pieza-name">Consultoria</h3>
-          <p class="pieza-desc">Nosso método de quatro passos aplicado ao seu negócio: Diagnóstico → Dados → Processos → Engenharia. É a base da torre: decide quais peças você precisa e em que ordem.</p>
-          <ul class="pieza-incluye">
-            <li><strong>Diagnóstico:</strong> conversamos com o dono e a equipe, revisamos o que você já tem e encontramos onde se perde tempo ou dinheiro.</li>
+          <h3 class="pieza-name" id="pieza-consultoria">Consultoria</h3>
+          <p class="pieza-desc">Nosso método de quatro etapas aplicado ao seu negócio: Diagnóstico → Dados → Processos → Engenharia. É a base da torre: decide de quais peças você precisa e em que ordem.</p>
+          <details class="pieza-detalle" open>
+            <summary>Ver o que inclui</summary>
+            <ul class="pieza-incluye">
+              <li><strong>Diagnóstico:</strong> conversamos com o dono e a equipe, revisamos o que você já tem e encontramos onde se perde tempo ou dinheiro.</li>
             <li><strong>Dados:</strong> que informação seu negócio gera, onde ela se perde e o que convém medir.</li>
             <li><strong>Processos:</strong> o que redesenhar antes de comprar ou construir tecnologia.</li>
             <li><strong>Engenharia:</strong> roteiro ordenado por retorno sobre o investimento, com as próximas peças.</li>
-          </ul>
-          <p class="pieza-ideal"><span>Ideal se</span> Você não sabe por onde começar ou já investiu em tecnologia e não deu retorno.</p>
-          <p class="pieza-mas"><a href="/pt/consultoria-ti/consultoria-tecnologica/">Ver consultoria tecnológica <span class="arrow">→</span></a></p>
-          <button type="button" class="pieza-toggle" aria-pressed="false" aria-label="Adicionar Consultoria à minha torre"><span class="add">+ Adicionar à minha torre</span><span class="remove">✓ Na sua torre · remover</span></button>
+            </ul>
+            <p class="pieza-ideal"><span>Ideal se</span> Você não sabe por onde começar ou já investiu em tecnologia e não deu retorno.</p>
+            <p class="pieza-mas"><a href="/pt/consultoria-ti/consultoria-tecnologica/">Ver consultoria tecnológica <span class="arrow">→</span></a></p>
+          </details>
+          <button type="button" class="pieza-toggle" aria-pressed="false" aria-describedby="pieza-consultoria"><span class="add">+ Adicionar à minha torre</span><span class="remove">✓ Na sua torre · remover</span></button>
         </article>
         <article class="pieza" data-pieza="arquitectura">
           <span class="brick" style="--c:#0a8aa3; --t:#ffffff;"><span class="brick-label">Arquitetura</span></span>
-          <h3 class="pieza-name">Arquitetura de redes e software</h3>
+          <h3 class="pieza-name" id="pieza-arquitectura">Arquitetura de redes e software</h3>
           <p class="pieza-desc">O projeto da sua infraestrutura de rede ou dos seus sistemas de software, antes de comprar um equipamento ou escrever uma linha de código.</p>
-          <ul class="pieza-incluye">
-            <li><strong>Software:</strong> definimos os componentes, os dados e as integrações para que o que for construído, com ou sem IA, possa crescer.</li>
+          <details class="pieza-detalle" open>
+            <summary>Ver o que inclui</summary>
+            <ul class="pieza-incluye">
+              <li><strong>Software:</strong> definimos os componentes, os dados e as integrações para que o que for construído, com ou sem IA, possa crescer.</li>
             <li><strong>Redes:</strong> topologia, segmentação e cabeamento versus Wi-Fi para uma nova unidade ou uma rede que já não dá conta.</li>
             <li><strong>Servidores:</strong> nuvem, servidor próprio ou híbrido: o certo para seu negócio, não o mais caro nem o da moda.</li>
             <li>Plantas e documentação para que nós ou qualquer fornecedor construa sobre elas.</li>
-          </ul>
-          <p class="pieza-ideal"><span>Ideal se</span> Você tem uma ideia de software, vai abrir uma unidade ou sua rede e seus sistemas já não dão conta.</p>
-          <p class="pieza-mas"><a href="/pt/consultoria-ti/arquitetura-de-software-e-redes/">Ver arquitetura <span class="arrow">→</span></a></p>
-          <button type="button" class="pieza-toggle" aria-pressed="false" aria-label="Adicionar Arquitetura de redes e software à minha torre"><span class="add">+ Adicionar à minha torre</span><span class="remove">✓ Na sua torre · remover</span></button>
+            </ul>
+            <p class="pieza-ideal"><span>Ideal se</span> Você tem uma ideia de software, vai abrir uma unidade ou sua rede e seus sistemas já não dão conta.</p>
+            <p class="pieza-mas"><a href="/pt/consultoria-ti/arquitetura-de-software-e-redes/">Ver arquitetura <span class="arrow">→</span></a></p>
+          </details>
+          <button type="button" class="pieza-toggle" aria-pressed="false" aria-describedby="pieza-arquitectura"><span class="add">+ Adicionar à minha torre</span><span class="remove">✓ Na sua torre · remover</span></button>
         </article>
         <article class="pieza" data-pieza="desarrollo">
           <span class="brick" style="--c:#0fb8d9; --t:#0d1b2a;"><span class="brick-label">Desenvolvimento sob medida</span></span>
-          <h3 class="pieza-name">Desenvolvimento sob medida</h3>
+          <h3 class="pieza-name" id="pieza-desarrollo">Desenvolvimento sob medida</h3>
           <p class="pieza-desc">Transformamos a ideia e o projeto em software funcionando. Com desenvolvimento assistido por IA, hoje é mais rápido, mais padronizado e mais econômico, sem sacrificar a qualidade.</p>
-          <ul class="pieza-incluye">
-            <li><strong>Fábrica de software:</strong> aplicações web, sistemas internos e apps móveis.</li>
+          <details class="pieza-detalle" open>
+            <summary>Ver o que inclui</summary>
+            <ul class="pieza-incluye">
+              <li><strong>Fábrica de software:</strong> aplicações web, sistemas internos e apps móveis.</li>
             <li><strong>Sites corporativos:</strong> design, desenvolvimento e administração como webmaster (domínio, hospedagem, certificado de segurança e atualizações).</li>
             <li><strong>Automação e IA:</strong> RPA, fluxos com n8n ou scripts sob medida, e agentes de inteligência artificial conectados aos seus sistemas.</li>
             <li>Integrações com o que você já usa: Siigo, Alegra, WhatsApp Business, planilhas.</li>
             <li>Entregas por etapas, com código e documentação em nome da sua empresa.</li>
-          </ul>
-          <p class="pieza-ideal"><span>Ideal se</span> Você já tem a ideia clara (e melhor ainda se já passou pela arquitetura).</p>
-          <p class="pieza-mas"><a href="/pt/consultoria-ti/desenvolvimento-de-software/">Fábrica de software <span class="arrow">→</span></a><a href="/pt/consultoria-ti/sites-e-lojas-virtuais/">Sites e lojas virtuais <span class="arrow">→</span></a><a href="/pt/consultoria-ti/automacao-rpa-e-ia/">Automação, RPA e IA <span class="arrow">→</span></a></p>
-          <button type="button" class="pieza-toggle" aria-pressed="false" aria-label="Adicionar Desenvolvimento sob medida à minha torre"><span class="add">+ Adicionar à minha torre</span><span class="remove">✓ Na sua torre · remover</span></button>
+            </ul>
+            <p class="pieza-ideal"><span>Ideal se</span> Você já tem a ideia clara (e melhor ainda se já passou pela arquitetura).</p>
+            <p class="pieza-mas"><a href="/pt/consultoria-ti/desenvolvimento-de-software/">Fábrica de software <span class="arrow">→</span></a><a href="/pt/consultoria-ti/sites-e-lojas-virtuais/">Sites e lojas virtuais <span class="arrow">→</span></a><a href="/pt/consultoria-ti/automacao-rpa-e-ia/">Automação, RPA e IA <span class="arrow">→</span></a></p>
+          </details>
+          <button type="button" class="pieza-toggle" aria-pressed="false" aria-describedby="pieza-desarrollo"><span class="add">+ Adicionar à minha torre</span><span class="remove">✓ Na sua torre · remover</span></button>
         </article>
         <article class="pieza" data-pieza="calidad">
           <span class="brick" style="--c:#4a5a6e; --t:#ffffff;"><span class="brick-label">Testes de qualidade</span></span>
-          <h3 class="pieza-name">Testes de qualidade de software</h3>
+          <h3 class="pieza-name" id="pieza-calidad">Testes de qualidade de software</h3>
           <p class="pieza-desc">Verificamos se seu software faz o que você espera, nos casos normais e nos raros, antes que seu cliente descubra.</p>
-          <ul class="pieza-incluye">
-            <li>Testes funcionais dos fluxos críticos (vendas, pagamentos, estoque, relatórios).</li>
+          <details class="pieza-detalle" open>
+            <summary>Ver o que inclui</summary>
+            <ul class="pieza-incluye">
+              <li>Testes funcionais dos fluxos críticos (vendas, pagamentos, estoque, relatórios).</li>
             <li>Testes antes de cada lançamento ou atualização importante.</li>
             <li>Relatório de achados priorizado: o que corrigir primeiro.</li>
             <li>Serve para software nosso ou feito por outro fornecedor.</li>
-          </ul>
-          <p class="pieza-ideal"><span>Ideal se</span> Você vai lançar algo novo ou seu sistema falha e você não sabe por quê.</p>
-          <p class="pieza-mas"><a href="/pt/consultoria-ti/testes-de-software/">Ver testes de software <span class="arrow">→</span></a></p>
-          <button type="button" class="pieza-toggle" aria-pressed="false" aria-label="Adicionar Testes de qualidade de software à minha torre"><span class="add">+ Adicionar à minha torre</span><span class="remove">✓ Na sua torre · remover</span></button>
+            </ul>
+            <p class="pieza-ideal"><span>Ideal se</span> Você vai lançar algo novo ou seu sistema falha e você não sabe por quê.</p>
+            <p class="pieza-mas"><a href="/pt/consultoria-ti/testes-de-software/">Ver testes de software <span class="arrow">→</span></a></p>
+          </details>
+          <button type="button" class="pieza-toggle" aria-pressed="false" aria-describedby="pieza-calidad"><span class="add">+ Adicionar à minha torre</span><span class="remove">✓ Na sua torre · remover</span></button>
         </article>
         <article class="pieza" data-pieza="seguridad">
           <span class="brick" style="--c:#075e70; --t:#ffffff;"><span class="brick-label">Segurança e pentest</span></span>
-          <h3 class="pieza-name">Auditoria de segurança e pentesting</h3>
+          <h3 class="pieza-name" id="pieza-seguridad">Auditoria de segurança e pentesting</h3>
           <p class="pieza-desc">Auditamos a segurança do seu software e detectamos seus pontos fracos antes de um atacante, com o padrão OWASP ASVS como referência.</p>
-          <ul class="pieza-incluye">
-            <li><strong>Auditoria de segurança:</strong> verificamos sua aplicação com base no OWASP ASVS (Application Security Verification Standard), o padrão para avaliar a segurança de aplicações.</li>
+          <details class="pieza-detalle" open>
+            <summary>Ver o que inclui</summary>
+            <ul class="pieza-incluye">
+              <li><strong>Auditoria de segurança:</strong> verificamos sua aplicação com base no OWASP ASVS (Application Security Verification Standard), o padrão para avaliar a segurança de aplicações.</li>
             <li><strong>Pentest:</strong> testes de invasão controlados sobre seu software proprietário, atacando-o como faria um atacante real.</li>
             <li>Revisão de acessos, senhas, permissões e dados expostos.</li>
             <li>Relatório de vulnerabilidades priorizado por risco, com como corrigir cada uma.</li>
-          </ul>
-          <p class="pieza-ideal"><span>Ideal se</span> Seu software lida com dados de clientes, pagamentos ou informações sensíveis, ou você vai lançar uma versão importante.</p>
-          <p class="pieza-mas"><a href="/pt/consultoria-ti/auditoria-de-seguranca-e-pentest/">Ver auditoria e pentest <span class="arrow">→</span></a></p>
-          <button type="button" class="pieza-toggle" aria-pressed="false" aria-label="Adicionar Auditoria de segurança e pentesting à minha torre"><span class="add">+ Adicionar à minha torre</span><span class="remove">✓ Na sua torre · remover</span></button>
+            </ul>
+            <p class="pieza-ideal"><span>Ideal se</span> Seu software lida com dados de clientes, pagamentos ou informações sensíveis, ou você vai lançar uma versão importante.</p>
+            <p class="pieza-mas"><a href="/pt/consultoria-ti/auditoria-de-seguranca-e-pentest/">Ver auditoria e pentest <span class="arrow">→</span></a></p>
+          </details>
+          <button type="button" class="pieza-toggle" aria-pressed="false" aria-describedby="pieza-seguridad"><span class="add">+ Adicionar à minha torre</span><span class="remove">✓ Na sua torre · remover</span></button>
         </article>
         <article class="pieza" data-pieza="infraestructura">
           <span class="brick" style="--c:#8b97a8; --t:#0d1b2a;"><span class="brick-label">Infraestrutura</span></span>
-          <h3 class="pieza-name">Infraestrutura e monitoramento</h3>
+          <h3 class="pieza-name" id="pieza-infraestructura">Infraestrutura e monitoramento</h3>
           <p class="pieza-desc">Instalamos, migramos e vigiamos suas redes, servidores e aplicações na nuvem para que continuem funcionando e seguros.</p>
-          <ul class="pieza-incluye">
-            <li><strong>Redes corporativas:</strong> instalação, VPN para se conectar com segurança de fora e monitoramento.</li>
+          <details class="pieza-detalle" open>
+            <summary>Ver o que inclui</summary>
+            <ul class="pieza-incluye">
+              <li><strong>Redes corporativas:</strong> instalação, VPN para se conectar com segurança de fora e monitoramento.</li>
             <li><strong>Servidores:</strong> instalação com RAID, backups e virtualização; migração sem perder informação.</li>
             <li><strong>Nuvem:</strong> implantação e operação na AWS, Google Cloud ou Azure com Terraform.</li>
             <li>Monitoramento, patches e backups verificados, com alertas antes que algo falhe.</li>
-          </ul>
-          <p class="pieza-ideal"><span>Ideal se</span> Seu sistema cai e você fica sabendo pelos clientes, ou ninguém revisa os backups.</p>
-          <p class="pieza-mas"><a href="/pt/consultoria-ti/infraestrutura-e-redes/">Ver redes e infraestrutura <span class="arrow">→</span></a></p>
-          <button type="button" class="pieza-toggle" aria-pressed="false" aria-label="Adicionar Infraestrutura e monitoramento à minha torre"><span class="add">+ Adicionar à minha torre</span><span class="remove">✓ Na sua torre · remover</span></button>
+            </ul>
+            <p class="pieza-ideal"><span>Ideal se</span> Seu sistema cai e você fica sabendo pelos clientes, ou ninguém revisa os backups.</p>
+            <p class="pieza-mas"><a href="/pt/consultoria-ti/infraestrutura-e-redes/">Ver redes e infraestrutura <span class="arrow">→</span></a></p>
+          </details>
+          <button type="button" class="pieza-toggle" aria-pressed="false" aria-describedby="pieza-infraestructura"><span class="add">+ Adicionar à minha torre</span><span class="remove">✓ Na sua torre · remover</span></button>
         </article>
         <article class="pieza" data-pieza="soporte">
           <span class="brick" style="--c:#d5f1f7; --t:#0d1b2a;"><span class="brick-label">Suporte de TI</span></span>
-          <h3 class="pieza-name">Suporte de TI</h3>
+          <h3 class="pieza-name" id="pieza-soporte">Suporte de TI</h3>
           <p class="pieza-desc">Sua área de TI sem precisar contratá-la: alguém atende sua equipe quando algo falha e cuida dos equipamentos antes que falhem.</p>
-          <ul class="pieza-incluye">
-            <li>Help desk remoto com acesso seguro, e suporte presencial em Cali.</li>
+          <details class="pieza-detalle" open>
+            <summary>Ver o que inclui</summary>
+            <ul class="pieza-incluye">
+              <li>Help desk remoto com acesso seguro, e suporte presencial em Cali.</li>
             <li>Monitoramento dos equipamentos: muitas vezes ficamos sabendo da falha antes de você.</li>
             <li>Manutenção preventiva e registro de cada caso.</li>
             <li>Níveis com tempo de resposta claro: 24 a 48 h, 8 a 24 h ou menos de 4 h.</li>
-          </ul>
-          <p class="pieza-ideal"><span>Ideal se</span> Você não tem ninguém de TI na equipe. Se também precisa de equipamentos, veja a <a href="/tienda/">loja</a>.</p>
-          <p class="pieza-mas"><a href="/pt/consultoria-ti/suporte-ti/">Ver suporte de TI <span class="arrow">→</span></a></p>
-          <button type="button" class="pieza-toggle" aria-pressed="false" aria-label="Adicionar Suporte de TI à minha torre"><span class="add">+ Adicionar à minha torre</span><span class="remove">✓ Na sua torre · remover</span></button>
+            </ul>
+            <p class="pieza-ideal"><span>Ideal se</span> Você não tem ninguém de TI na equipe. Se também precisa de equipamentos, veja a <a href="/tienda/">loja</a>.</p>
+            <p class="pieza-mas"><a href="/pt/consultoria-ti/suporte-ti/">Ver suporte de TI <span class="arrow">→</span></a></p>
+          </details>
+          <button type="button" class="pieza-toggle" aria-pressed="false" aria-describedby="pieza-soporte"><span class="add">+ Adicionar à minha torre</span><span class="remove">✓ Na sua torre · remover</span></button>
         </article>
       </div>
 
@@ -603,7 +624,7 @@
         <p>Dados · Processos · Engenharia para PMEs, comerciantes e empreendedores na Colômbia e na América Latina. Trabalhamos com você para que seu negócio flua.</p>
       </div>
       <div class="footer-col">
-        <h5>Serviços</h5>
+        <h3>Serviços</h3>
         <ul>
           <li><a href="/pt/#cafe">Café Cauce</a></li>
           <li><a href="/pt/capacitacoes/">Capacitações</a></li>
@@ -618,7 +639,7 @@
         </ul>
       </div>
       <div class="footer-col">
-        <h5>A empresa</h5>
+        <h3>A empresa</h3>
         <ul>
           <li><a href="/pt/#metodo">Como trabalhamos</a></li>
           <li><a href="/pt/#nosotros">Quem somos</a></li>
@@ -626,7 +647,7 @@
         </ul>
       </div>
       <div class="footer-col">
-        <h5>Contato</h5>
+        <h3>Contato</h3>
         <ul>
           <li><a href="mailto:caucha@cauce-ingenieria.com">caucha@cauce-ingenieria.com</a></li>
           <li><a href="https://wa.me/573013682430" target="_blank" rel="noopener" data-ubicacion="footer">WhatsApp</a></li>

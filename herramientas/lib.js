@@ -26,17 +26,23 @@ const NAV_ITEMS = [
   ["/consultoria-ti/", "Consultoría TI"],
   ["/tienda/", "Tienda"],
 ];
+const HOME_NAV = [["#metodo", "Cómo trabajamos"], ["#servicios", "Qué hacemos"], ["#nosotros", "Quiénes somos"], ["#faq", "Preguntas"]];
 
-const HOME_NAV = [["#metodo", "Cómo trabajamos"], ["#pilares", "Qué hacemos"], ["#nosotros", "Quiénes somos"], ["#faq", "Preguntas"]];
-
+// Misma barra en todo el sitio, con enlaces según el contexto: la portada (la firma) lleva sus secciones; las páginas
+// internas (lo que ofrecemos) llevan las tres páginas de servicio. En el menú móvil de la portada se agrupan ambas.
 function nav(current, isHome) {
-  const links = (isHome ? HOME_NAV : NAV_ITEMS).map(([href, label]) => {
-    const active = current && (href === current || current.startsWith(href));
-    return `<a href="${href}"${active ? ' aria-current="page"' : ""}>${label}</a>`;
-  }).join("\n      ");
-  const cta = isHome
-    ? `<a href="#cafe" class="nav-cta">Café Cauce</a>`
-    : `<a href="${CALENDLY}" class="nav-cta" data-calendly data-ubicacion="nav">Café Cauce</a>`;
+  const enlace = ([href, label], extra = "") => {
+    const active = !isHome && current && current.startsWith(href);
+    return `<a href="${href}"${extra}${active ? ' aria-current="page"' : ""}>${label}</a>`;
+  };
+  const links = isHome
+    ? [
+        `<span class="nav-grupo nav-m">Servicios</span>`,
+        ...NAV_ITEMS.map((i) => enlace(i, ' class="nav-m"')),
+        `<span class="nav-grupo nav-m">Cauce</span>`,
+        ...HOME_NAV.map((i) => enlace(i)),
+      ].join("\n      ")
+    : NAV_ITEMS.map((i) => enlace(i)).join("\n      ");
   return `<nav aria-label="Principal">
   <div class="nav-inner">
     <a href="/" class="brand" aria-label="Cauce, inicio">
@@ -47,7 +53,7 @@ function nav(current, isHome) {
       ${links}
     </div>
     <div class="nav-right">
-      ${cta}
+      <a href="${CALENDLY}" class="nav-cta" data-calendly data-ubicacion="nav">Café Cauce</a>
       <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -66,7 +72,7 @@ function footer() {
         <p>Datos · Procesos · Ingeniería para pymes, comerciantes y emprendedores en Colombia y Latinoamérica. Trabajamos contigo para que tu negocio fluya.</p>
       </div>
       <div class="footer-col">
-        <h5>Servicios</h5>
+        <h3>Servicios</h3>
         <ul>
           <li><a href="/#cafe">Café Cauce</a></li>
           <li><a href="/capacitaciones/">Capacitaciones</a></li>
@@ -81,7 +87,7 @@ function footer() {
         </ul>
       </div>
       <div class="footer-col">
-        <h5>La firma</h5>
+        <h3>La firma</h3>
         <ul>
           <li><a href="/#metodo">Cómo trabajamos</a></li>
           <li><a href="/#nosotros">Quiénes somos</a></li>
@@ -89,7 +95,7 @@ function footer() {
         </ul>
       </div>
       <div class="footer-col">
-        <h5>Contacto</h5>
+        <h3>Contacto</h3>
         <ul>
           <li><a href="mailto:${EMAIL}">${EMAIL}</a></li>
           <li><a href="https://wa.me/${WA}" target="_blank" rel="noopener" data-ubicacion="footer">WhatsApp</a></li>
@@ -270,9 +276,9 @@ function page({ path, title, description, bodyClass = "", dataPage, extraHead = 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/assets/img/favicon-48.png" sizes="48x48" type="image/png">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/space-grotesk.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/instrument-serif-italic.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/jetbrains-mono.woff2">
 <link rel="stylesheet" href="/assets/css/cauce.css">
 <link rel="stylesheet" href="/assets/css/paginas.css">
 ${extraHead}<script type="application/ld+json">
