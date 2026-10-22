@@ -37,7 +37,12 @@ jobs:
       - name: Huella en CSS y JS (evita mezclar HTML nuevo con CSS viejo en caché)
         run: node herramientas/versionar-assets.js
 
+      # GoDaddy (hosting compartido) a veces deja colgada la conexión FTPS cuando se suben
+      # muchos archivos seguidos. Por eso: espera de 2 minutos y un reintento automático.
+      # El estado del deploy solo se guarda al terminar bien, así que el reintento retoma todo.
       - name: Subir a GoDaddy por FTPS (solo lo que cambió)
+        id: ftp
+        continue-on-error: true
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -49,6 +54,26 @@ jobs:
           security: loose
           local-dir: ./public_html/
           server-dir: ./        # la cuenta FTP ya arranca dentro de public_html
+          timeout: 120000       # milisegundos (por defecto son 30 s)
+
+      - name: Esperar antes de reintentar
+        if: steps.ftp.outcome == 'failure'
+        run: |
+          echo "::warning::La primera subida falló (GoDaddy cortó la conexión). Reintentando en 20 s..."
+          sleep 20
+
+      - name: Subir a GoDaddy por FTPS (reintento)
+        if: steps.ftp.outcome == 'failure'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          security: loose
+          local-dir: ./public_html/
+          server-dir: ./
+          timeout: 120000
 
       - name: Limpiar caché del firewall (Sucuri)
         id: cache
