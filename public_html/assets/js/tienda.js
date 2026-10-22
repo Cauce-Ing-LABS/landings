@@ -50,7 +50,7 @@
   var rutaImagen = function (v) { return /^(https?:)?\/|^\.\//.test(v) ? v : "/tienda/img/" + v; };
   var media = function (p) {
     return p.imagenes.length
-      ? '<img src="' + esc(p.imagenes[0]) + '" alt="' + esc(p.nombre) + '" loading="lazy" decoding="async" data-foto>'
+      ? '<img src="' + esc(p.imagenes[0]) + '" alt="' + esc(p.nombre) + '" width="400" height="400" loading="lazy" decoding="async" data-foto>'
       : dibujo(p);
   };
 
@@ -523,7 +523,11 @@
   }
 
   // ---------- arranque: leer el CSV ----------
-  fetch(CSV_URL, { cache: "no-cache" })
+  // Un fallo de red puntual se reintenta una vez; si persiste, se ofrece reintentar a mano o escribir por WhatsApp
+  function cargar(intento) {
+    $("[data-error-catalogo]").hidden = true;
+    $("[data-cargando]").hidden = false;
+    fetch(CSV_URL, { cache: "no-cache" })
     .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.arrayBuffer(); })
     .then(function (buf) {
       PRODUCTOS = parseCSV(decodificar(buf))
@@ -536,8 +540,19 @@
       if (!aplicarHash()) render();
     })
     .catch(function (err) {
+      if (window.console) console.warn("No se pudo cargar el catálogo:", err);
+      if (intento < 1) { setTimeout(function () { cargar(intento + 1); }, 1500); return; }
       $("[data-cargando]").hidden = true;
       $("[data-error-catalogo]").hidden = false;
-      if (window.console) console.warn("No se pudo cargar el catálogo:", err);
     });
+  }
+  $$("[data-reintentar]").forEach(function (b) { b.addEventListener("click", function () { cargar(0); }); });
+  $$("[data-limpiar-filtros]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      state.estado = "todos"; state.cat = "todo"; state.sub = "todo"; state.q = "";
+      var campo = $("[data-buscar-input]"); campo.value = "";
+      render(); campo.focus();
+    });
+  });
+  cargar(0);
 })();

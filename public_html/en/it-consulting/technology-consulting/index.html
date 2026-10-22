@@ -29,9 +29,9 @@
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/assets/img/favicon-48.png" sizes="48x48" type="image/png">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/space-grotesk.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/instrument-serif-italic.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/jetbrains-mono.woff2">
 <link rel="stylesheet" href="/assets/css/cauce.css">
 <link rel="stylesheet" href="/assets/css/paginas.css">
 <script type="application/ld+json">
@@ -285,9 +285,9 @@
     <div class="section-head">
       <div>
         <p class="mono eyebrow">What we do</p>
-        <h2>Four areas we<br><em>review with you.</em></h2>
+        <h2>Cauce's four stages,<br><em>in your business.</em></h2>
       </div>
-      <p class="lead">It's our four-step method applied to your business. It's the foundation for everything else: it decides which pieces you need and which you don't.</p>
+      <p class="lead">Diagnosis, Data, Processes and Engineering: our four-stage method applied to your business. It is the foundation for everything else: it decides which pieces you need and which you don't.</p>
     </div>
     <div class="svc-grid cols-3">
       <article class="svc-card">
@@ -314,18 +314,26 @@
         <p>With all of the above we build the roadmap: what to build, buy or integrate, ordered by return on investment.</p>
         <ul><li>Recommended pieces and in what order</li><li>What you can do on your own and what needs help</li><li>Fixed scope and price for each step</li></ul>
       </article>
-      <article class="svc-card">
-        <span class="num-mono">05</span>
-        <h3>Realistic digital transformation</h3>
-        <p>No magic packages. If a well-built spreadsheet solves it, we tell you. If you need custom software, we tell you that too.</p>
-        <ul><li>Technical decisions with sound judgment</li><li>No selling you things you don't need</li></ul>
-      </article>
-      <article class="svc-card">
-        <span class="num-mono">06</span>
-        <h3>Ongoing support</h3>
-        <p>Implementation is done by the same team that did the diagnosis, side by side with your people.</p>
-        <ul><li>Nobody hands you off to someone else after the sale</li><li>No surprise “phase 2”</li></ul>
-      </article>
+    </div>
+    <div class="principios">
+      <div class="principios-head">
+        <p class="mono eyebrow">How we work</p>
+        <h3>Two principles<br><em>across every stage.</em></h3>
+      </div>
+      <div class="principios-grid">
+        <article class="svc-card is-principio">
+          <span class="num-mono">Principle</span>
+          <h4>Realistic digital transformation</h4>
+          <p>No magic packages. If a well-built spreadsheet solves it, we tell you. If you need custom software, we tell you that too.</p>
+          <ul><li>Technical decisions with sound judgment</li><li>No selling you things you don't need</li></ul>
+        </article>
+        <article class="svc-card is-principio">
+          <span class="num-mono">Principle</span>
+          <h4>Ongoing support</h4>
+          <p>Implementation is done by the same team that did the diagnosis, side by side with your people.</p>
+          <ul><li>Nobody hands you off to someone else after the sale</li><li>No surprise “phase 2”</li></ul>
+        </article>
+      </div>
     </div>
   </div>
 </section>
@@ -335,29 +343,29 @@
     <div class="section-head">
       <div>
         <p class="mono eyebrow">How we do it</p>
-        <h2>Four steps.<br><em>No shortcuts.</em></h2>
+        <h2>This service's process,<br><em>step by step.</em></h2>
       </div>
-      <p class="lead">The same team works with you from start to finish, with fixed scope and price.</p>
+      <p class="lead">The steps of this consulting service, from the first conversation to the roadmap. The same team works with you from start to finish, with fixed scope and price.</p>
     </div>
     <div class="metodo-steps is-light">
       <div class="metodo-step">
         <span class="num">01</span>
-        <h4>Café Cauce</h4>
+        <h3>Café Cauce</h3>
         <p>One hour with an engineer to understand your case. You leave with at least two recommendations you can apply that same day.</p>
       </div>
       <div class="metodo-step">
         <span class="num">02</span>
-        <h4>Discovery</h4>
+        <h3>Discovery</h3>
         <p>Interviews with the owner and the team, review of tools and of how information flows.</p>
       </div>
       <div class="metodo-step">
         <span class="num">03</span>
-        <h4>Analysis</h4>
+        <h3>Analysis</h3>
         <p>Data map, process diagrams and a prioritized list of problems and opportunities.</p>
       </div>
       <div class="metodo-step">
         <span class="num">04</span>
-        <h4>Roadmap</h4>
+        <h3>Roadmap</h3>
         <p>We present the plan ordered by return on investment. You decide what to do, with us or on your own.</p>
       </div>
     </div>
@@ -446,7 +454,7 @@
         <p>Data · Processes · Engineering for SMEs, merchants and entrepreneurs in Colombia and Latin America. We work with you so your business flows.</p>
       </div>
       <div class="footer-col">
-        <h5>Services</h5>
+        <h3>Services</h3>
         <ul>
           <li><a href="/en/#cafe">Café Cauce</a></li>
           <li><a href="/en/training/">Training</a></li>
@@ -461,7 +469,7 @@
         </ul>
       </div>
       <div class="footer-col">
-        <h5>The firm</h5>
+        <h3>The firm</h3>
         <ul>
           <li><a href="/en/#metodo">How we work</a></li>
           <li><a href="/en/#nosotros">About us</a></li>
@@ -469,7 +477,7 @@
         </ul>
       </div>
       <div class="footer-col">
-        <h5>Contact</h5>
+        <h3>Contact</h3>
         <ul>
           <li><a href="mailto:caucha@cauce-ingenieria.com">caucha@cauce-ingenieria.com</a></li>
           <li><a href="https://wa.me/573013682430" target="_blank" rel="noopener" data-ubicacion="footer">WhatsApp</a></li>

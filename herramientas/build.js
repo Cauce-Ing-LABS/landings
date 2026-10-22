@@ -51,25 +51,62 @@ function landing() {
   let body = orig.match(/<body>\n?([\s\S]*?)<\/body>/)[1];
 
   // Imágenes incrustadas en base64 → archivos (mismo alt original)
-  const imgs = [["Caucha saludando", "caucha-saludo.png"], ["Caucha", "caucha-nosotros.png"], ["Caucha celebrando un momento de claridad", "caucha-celebra.png"]];
-  for (const [alt, file] of imgs) {
-    body = replaceOnce(body, new RegExp(`src="data:image/png;base64,[^"]+" alt="${alt}"`), `src="assets/img/${file}" alt="${alt}"`, alt);
+  const imgs = [["Caucha saludando", "caucha-saludo.webp", 520, 630], ["Caucha", "caucha-nosotros.webp", 540, 655], ["Caucha celebrando un momento de claridad", "caucha-celebra.webp", 380, 460]];
+  for (const [alt, file, w, h] of imgs) {
+    // WebP con tamaño explícito (sin saltos de diseño) y carga diferida: ninguna está en la primera pantalla
+    body = replaceOnce(body, new RegExp(`src="data:image/png;base64,[^"]+" alt="${alt}"`), `src="assets/img/${file}" alt="${alt}" width="${w}" height="${h}" loading="lazy" decoding="async"`, alt);
   }
   if (body.includes("base64,")) throw new Error("Quedó una imagen en base64");
 
   // Scripts en línea → assets/js/main.js (mismo código)
   const inline = [...body.matchAll(/<script(?: type="text\/javascript")?>([\s\S]*?)<\/script>/g)];
   if (inline.length !== 2) throw new Error("Se esperaban 2 scripts en línea, hay " + inline.length);
-  const mainJs = "/* Cauce · scripts de la página principal (los mismos que tenía cauce.html) */\n\n" +
-    "// Aparición suave al hacer scroll\n" + inline[0][1].trim() + "\n\n" +
-    "// Globo de Calendly\n" + inline[1][1].trim() + "\n";
-  write("assets/js/main.js", mainJs);
+  // La aparición suave y el globo de Calendly viven ahora en assets/js/cauce.js (Calendly solo se carga al pedirlo)
   for (const m of inline) body = body.replace(m[0], "");
+  body = replaceOnce(body, /<link href="https:\/\/assets\.calendly\.com[^>]*>\s*/, "", "calendly css");
+  body = replaceOnce(body, /<script src="https:\/\/assets\.calendly\.com[^>]*><\/script>\s*/, "", "calendly js");
+  body = replaceOnce(body, /\s*onclick="if\(window\.Calendly\)\{[^"]*\}"( target="_blank" rel="noopener" class="btn-flow")>/, ' data-calendly data-ubicacion="cafe"$1>', "calendly onclick");
+
+  // Navegación común con las páginas internas (menú móvil incluido)
+  body = replaceOnce(body, /<nav>[\s\S]*?<\/nav>/, () => '<a class="skip-link" href="#contenido">Saltar al contenido</a>\n' + L.nav("/", true), "nav");
+  // Atajos solo en móvil al final del hero, después del dibujo animado: quien ya sabe qué busca llega directo sin recorrer toda la portada
+  const ATAJOS = '<div class="atajos"><span class="mono">Ir directo a</span><a href="/capacitaciones/" data-ubicacion="atajo-hero">Capacitaciones</a><a href="/consultoria-ti/" data-ubicacion="atajo-hero">Consultoría TI</a><a href="/tienda/" data-ubicacion="atajo-hero">Tienda</a></div>';
+  body = replaceOnce(body, /(\n  <\/div>\n<\/header>)/, (m) => "\n\n    " + ATAJOS + m, "atajos");
+  // Una gota recorre el río del hero y se detiene en cada etapa (SMIL, sin JavaScript; se oculta con prefers-reduced-motion).
+  // Puntos del recorrido (fracción de la longitud del camino) en los nodos: 380,90 · 510,150 · 640,90 · 785,30 · final.
+  {
+    const RECORRIDO = "M50 90 H380 C430 90 430 150 480 150 H540 C590 150 590 90 640 90 C700 90 700 30 760 30 H810 C870 30 870 90 930 90 H1050";
+    const PUNTOS = [0, 0.3055, 0.4458, 0.586, 0.7374, 1];
+    const MOVER = 12, PAUSA = 0.9, FINAL = 1.8, FUNDIDO = 0.5; // segundos
+    const total = MOVER + PAUSA * 4 + FINAL + FUNDIDO;
+    let t = 0;
+    const kp = [0], kt = [0];
+    for (let i = 1; i < PUNTOS.length; i++) {
+      t += (PUNTOS[i] - PUNTOS[i - 1]) * MOVER; kp.push(PUNTOS[i]); kt.push(t / total);
+      const pausa = i === PUNTOS.length - 1 ? FINAL : PAUSA;
+      t += pausa; kp.push(PUNTOS[i]); kt.push(t / total);
+    }
+    kp.push(1); kt.push(1);
+    const f = (a) => a.map((x) => +x.toFixed(4)).join(";");
+    const fin = kt[kt.length - 2];
+    const caucha = `
+        <g class="pipe-gota" opacity="0" aria-hidden="true">
+          <animateMotion dur="${total}s" begin="3s" repeatCount="indefinite" calcMode="linear" keyPoints="${f(kp)}" keyTimes="${f(kt)}" path="${RECORRIDO}"/>
+          <animate attributeName="opacity" dur="${total}s" begin="3s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.02;${fin.toFixed(4)};${(fin + 0.02).toFixed(4)};1"/>
+          <circle r="18" fill="#0fb8d9" opacity="0.3"><animate attributeName="r" values="14;32;14" dur="1.8s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.4;0;0.4" dur="1.8s" repeatCount="indefinite"/></circle>
+          <circle r="13" fill="#0a8aa3" stroke="#fff" stroke-width="3"/>
+          <circle r="4" cx="-4" cy="-4" fill="#fff" opacity="0.8"/>
+        </g>`;
+    body = replaceOnce(body, /(<circle class="flow-node flow-node-solid" cx="1050"[^>]*\/>)(\s*<\/svg>)/, (m, a, b2) => a + caucha + b2, "gota en el río");
+  }
+  // Contenido en <main> (destino del enlace "Saltar al contenido")
+  body = replaceOnce(body, /(<header class="hero">[\s\S]*?)(\n<footer>)/, (m, a, b) => `<main id="contenido" class="home-flow">\n${a}\n</main>${b}`, "main");
+  // Globo de Calendly propio (misma apariencia que el original): carga Calendly al tocarlo
+  body = replaceOnce(body, /(<a class="wa-float")/, (m) => `<a class="cal-badge" href="${L.CALENDLY}" data-calendly data-ubicacion="globo" target="_blank" rel="noopener" aria-label="Agenda tu Café Cauce"><span class="cal-badge-t">Agenda tu Café Cauce ☕</span><span class="cal-badge-s">powered by Calendly</span></a>\n${m}`, "globo calendly");
   body = body.replace(/\n{3,}/g, "\n\n");
 
   // "Qué hacemos juntos" (pilares) se retira: su contenido vive ahora en "Cómo trabajamos"
   body = replaceOnce(body, /<section id="pilares"[\s\S]*?<\/section>\s*/, "", "sección pilares");
-  body = replaceOnce(body, '<a href="#pilares">Qué hacemos</a>', '<a href="#servicios">Qué hacemos</a>', "menú qué hacemos");
   body = body.replace(/<a href="#pilares">(Datos|Procesos|Ingeniería)<\/a>/g, '<a href="#metodo">$1</a>');
   if (body.includes("#pilares")) throw new Error("Quedó un enlace a #pilares");
 
@@ -165,6 +202,11 @@ function landing() {
   const ogTitle = "Cauce · Tu negocio no necesita más tecnología. Necesita un cauce.";
   const ogDesc = "Un equipo de ingenieros expertos en TI que trabaja codo a codo contigo. Identificamos las fugas, organizamos tus datos, limpiamos los procesos y aplicamos la tecnología que de verdad mueve la aguja.";
 
+  // Jerarquía de encabezados sin saltos de nivel (h2 → h3): mismos estilos, ver "Encabezados" en cauce.css
+  body = body.replace(/<h4( class="no-text")?>(Somos [^<]*)<\/h4>/g, "<h3$1>$2</h3>")
+    .replace(/<h4>(Diagnóstico|Datos|Procesos|Ingeniería)<\/h4>/g, "<h3>$1</h3>")
+    .replace(/<h5>([^<]*)<\/h5>/g, "<h3>$1</h3>");
+
   const html = `<!DOCTYPE html>
 <html lang="es-CO">
 <head>
@@ -193,9 +235,9 @@ function landing() {
 <link rel="icon" href="assets/img/favicon-48.png" sizes="48x48" type="image/png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/space-grotesk.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/instrument-serif-italic.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/jetbrains-mono.woff2">
 <link rel="stylesheet" href="assets/css/cauce.css">
 <link rel="stylesheet" href="assets/css/servicios.css">
 
@@ -207,7 +249,7 @@ ${JSON.stringify(graph, null, 1)}
 ${body.trim()}
 
 <script src="assets/js/medicion.js"></script>
-<script src="assets/js/main.js"></script>
+<script src="assets/js/cauce.js"></script>
 </body>
 </html>
 `;
@@ -241,6 +283,10 @@ function capacitaciones() {
   .ldur, .dock-price .amount{font-family:var(--mono);}
   .cfg-hero .hero-eyebrow{justify-content:center;}
   .cfg-hero .breadcrumb ol{justify-content:center;}
+  /* El dock solo aparece cuando hay niveles elegidos (la clase has-sel la pone updateDock) */
+  .cfg-page .dock{transition:transform 0.3s, visibility 0.3s;}
+  .cfg-page:not(.has-sel) .dock{transform:translateY(100%); visibility:hidden;}
+  body.cfg-page:not(.has-sel){padding-bottom:0;}
 `;
   for (const k of [".topbar{", "footer{", ".hero{"]) if (css.includes(k)) throw new Error("CSS capacitaciones aún tiene " + k);
 
@@ -256,6 +302,9 @@ function capacitaciones() {
     "hero capacitaciones");
   body = body.replace(/class="ldur mono"/g, 'class="ldur"').replace('class="amount mono"', 'class="amount"');
   body = replaceOnce(body, 'id="waBtn" href="#"', 'id="waBtn" href="#" data-cotizador data-ubicacion="dock"', "waBtn");
+  // El dock aparece solo con selecciones
+  body = replaceOnce(body, 'waBtn.setAttribute("aria-disabled", "true");', 'waBtn.setAttribute("aria-disabled", "true");\n    document.body.classList.remove("has-sel");', "dock vacío");
+  body = replaceOnce(body, 'waBtn.setAttribute("aria-disabled", "false");', 'waBtn.setAttribute("aria-disabled", "false");\n  document.body.classList.add("has-sel");', "dock con selección");
   body = replaceOnce(body,
     "navigator.clipboard.writeText(buildMensaje()).then(() => {",
     "navigator.clipboard.writeText(buildMensaje()).then(() => {\n    if (window.cauce) window.cauce.track(\"copiar_resumen\", { cotizador: \"capacitaciones\" });",
@@ -377,7 +426,7 @@ function notFound() {
     robots: "noindex, follow",
     body: `<section class="section notfound is-warm">
   <div class="wrap" style="text-align:center;">
-    <img src="/assets/img/caucha-saludo.png" alt="Caucha, la nutria de Cauce" width="520" height="630">
+    <img src="/assets/img/caucha-saludo.webp" alt="Caucha, la nutria de Cauce" width="520" height="630">
     <p class="mono eyebrow">— Error 404</p>
     <h1 style="font-weight:400; font-size:clamp(2rem,5vw,3.5rem); margin-bottom:1rem;">Este tramo del río <em class="serif" style="color:var(--flow-dark)">no existe.</em></h1>
     <p style="color:var(--ink-soft); max-width:520px; margin:0 auto 2rem;">La página que buscas cambió de dirección o nunca existió. Estas son las rutas más usadas:</p>
@@ -447,6 +496,8 @@ ErrorDocument 404 /404.html
   ExpiresByType text/javascript "access plus 1 week"
   ExpiresByType image/png "access plus 1 month"
   ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType font/woff2 "access plus 1 year"
 </IfModule>
 
 <IfModule mod_headers.c>

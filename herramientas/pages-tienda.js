@@ -154,11 +154,11 @@ ${PLANES.map(planCard).join("\n")}
         </div>
 
         <p class="tienda-cargando" data-cargando>Cargando catálogo…</p>
-        <p class="tienda-vacio" data-error-catalogo hidden>No pudimos cargar el catálogo en este momento. <a href="${esc(L.wa("Hola Cauce, quiero cotizar equipos de la tienda."))}" target="_blank" rel="noopener" data-ubicacion="tienda-error">Escríbenos por WhatsApp</a> y te ayudamos.</p>
+        <p class="tienda-vacio" data-error-catalogo hidden>No pudimos cargar el catálogo en este momento. <a href="${esc(L.wa("Hola Cauce, quiero cotizar equipos de la tienda."))}" target="_blank" rel="noopener" data-ubicacion="tienda-error">Escríbenos por WhatsApp</a> y te ayudamos, o <button type="button" class="link-btn" data-reintentar>vuelve a intentarlo</button>.</p>
         <div class="producto-grid" data-grid="tienda"></div>
         <noscript><p class="tienda-vacio">Para ver el catálogo activa JavaScript o escríbenos por WhatsApp al +57 301 368 2430.</p></noscript>
         <div class="paginacion" data-paginacion role="navigation" aria-label="Páginas del catálogo" hidden></div>
-        <p class="tienda-vacio" data-vacio hidden>No encontramos productos con esos filtros. Prueba con otra búsqueda o <a href="${esc(L.wa("Hola Cauce, estoy buscando un producto que no encontré en la tienda: "))}" target="_blank" rel="noopener" data-ubicacion="tienda-vacio">escríbenos y lo conseguimos</a>.</p>
+        <p class="tienda-vacio" data-vacio hidden>No encontramos productos con esos filtros. Prueba con otra búsqueda o <a href="${esc(L.wa("Hola Cauce, estoy buscando un producto que no encontré en la tienda: "))}" target="_blank" rel="noopener" data-ubicacion="tienda-vacio">escríbenos y lo conseguimos</a>. También puedes <button type="button" class="link-btn" data-limpiar-filtros>quitar los filtros</button>.</p>
       </div>
     </div>
   </div>
