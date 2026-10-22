@@ -1,9 +1,10 @@
 # Producción: cuando un PR test -> main (o un hotfix) se mergea, sube public_html/ a GoDaddy.
 #
 # Secrets (Settings -> Environments -> produccion):
-#   FTP_SERVER    IP del hosting (no el dominio: el dominio pasa por el firewall, que no deja pasar FTP)
-#   FTP_USERNAME  cuenta FTP exclusiva para GitHub, encerrada en public_html
+#   FTP_SERVER              IP del hosting (no el dominio: el dominio pasa por el firewall, que no deja pasar FTP)
+#   FTP_USERNAME            cuenta FTP exclusiva para GitHub, encerrada en public_html
 #   FTP_PASSWORD
+#   SUCURI_CLEAR_CACHE_URL  (opcional) enlace "Clear Cache" de Website Security -> Firewall -> Settings -> API
 name: Deploy PROD (GoDaddy)
 
 on:
@@ -26,6 +27,11 @@ jobs:
       url: https://cauce-ingenieria.com
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0      # historial completo: las fechas del sitemap salen de Git
+
+      - name: Fechas reales en sitemap.xml (SEO)
+        run: node herramientas/fechas-sitemap.js
 
       - name: Subir a GoDaddy por FTPS (solo lo que cambió)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -40,11 +46,32 @@ jobs:
           local-dir: ./public_html/
           server-dir: ./        # la cuenta FTP ya arranca dentro de public_html
 
-      - name: Recordatorio
+      - name: Limpiar caché del firewall (Sucuri)
+        id: cache
+        env:
+          URL: ${{ secrets.SUCURI_CLEAR_CACHE_URL }}
+        run: |
+          if [ -z "$URL" ]; then
+            echo "Sin SUCURI_CLEAR_CACHE_URL: la caché se limpia a mano."
+            echo "estado=manual" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          # No se imprime la URL ni la respuesta completa: llevan la API key.
+          if curl -fsS --max-time 60 "$URL" | grep -qiE '"status" *: *1|cache (was )?cleared|OK'; then
+            echo "✔ Caché del firewall limpiada"
+            echo "estado=ok" >> "$GITHUB_OUTPUT"
+          else
+            echo "::warning::No se pudo limpiar la caché del firewall automáticamente. Límpiala a mano."
+            echo "estado=fallo" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Resumen
         run: |
           {
             echo "### ✅ Publicado en cauce-ingenieria.com"
             echo ""
-            echo "Limpia la caché del firewall para ver el cambio de inmediato:"
-            echo "godaddy.com → Mis productos → Website Security → Administrar → Firewall → Rendimiento → **Clear Cache**"
+            case "${{ steps.cache.outputs.estado }}" in
+              ok) echo "Caché del firewall limpiada automáticamente: el cambio ya se ve." ;;
+              *)  echo "Limpia la caché del firewall para ver el cambio de inmediato:"
+                  echo "godaddy.com → Website Security → Administrar → Firewall → Rendimiento → **Clear Cache**" ;;
+            esac
           } >> "$GITHUB_STEP_SUMMARY"
