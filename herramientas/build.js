@@ -505,6 +505,11 @@ ErrorDocument 404 /404.html
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set X-Frame-Options "SAMEORIGIN"
 </IfModule>
+
+# Archivo de estado del deploy automático (GitHub Actions): lista los archivos del sitio, no debe ser público
+<Files ".ftp-deploy-sync-state.json">
+  Require all denied
+</Files>
 `);
 }
 
