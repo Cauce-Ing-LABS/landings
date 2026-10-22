@@ -22,6 +22,17 @@
     return calendlyLoading;
   }
 
+  // Se adelanta la carga cuando hay intención (cursor, toque, foco) o tras el primer desplazamiento, ya con la página libre
+  function prefetchCalendly() { loadCalendly().catch(function () {}); }
+  ["pointerover", "touchstart", "focusin"].forEach(function (ev) {
+    document.addEventListener(ev, function (e) {
+      if (e.target.closest && e.target.closest("a[data-calendly]")) prefetchCalendly();
+    }, { passive: true, once: false });
+  });
+  window.addEventListener("scroll", function () {
+    (window.requestIdleCallback || function (f) { setTimeout(f, 1500); })(prefetchCalendly);
+  }, { passive: true, once: true });
+
   document.addEventListener("click", function (e) {
     var a = e.target.closest("a[data-calendly]");
     if (!a) return;
@@ -51,7 +62,7 @@
   }
 
   // ---------- Aparición suave al hacer scroll ----------
-  var fadeEls = document.querySelectorAll(".faq-item, .svc-card, .metodo-step, .estado, .value, .plan");
+  var fadeEls = document.querySelectorAll(".faq-item, .svc-card, .metodo-step, .estado, .value, .plan, .pilar, .aud-card");
   if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
@@ -59,6 +70,17 @@
       });
     }, { threshold: 0.1, rootMargin: "0px 0px -60px 0px" });
     fadeEls.forEach(function (el) { el.classList.add("fadein"); observer.observe(el); });
+  }
+
+  // ---------- Caucha: saluda una vez al entrar en pantalla (el movimiento lo define cauce.css) ----------
+  var caucha = document.querySelectorAll('img[src*="assets/img/caucha-"]');
+  if ("IntersectionObserver" in window && caucha.length) {
+    var vivo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add("caucha-vivo"); vivo.unobserve(en.target); }
+      });
+    }, { threshold: 0.4 });
+    caucha.forEach(function (img) { vivo.observe(img); });
   }
 
   window.cauce.loadCalendly = loadCalendly;

@@ -24,16 +24,20 @@ const SERVICIOS = [
     sub: "Antes de comprar un software, una página o una automatización, revisamos cómo funciona tu negocio por dentro. Te decimos qué tecnología sí vale la pena, en qué orden y qué no necesitas.",
     serviceType: "Consultoría tecnológica y diagnóstico de procesos",
     waMsg: "Hola Cauce, quiero un diagnóstico tecnológico para mi negocio.",
-    queH2: "Cuatro frentes que<br><em>revisamos contigo.</em>",
-    queLead: "Es nuestro método de cuatro pasos aplicado a tu negocio. Es la base de todo lo demás: decide qué piezas necesitas y cuáles no.",
+    queH2: "Las cuatro etapas<br><em>de Cauce, en tu negocio.</em>",
+    queLead: "Diagnóstico, Datos, Procesos e Ingeniería: nuestro método de cuatro etapas aplicado a tu negocio. Es la base de todo lo demás: decide qué piezas necesitas y cuáles no.",
     que: [
       ["Diagnóstico", "Conversamos con el dueño y el equipo y revisamos lo que ya tienes: herramientas, software contratado, hojas de cálculo y la forma real de trabajar.", ["Puntos débiles, fugas de tiempo y de plata", "Software que se paga y no se usa", "Riesgos de seguridad evidentes"]],
       ["Datos", "Encontramos qué información genera tu negocio, dónde se pierde y qué conviene medir para decidir con números y no a la intuición.", ["Mapa de quién genera, usa y decide con cada dato", "Información repartida entre WhatsApp, papeles y archivos", "Integración con Siigo, Alegra u hojas de cálculo"]],
       ["Procesos", "Levantamos los procesos clave tal como funcionan hoy y los rediseñamos quitando pasos que sobran, antes de automatizar nada.", ["Diagramas BPMN de cómo funciona hoy y cómo debería", "Cuellos de botella que se repiten cada mes", "Qué automatizar y qué no"]],
       ["Ingeniería", "Con lo anterior armamos la hoja de ruta: qué construir, comprar o integrar, ordenado por retorno de inversión.", ["Piezas recomendadas y en qué orden", "Lo que puedes hacer tú solo y lo que necesita ayuda", "Alcance y precio cerrados para cada paso"]],
+    ],
+    principiosH2: "Dos principios<br><em>en todas las etapas.</em>",
+    principios: [
       ["Transformación digital realista", "Sin paquetes mágicos. Si una hoja de cálculo bien hecha resuelve, te lo decimos. Si necesitas software a la medida, también.", ["Decisiones técnicas con criterio", "Sin venderte cosas que no necesitas"]],
       ["Acompañamiento", "La implementación la hace el mismo equipo que hizo el diagnóstico, codo a codo con tu gente.", ["Nadie te pasa a otro después de la venta", "Sin “fase 2” sorpresa"]],
     ],
+    procesoLead: "Los pasos de esta consultoría, de la primera conversación a la hoja de ruta. El mismo equipo te acompaña de principio a fin, con alcance y precio cerrados.",
     pasos: [
       ["Café Cauce", "Una hora con un ingeniero para entender tu caso. Te llevas al menos dos recomendaciones aplicables ese mismo día."],
       ["Levantamiento", "Entrevistas con el dueño y el equipo, revisión de herramientas y de cómo fluye la información."],
@@ -376,7 +380,21 @@ ${s.que.map(([h, txt, lis], i) => `      <article class="svc-card">
         <p>${txt}</p>
         <ul>${lis.map((li) => `<li>${li}</li>`).join("")}</ul>
       </article>`).join("\n")}
-    </div>
+    </div>${s.principios ? `
+    <div class="principios">
+      <div class="principios-head">
+        <p class="mono eyebrow">— Cómo trabajamos</p>
+        <h3>${s.principiosH2}</h3>
+      </div>
+      <div class="principios-grid">
+${s.principios.map(([h, txt, lis]) => `        <article class="svc-card is-principio">
+          <span class="num-mono">Principio</span>
+          <h4>${h}</h4>
+          <p>${txt}</p>
+          <ul>${lis.map((li) => `<li>${li}</li>`).join("")}</ul>
+        </article>`).join("\n")}
+      </div>
+    </div>` : ""}
   </div>
 </section>
 
@@ -385,14 +403,14 @@ ${s.que.map(([h, txt, lis], i) => `      <article class="svc-card">
     <div class="section-head">
       <div>
         <p class="mono eyebrow">— Cómo lo hacemos</p>
-        <h2>Cuatro pasos.<br><em>Sin atajos.</em></h2>
+        <h2>El proceso de este servicio,<br><em>paso a paso.</em></h2>
       </div>
-      <p class="lead">El mismo equipo te acompaña de principio a fin, con alcance y precio cerrados.</p>
+      <p class="lead">${s.procesoLead || "El mismo equipo te acompaña de principio a fin, con alcance y precio cerrados."}</p>
     </div>
     <div class="metodo-steps is-light">
 ${s.pasos.map(([h, txt], i) => `      <div class="metodo-step">
         <span class="num">${String(i + 1).padStart(2, "0")}</span>
-        <h4>${h}</h4>
+        <h3>${h}</h3>
         <p>${txt}</p>
       </div>`).join("\n")}
     </div>

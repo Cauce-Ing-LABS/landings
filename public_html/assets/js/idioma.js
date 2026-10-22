@@ -48,7 +48,7 @@
   var css = document.createElement("style");
   css.textContent =
     ".idioma{position:relative;}" +
-    ".idioma-btn{display:inline-flex; align-items:center; gap:0.35rem; height:38px; padding:0 0.7rem; border:1px solid var(--rule, #d9dee5); border-radius:999px; background:transparent; color:inherit; font:inherit; font-size:0.82rem; font-weight:500; cursor:pointer;}" +
+    ".idioma-btn{display:inline-flex; align-items:center; gap:0.35rem; height:44px; min-width:44px; justify-content:center; padding:0 0.7rem; border:1px solid var(--rule, #d9dee5); border-radius:999px; background:transparent; color:inherit; font:inherit; font-size:0.82rem; font-weight:500; cursor:pointer;}" +
     ".idioma-btn:hover, .idioma-btn[aria-expanded=true]{border-color:var(--flow, #0fb8d9);}" +
     ".idioma-btn svg{width:16px; height:16px;}" +
     ".idioma-lista{position:absolute; right:0; top:calc(100% + 6px); min-width:170px; margin:0; padding:0.35rem; list-style:none; background:#fff; border:1px solid var(--rule, #d9dee5); border-radius:14px; box-shadow:0 18px 40px -18px rgba(13,27,42,0.35); z-index:1000;}" +

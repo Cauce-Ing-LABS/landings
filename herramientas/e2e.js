@@ -71,6 +71,15 @@ const waText = (href) => new URL(href).searchParams.get("text");
   console.log("Tienda:");
   const fs = require("fs");
   const CSV = path.join(__dirname, "..", "public_html", "tienda", "productos.csv");
+// El servidor de pruebas revalida por fecha de modificación (resolución de 1 s): cada escritura lleva una fecha distinta
+// para que el navegador no reutilice una versión anterior del CSV.
+let fechaCSV = Date.now();
+function escribirCSV(datos, codificacion) {
+  fs.writeFileSync(CSV, datos, codificacion);
+  fechaCSV += 2000;
+  fs.utimesSync(CSV, new Date(fechaCSV), new Date(fechaCSV));
+}
+
   const csvOriginal = fs.readFileSync(CSV);
   const cargar = async (url) => { await page.goto("about:blank"); await page.goto(BASE + (url || "/tienda/"), { waitUntil: "networkidle2" }); await page.waitForFunction(() => document.querySelector("[data-cargando]").hidden); };
   await cargar();
@@ -140,7 +149,7 @@ const waText = (href) => new URL(href).searchParams.get("text");
     let txt = csvOriginal.toString("utf8").replace(/^\uFEFF/, "");
     txt = txt.replace(/\nmonitor-22-reacondicionado;si;/, "\nmonitor-22-reacondicionado;no;");
     txt += "teclado-mecanico;si;999;Monitores;24″ o más;Teclado mecánico;Redragon;Nuevo;no;no;Para escribir todo el día.;Mecánico | USB;Switches: Rojos;;Garantía de fábrica;Teclado;\r\n";
-    fs.writeFileSync(CSV, "\uFEFF" + txt, "utf8");
+    escribirCSV( "\uFEFF" + txt, "utf8");
     await cargar();
     const ids = await page.$$eval(".producto", (els) => els.map((e) => e.dataset.id));
     ok(ids.includes("teclado-mecanico") && !ids.includes("monitor-22-reacondicionado") && ids.length === 25, "Editar el CSV agrega productos y oculta los inactivos");
@@ -150,27 +159,35 @@ const waText = (href) => new URL(href).searchParams.get("text");
     fs.copyFileSync(path.join(__dirname, "..", "public_html", "assets", "img", "icon-512.png"), IMG);
     try {
       const conFoto = txt.split(/\r?\n/).map((l) => l.startsWith("teclado-mecanico;") ? l.replace(/;$/, ";prueba-foto.png") : l.startsWith("monitor-24-nuevo;") ? l.replace(/;[^;]*$/, ";no-existe.jpg") : l).join("\r\n");
-      fs.writeFileSync(CSV, "\uFEFF" + conFoto, "utf8");
+      escribirCSV( "\uFEFF" + conFoto, "utf8");
       await cargar("/tienda/#monitores");
-      await page.$eval('.producto[data-id="teclado-mecanico"]', (c) => c.scrollIntoView({ block: "center", behavior: "instant" }));
-      await page.waitForFunction(() => { const i = document.querySelector('.producto[data-id="teclado-mecanico"] img'); return !i || i.complete; }, { timeout: 5000 }).catch(() => {});
-      await new Promise((r) => setTimeout(r, 300));
+      // Las fotos tienen carga diferida: solo cargan (o fallan) al entrar en pantalla. Se llevan a la vista y se espera su resultado.
+      for (const id of ["teclado-mecanico", "monitor-24-nuevo"]) {
+        await page.$eval(`.producto[data-id="${id}"]`, (c) => c.scrollIntoView({ block: "center", behavior: "instant" }));
+        await page.waitForFunction((id) => {
+          const v = document.querySelector(`.producto[data-id="${id}"] .estado-viz`);
+          const i = v && v.querySelector("img");
+          return !i || (i.complete && i.naturalWidth > 0);
+        }, { timeout: 8000 }, id).catch(() => {});
+      }
       const foto = await page.$eval('.producto[data-id="teclado-mecanico"] .estado-viz', (v) => { const i = v.querySelector("img"); return i ? i.getAttribute("src") + "|" + i.naturalWidth : "sin img"; });
       if (foto !== "/tienda/img/prueba-foto.png|512") console.log("   foto:", foto);
       ok(foto === "/tienda/img/prueba-foto.png|512", "Foto por nombre de archivo en /tienda/img/");
-      ok(await page.$eval('.producto[data-id="monitor-24-nuevo"] .estado-viz', (v) => !v.querySelector("img") && !!v.querySelector("svg")), "Foto inexistente: vuelve al dibujo");
+      const dibujoOk = await page.$eval('.producto[data-id="monitor-24-nuevo"] .estado-viz', (v) => !v.querySelector("img") && !!v.querySelector("svg"));
+      if (!dibujoOk) console.log("   monitor:", await page.$eval('.producto[data-id="monitor-24-nuevo"] .estado-viz', (v) => v.innerHTML.slice(0, 300)));
+      ok(dibujoOk, "Foto inexistente: vuelve al dibujo");
     } finally {
       fs.unlinkSync(IMG);
     }
 
     const filasCsv = txt.trim().split(/\r?\n/).map((l) => l.split(";").map((c) => (/[,"]/.test(c) ? '"' + c.replace(/"/g, '""') + '"' : c)).join(","));
     const latin1 = Buffer.from(filasCsv.join("\r\n"), "latin1");
-    fs.writeFileSync(CSV, latin1);
+    escribirCSV( latin1);
     await cargar();
     const nombre = await page.$eval('.producto[data-id="portatil-core-i5-12va-reacondicionado"] h3', (e) => e.textContent);
     ok((await page.$$(".producto")).length === 25 && nombre === "Portátil Intel Core i5 12.ª generación HP, Dell o Lenovo", "Lee CSV separado por comas y guardado en ANSI (tildes correctas)");
   } finally {
-    fs.writeFileSync(CSV, csvOriginal);
+    escribirCSV( csvOriginal);
   }
   await cargar();
   ok((await page.$$(".producto")).length === 25, "CSV original restaurado");
@@ -193,6 +210,89 @@ const waText = (href) => new URL(href).searchParams.get("text");
   await page.click(".nav-toggle");
   ok(await page.$eval("#nav-links", (e) => getComputedStyle(e).display !== "none"), "Menú móvil se abre");
   ok(await page.$eval('#nav-links a[aria-current="page"]', (e) => e.textContent) === "Consultoría TI", "Página actual marcada");
+
+  // 8) Navegación común, Calendly, flotantes, dock, armador y metodología
+  console.log("Navegación, Calendly y flotantes:");
+  for (const vp of [{ width: 390, height: 844 }, { width: 320, height: 640 }]) {
+    await page.setViewport({ ...vp, isMobile: true, hasTouch: true });
+    const calendlyReq = [];
+    const onReq = (r) => { if (r.url().includes("calendly.com")) calendlyReq.push(r.url()); };
+    page.on("request", onReq);
+    await page.goto(BASE + "/", { waitUntil: "networkidle2" });
+    page.off("request", onReq);
+    ok(calendlyReq.length === 0, `Portada ${vp.width}px: Calendly no se carga con la página`);
+    ok(await page.$eval(".nav-toggle", (b) => b.getBoundingClientRect().width >= 44), `Portada ${vp.width}px: menú móvil visible`);
+    await page.click(".nav-toggle");
+    const hrefs = await page.$$eval("#nav-links a", (as) => as.map((a) => a.getAttribute("href")));
+    ok(["/capacitaciones/", "/consultoria-ti/", "/tienda/"].every((h) => hrefs.includes(h)), `Portada ${vp.width}px: el menú enlaza a Consultoría TI, Capacitaciones y Tienda`);
+    ok(await page.$eval(".nav-cta", (a) => a.hasAttribute("data-calendly")), `Portada ${vp.width}px: Café Cauce en el menú`);
+    await page.click(".nav-toggle");
+    await new Promise((r) => setTimeout(r, 400));
+    const solapes = await page.evaluate(() => {
+      const rect = (el) => el.getBoundingClientRect();
+      const inter = (a, b) => !(a.right <= b.left || a.left >= b.right || a.bottom <= b.top || a.top >= b.bottom);
+      const flot = [".cal-badge", ".wa-float"].map((s) => document.querySelector(s)).filter((e) => e && getComputedStyle(e).visibility !== "hidden");
+      const ctas = [...document.querySelectorAll(".hero-ctas a, nav a, nav button")];
+      return { sobreCta: flot.some((f) => ctas.some((c) => inter(rect(f), rect(c)))), entreSi: flot.length === 2 && inter(rect(flot[0]), rect(flot[1])) };
+    });
+    ok(!solapes.entreSi, `Portada ${vp.width}px: Calendly y WhatsApp no se pisan`);
+    await page.evaluate(() => window.scrollTo({ top: 1800, behavior: "instant" }));
+    await new Promise((r) => setTimeout(r, 500));
+    ok(await page.evaluate(() => ["cal-badge", "wa-float"].every((c) => getComputedStyle(document.querySelector("." + c)).visibility === "visible")), `Portada ${vp.width}px: ambos accesos siempre visibles`);
+  }
+  await page.setViewport({ width: 390, height: 844, isMobile: true, hasTouch: true });
+  await page.goto(BASE + "/", { waitUntil: "networkidle2" });
+  await page.evaluate(() => window.scrollTo({ top: 1800, behavior: "instant" }));
+  await page.click(".cal-badge");
+  const calCargado = await page.waitForFunction(() => !!document.querySelector('script[src*="assets.calendly.com"]'), { timeout: 8000 }).then(() => true).catch(() => false);
+  ok(calCargado, "El globo de Calendly carga el widget al tocarlo");
+  ok(await page.evaluate(() => { const s = document.querySelector("#servicios").getBoundingClientRect().top + scrollY; const o = document.querySelector(".anti").getBoundingClientRect().top + scrollY; return s > o; }), "Móvil: la portada conserva el orden del diseño (los tres caminos tras el problema y el método)");
+  ok(await page.$$eval(".atajos a", (as) => as.map((a) => a.getAttribute("href")).join()) === "/capacitaciones/,/consultoria-ti/,/tienda/" && await page.$eval(".atajos", (a) => getComputedStyle(a).display !== "none"), "Móvil: atajos a las tres páginas visibles al final del hero");
+  await page.setViewport({ width: 1440, height: 900 });
+  await page.goto(BASE + "/", { waitUntil: "networkidle2" });
+  ok(await page.evaluate(() => { const s = document.querySelector("#servicios").getBoundingClientRect().top + scrollY; const o = document.querySelector(".anti").getBoundingClientRect().top + scrollY; return s > o; }), "Desktop: el orden de la portada no cambia y los atajos no se muestran");
+  ok(await page.$eval(".atajos", (a) => getComputedStyle(a).display === "none"), "Desktop: los atajos móviles están ocultos");
+
+  console.log("Capacitaciones y armador en móvil:");
+  await page.setViewport({ width: 390, height: 844, isMobile: true, hasTouch: true });
+  await page.goto(BASE + "/capacitaciones/", { waitUntil: "networkidle2" });
+  ok(await page.$eval(".dock", (d) => getComputedStyle(d).visibility === "hidden"), "Capacitaciones: el dock no aparece sin selección");
+  const tactil = await page.evaluate(() => {
+    const els = [...document.querySelectorAll(".lswitch, .master-toggle")].slice(0, 6);
+    return els.every((e) => {
+      e.scrollIntoView({ block: "center", behavior: "instant" });
+      const r = e.getBoundingClientRect();
+      return [[r.left - 5, r.top + r.height / 2], [r.right + 5, r.top + r.height / 2], [r.left + r.width / 2, r.top - 9], [r.left + r.width / 2, r.bottom + 9]].every(([x, y]) => document.elementFromPoint(x, y) === e);
+    });
+  });
+  ok(tactil, "Capacitaciones: los interruptores tienen una zona táctil de al menos 44 px");
+  await page.$eval(".master-toggle", (b) => b.click());
+  await new Promise((r) => setTimeout(r, 500));
+  ok(await page.$eval(".dock", (d) => getComputedStyle(d).visibility === "visible"), "Capacitaciones: el dock aparece al elegir un nivel");
+  await page.goto(BASE + "/consultoria-ti/", { waitUntil: "networkidle2" });
+  ok(await page.$eval("#torreWa", (a) => getComputedStyle(a).display === "none"), "Armador: la barra de envío no aparece sin piezas");
+  ok(await page.$$eval(".pieza-detalle", (ds) => ds.every((d) => !d.open)), "Armador: el detalle de cada pieza empieza plegado en móvil");
+  await page.$eval('[data-kit]', (b) => b.click());
+  ok(await page.$eval("#torreWa", (a) => getComputedStyle(a).display !== "none"), "Armador: la barra de envío aparece con piezas");
+  await page.setViewport({ width: 1440, height: 900 });
+  await page.goto(BASE + "/consultoria-ti/", { waitUntil: "networkidle2" });
+  ok(await page.$$eval(".pieza-detalle", (ds) => ds.every((d) => d.open)), "Armador: en escritorio el detalle está abierto");
+
+  console.log("Metodología:");
+  const SLUGS = ["consultoria-tecnologica", "arquitectura-de-software-y-redes", "desarrollo-de-software", "paginas-web-y-tiendas-en-linea", "automatizacion-rpa-e-ia", "pruebas-de-software", "auditoria-de-seguridad-y-pentest", "infraestructura-y-redes", "soporte-ti"];
+  let titulosRepetidos = 0;
+  for (const s of SLUGS) {
+    const h = await (await fetch(BASE + "/consultoria-ti/" + s + "/")).text();
+    if (/Cuatro pasos\.<br><em>Sin atajos/.test(h)) titulosRepetidos++;
+  }
+  ok(titulosRepetidos === 0, "Ninguna página de servicio reutiliza 'Cuatro pasos. Sin atajos.' de la metodología oficial");
+  await page.goto(BASE + "/consultoria-ti/consultoria-tecnologica/", { waitUntil: "networkidle2" });
+  const etapas = await page.$$eval("#que-hacemos .svc-grid .svc-card h3", (hs) => hs.map((h) => h.textContent.trim()));
+  ok(etapas.join(",") === "Diagnóstico,Datos,Procesos,Ingeniería", "Consultoría tecnológica: las cuatro etapas oficiales, en orden");
+  const principios = await page.$$eval("#que-hacemos .is-principio h4", (hs) => hs.map((h) => h.textContent.trim()));
+  ok(principios.join(",") === "Transformación digital realista,Acompañamiento", "Consultoría tecnológica: los dos principios aparte, sin numerar");
+  const en = await (await fetch(BASE + "/en/it-consulting/technology-consulting/")).text();
+  ok(/Two principles/.test(en) && !/Four steps/.test(en.split('id="como"')[1] || ""), "Versión en inglés con principios y proceso diferenciados");
 
   await browser.close();
   console.log(errors.length ? "\nERRORES JS:\n" + [...new Set(errors)].join("\n") : "\nSin errores de JavaScript.");
