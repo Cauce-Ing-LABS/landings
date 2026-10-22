@@ -5,3 +5,6 @@ herramientas/shots/
 herramientas/package-lock.json
 .claude/
 desktop.ini
+
+# Copia de prueba que genera herramientas/preparar-test.js
+_site/
