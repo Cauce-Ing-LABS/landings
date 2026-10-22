@@ -34,6 +34,9 @@ jobs:
       - name: Fechas reales en sitemap.xml (SEO)
         run: node herramientas/fechas-sitemap.js
 
+      - name: Huella en CSS y JS (evita mezclar HTML nuevo con CSS viejo en caché)
+        run: node herramientas/versionar-assets.js
+
       - name: Subir a GoDaddy por FTPS (solo lo que cambió)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
