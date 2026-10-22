@@ -39,7 +39,8 @@ function html(texto) {
   return texto
     .replace(ATRIBUTOS, `$1="${BASE}`)          // 1. rutas absolutas
     .split(PROD).join(BASE)                      // 2. URLs de producción (canonical, hreflang, JSON-LD...)
-    .replace(/<head>/i, `<head>\n<meta name="robots" content="noindex, nofollow">`) // 4.
+    .replace(/<meta\s+name="robots"[^>]*>\s*/gi, "")                                // 4. quita el robots de producción…
+    .replace(/<head>/i, `<head>\n<meta name="robots" content="noindex, nofollow">`) //    …y pone noindex
     .replace(/<\/body>/i, `${FRANJA}\n</body>`); // 5.
 }
 
