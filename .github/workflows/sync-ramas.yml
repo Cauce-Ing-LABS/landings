@@ -1,18 +1,22 @@
 # Después de cada salida a producción (normal o hotfix), baja main a develop y a test.
 #   develop: para que las ramas nuevas nazcan con lo que ya está en producción.
 #   test:    para que un hotfix no se pierda ni choque en el siguiente PR test -> main.
-# Lo que llega a main ya fue aprobado, así que no pide otra aprobación.
+#
+# Usa la GitHub App "cauce-labs-sync" (no el token por defecto de Actions) porque:
+#   - es la única que tiene permiso en las reglas de test y develop para hacer push sin PR;
+#   - sus push sí disparan otros workflows (el push a test vuelve a publicar Pages solo).
+# Variable SYNC_APP_ID y secret SYNC_APP_PRIVATE_KEY en Settings -> Secrets and variables -> Actions.
+#
 # Si hay conflictos no fuerza nada: abre un PR main -> <rama> para resolverlo a mano.
 name: Sincronizar develop y test con main
 
 on:
   push:
     branches: [main]
+  workflow_dispatch:          # para relanzarlo a mano si algún día falla
 
 permissions:
-  contents: write
-  pull-requests: write
-  actions: write              # para volver a publicar test en Pages después del sync
+  contents: read
 
 jobs:
   sync:
@@ -25,18 +29,28 @@ jobs:
       group: sync-${{ matrix.rama }}
       cancel-in-progress: false
     steps:
+      - name: Token de la App (dura 1 hora)
+        id: app
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.SYNC_APP_ID }}
+          private-key: ${{ secrets.SYNC_APP_PRIVATE_KEY }}
+
       - uses: actions/checkout@v4
         with:
           ref: ${{ matrix.rama }}
           fetch-depth: 0
+          token: ${{ steps.app.outputs.token }}
 
       - name: Merge main -> ${{ matrix.rama }}
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.app.outputs.token }}
           RAMA: ${{ matrix.rama }}
+          BOT: ${{ steps.app.outputs.app-slug }}[bot]
         run: |
-          git config user.name  "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          BOT_ID=$(gh api "/users/${BOT}" --jq .id)
+          git config user.name  "$BOT"
+          git config user.email "${BOT_ID}+${BOT}@users.noreply.github.com"
 
           if [ "$(git rev-list --count origin/$RAMA..origin/main)" = "0" ]; then
             echo "$RAMA ya tiene todo lo de main."; exit 0
@@ -45,8 +59,6 @@ jobs:
           if git merge --no-ff origin/main -m "chore: sync main -> $RAMA"; then
             git push origin "$RAMA"
             echo "✔ $RAMA actualizado con main"
-            # Un push hecho por este bot no dispara otros workflows; el deploy de test se lanza a mano.
-            if [ "$RAMA" = "test" ]; then gh workflow run deploy-test.yml --ref test; fi
           else
             git merge --abort
             echo "::warning::Conflictos al bajar main a $RAMA. Se abre un PR para resolverlos."

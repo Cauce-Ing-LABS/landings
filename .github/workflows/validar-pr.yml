@@ -1,0 +1,65 @@
+# Revisa que cada PR siga el flujo de ramas antes de dejarlo mergear.
+#
+#   rama de trabajo (desde develop)  ->  test   flujo normal
+#   test                             ->  main   salida a producción
+#   hotfix/* (desde main)            ->  main   emergencias: se salta test
+#   main                             ->  test   solo para resolver conflictos del sync automático
+#
+# El job "validar-origen" se marca como check obligatorio en las reglas de test y main (Fase 4):
+# si este check sale en rojo, el botón de merge queda bloqueado.
+name: Validar flujo de ramas
+
+on:
+  pull_request:
+    branches: [test, main]
+    types: [opened, reopened, synchronize, edited]   # "edited": si alguien le cambia la base al PR, se vuelve a revisar
+
+jobs:
+  validar-origen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0          # todo el historial y todas las ramas, para comparar
+
+      - name: Revisar origen y destino del PR
+        env:
+          ORIGEN: ${{ github.head_ref }}
+          DESTINO: ${{ github.base_ref }}
+        run: |
+          echo "PR: $ORIGEN -> $DESTINO"
+
+          # ---------------- Hacia main (producción) ----------------
+          if [ "$DESTINO" = "main" ]; then
+            if [ "$ORIGEN" = "test" ]; then
+              echo "✔ Flujo normal: test -> main"; exit 0
+            fi
+
+            if [[ "$ORIGEN" == hotfix/* ]]; then
+              # Un hotfix debe nacer de main: no puede arrastrar a producción trabajo
+              # que está en develop o test pero que todavía nadie aprobó para salir.
+              PENDIENTES=$( { git rev-list origin/main..origin/develop; git rev-list origin/main..origin/test; } | sort -u )
+              COLADOS=$( git rev-list origin/main..HEAD | grep -Fx -f <(echo "$PENDIENTES") || true )
+              if [ -n "$PENDIENTES" ] && [ -n "$COLADOS" ]; then
+                echo "::error::El hotfix trae commits de develop/test que aún no están en producción. Crea la rama hotfix/* desde main."
+                echo "$COLADOS"
+                exit 1
+              fi
+              echo "::warning::HOTFIX: este cambio va a producción sin pasar por test."
+              exit 0
+            fi
+
+            echo "::error::A main solo se llega desde 'test' o desde una rama 'hotfix/*'. Este PR viene de '$ORIGEN'."
+            echo "::error::¿Invertiste base y compare? Para salir a producción: base = main, compare = test."
+            exit 1
+          fi
+
+          # ---------------- Hacia test ----------------
+          if [ "$DESTINO" = "test" ]; then
+            if [[ "$ORIGEN" == hotfix/* ]]; then
+              echo "::error::Un hotfix va directo a main (base = main). Después el sync lo baja solo a test y develop."
+              exit 1
+            fi
+            echo "✔ $ORIGEN -> test"; exit 0
+          fi
